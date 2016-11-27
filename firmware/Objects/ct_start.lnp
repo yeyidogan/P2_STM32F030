@@ -1,0 +1,10 @@
+--cpu Cortex-M0
+".\objects\main.o"
+"C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM0.lib"
+".\objects\rtx_conf_cm.o"
+".\objects\startup_stm32f030x8.o"
+".\objects\system_stm32f0xx.o"
+--strict --scatter ".\Objects\ct_start.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\ct_start.map" -o .\Objects\ct_start.axf
