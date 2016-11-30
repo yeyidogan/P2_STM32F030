@@ -137,7 +137,7 @@
 void DMA_DeInit(DMA_Channel_TypeDef* DMAy_Channelx)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
 
   /* Disable the selected DMAy Channelx */
   DMAy_Channelx->CCR &= (uint16_t)(~DMA_CCR_EN);
@@ -235,16 +235,16 @@ void DMA_Init(DMA_Channel_TypeDef* DMAy_Channelx, DMA_InitTypeDef* DMA_InitStruc
   uint32_t tmpreg = 0;
 
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
-  //assert_param(IS_DMA_DIR(DMA_InitStruct->DMA_DIR));
-  //assert_param(IS_DMA_BUFFER_SIZE(DMA_InitStruct->DMA_BufferSize));
-  //assert_param(IS_DMA_PERIPHERAL_INC_STATE(DMA_InitStruct->DMA_PeripheralInc));
-  //assert_param(IS_DMA_MEMORY_INC_STATE(DMA_InitStruct->DMA_MemoryInc));
-  //assert_param(IS_DMA_PERIPHERAL_DATA_SIZE(DMA_InitStruct->DMA_PeripheralDataSize));
-  //assert_param(IS_DMA_MEMORY_DATA_SIZE(DMA_InitStruct->DMA_MemoryDataSize));
-  //assert_param(IS_DMA_MODE(DMA_InitStruct->DMA_Mode));
-  //assert_param(IS_DMA_PRIORITY(DMA_InitStruct->DMA_Priority));
-  //assert_param(IS_DMA_M2M_STATE(DMA_InitStruct->DMA_M2M));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_DMA_DIR(DMA_InitStruct->DMA_DIR));
+  assert_param(IS_DMA_BUFFER_SIZE(DMA_InitStruct->DMA_BufferSize));
+  assert_param(IS_DMA_PERIPHERAL_INC_STATE(DMA_InitStruct->DMA_PeripheralInc));
+  assert_param(IS_DMA_MEMORY_INC_STATE(DMA_InitStruct->DMA_MemoryInc));
+  assert_param(IS_DMA_PERIPHERAL_DATA_SIZE(DMA_InitStruct->DMA_PeripheralDataSize));
+  assert_param(IS_DMA_MEMORY_DATA_SIZE(DMA_InitStruct->DMA_MemoryDataSize));
+  assert_param(IS_DMA_MODE(DMA_InitStruct->DMA_Mode));
+  assert_param(IS_DMA_PRIORITY(DMA_InitStruct->DMA_Priority));
+  assert_param(IS_DMA_M2M_STATE(DMA_InitStruct->DMA_M2M));
 
 /*--------------------------- DMAy Channelx CCR Configuration ----------------*/
   /* Get the DMAy_Channelx CCR value */
@@ -329,8 +329,8 @@ void DMA_StructInit(DMA_InitTypeDef* DMA_InitStruct)
 void DMA_Cmd(DMA_Channel_TypeDef* DMAy_Channelx, FunctionalState NewState)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
-  //assert_param(IS_FUNCTIONAL_STATE(NewState));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_FUNCTIONAL_STATE(NewState));
 
   if (NewState != DISABLE)
   {
@@ -354,15 +354,15 @@ void DMA_Cmd(DMA_Channel_TypeDef* DMAy_Channelx, FunctionalState NewState)
   */
 void DMA_RemapConfig(DMA_TypeDef* DMAy, uint32_t DMAx_CHy_RemapRequest)
 {
-  //assert_param(IS_DMA_ALL_LIST(DMAy));
+  assert_param(IS_DMA_ALL_LIST(DMAy));
   
   if (DMAy == DMA1)
   {
-    //assert_param(IS_DMA1_REMAP(DMAx_CHy_RemapRequest));  
+    assert_param(IS_DMA1_REMAP(DMAx_CHy_RemapRequest));  
   }
   else
   {
-    //assert_param(IS_DMA2_REMAP(DMAx_CHy_RemapRequest)); 
+    assert_param(IS_DMA2_REMAP(DMAx_CHy_RemapRequest)); 
   }
 
   DMAy->RMPCR &= ~((uint32_t)0x0F << (uint32_t)((DMAx_CHy_RemapRequest >> 28) * 4)); 
@@ -415,7 +415,7 @@ void DMA_RemapConfig(DMA_TypeDef* DMAy, uint32_t DMAx_CHy_RemapRequest)
 void DMA_SetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx, uint16_t DataNumber)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
 
 /*--------------------------- DMAy Channelx CNDTR Configuration --------------*/
   /* Write to DMAy Channelx CNDTR */
@@ -435,7 +435,7 @@ void DMA_SetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx, uint16_t DataNum
 uint16_t DMA_GetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
   /* Return the number of remaining data units for DMAy Channelx */
   return ((uint16_t)(DMAy_Channelx->CNDTR));
 }
@@ -512,9 +512,9 @@ uint16_t DMA_GetCurrDataCounter(DMA_Channel_TypeDef* DMAy_Channelx)
 void DMA_ITConfig(DMA_Channel_TypeDef* DMAy_Channelx, uint32_t DMA_IT, FunctionalState NewState)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
-  //assert_param(IS_DMA_CONFIG_IT(DMA_IT));
-  //assert_param(IS_FUNCTIONAL_STATE(NewState));
+  assert_param(IS_DMA_ALL_PERIPH(DMAy_Channelx));
+  assert_param(IS_DMA_CONFIG_IT(DMA_IT));
+  assert_param(IS_FUNCTIONAL_STATE(NewState));
 
   if (NewState != DISABLE)
   {
@@ -593,7 +593,7 @@ FlagStatus DMA_GetFlagStatus(uint32_t DMAy_FLAG)
   uint32_t tmpreg = 0;
   
   /* Check the parameters */
-  //assert_param(IS_DMA_GET_FLAG(DMAy_FLAG));
+  assert_param(IS_DMA_GET_FLAG(DMAy_FLAG));
 
   /* Calculate the used DMAy */
   if ((DMAy_FLAG & FLAG_Mask) != (uint32_t)RESET)
@@ -685,7 +685,7 @@ FlagStatus DMA_GetFlagStatus(uint32_t DMAy_FLAG)
 void DMA_ClearFlag(uint32_t DMAy_FLAG)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_CLEAR_FLAG(DMAy_FLAG));
+  assert_param(IS_DMA_CLEAR_FLAG(DMAy_FLAG));
 
 /* Calculate the used DMAy */
   if ((DMAy_FLAG & FLAG_Mask) != (uint32_t)RESET)
@@ -765,7 +765,7 @@ ITStatus DMA_GetITStatus(uint32_t DMAy_IT)
   uint32_t tmpreg = 0;
 
   /* Check the parameters */
-  //assert_param(IS_DMA_GET_IT(DMAy_IT));
+  assert_param(IS_DMA_GET_IT(DMAy_IT));
 
   /* Calculate the used DMA */
   if ((DMAy_IT & FLAG_Mask) != (uint32_t)RESET)
@@ -857,7 +857,7 @@ ITStatus DMA_GetITStatus(uint32_t DMAy_IT)
 void DMA_ClearITPendingBit(uint32_t DMAy_IT)
 {
   /* Check the parameters */
-  //assert_param(IS_DMA_CLEAR_IT(DMAy_IT));
+  assert_param(IS_DMA_CLEAR_IT(DMAy_IT));
   
   /* Calculate the used DMAy */
   if ((DMAy_IT & FLAG_Mask) != (uint32_t)RESET)

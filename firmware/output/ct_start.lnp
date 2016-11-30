@@ -5,6 +5,7 @@
 ".\output\stm32f0xx_misc.o"
 ".\output\stm32f0xx_rcc.o"
 ".\output\stm32f0xx_usart.o"
+".\output\stm32f0xx_i2c.o"
 ".\output\gpio.o"
 ".\output\uart.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM0.lib"

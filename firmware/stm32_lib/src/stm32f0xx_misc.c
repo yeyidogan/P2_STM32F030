@@ -79,8 +79,8 @@ void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)
   uint32_t tmppriority = 0x00;
   
   /* Check the parameters */
-  //assert_param(IS_FUNCTIONAL_STATE(NVIC_InitStruct->NVIC_IRQChannelCmd));
-  //assert_param(IS_NVIC_PRIORITY(NVIC_InitStruct->NVIC_IRQChannelPriority));  
+  assert_param(IS_FUNCTIONAL_STATE(NVIC_InitStruct->NVIC_IRQChannelCmd));
+  assert_param(IS_NVIC_PRIORITY(NVIC_InitStruct->NVIC_IRQChannelPriority));  
     
   if (NVIC_InitStruct->NVIC_IRQChannelCmd != DISABLE)
   {
@@ -115,9 +115,9 @@ void NVIC_Init(NVIC_InitTypeDef* NVIC_InitStruct)
 void NVIC_SystemLPConfig(uint8_t LowPowerMode, FunctionalState NewState)
 {
   /* Check the parameters */
-  //assert_param(IS_NVIC_LP(LowPowerMode));
+  assert_param(IS_NVIC_LP(LowPowerMode));
   
-  //assert_param(IS_FUNCTIONAL_STATE(NewState));  
+  assert_param(IS_FUNCTIONAL_STATE(NewState));  
   
   if (NewState != DISABLE)
   {
@@ -140,7 +140,7 @@ void NVIC_SystemLPConfig(uint8_t LowPowerMode, FunctionalState NewState)
 void SysTick_CLKSourceConfig(uint32_t SysTick_CLKSource)
 {
   /* Check the parameters */
-  //assert_param(IS_SYSTICK_CLK_SOURCE(SysTick_CLKSource));
+  assert_param(IS_SYSTICK_CLK_SOURCE(SysTick_CLKSource));
   
   if (SysTick_CLKSource == SysTick_CLKSource_HCLK)
   {

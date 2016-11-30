@@ -69,3 +69,12 @@ void taskC (void *argument) {
 		osDelay(50);
 	}
 }
+
+/**
+ *******************************************************************************
+ * @brief       Check parameters of STM32 Std drivers
+ *******************************************************************************
+ */
+void assert_failed(uint8_t* file, uint32_t line){
+	while (1);
+}

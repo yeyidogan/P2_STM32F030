@@ -119,7 +119,7 @@
 void GPIO_DeInit(GPIO_TypeDef* GPIOx)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   if(GPIOx == GPIOA)
   {
@@ -171,10 +171,10 @@ void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
   uint32_t pinpos = 0x00, pos = 0x00 , currentpin = 0x00;
 
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GPIO_PIN(GPIO_InitStruct->GPIO_Pin));
-  //assert_param(IS_GPIO_MODE(GPIO_InitStruct->GPIO_Mode));
-  //assert_param(IS_GPIO_PUPD(GPIO_InitStruct->GPIO_PuPd));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN(GPIO_InitStruct->GPIO_Pin));
+  assert_param(IS_GPIO_MODE(GPIO_InitStruct->GPIO_Mode));
+  assert_param(IS_GPIO_PUPD(GPIO_InitStruct->GPIO_PuPd));
 
   /*-------------------------- Configure the port pins -----------------------*/
   /*-- GPIO Mode Configuration --*/
@@ -190,14 +190,14 @@ void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
       if ((GPIO_InitStruct->GPIO_Mode == GPIO_Mode_OUT) || (GPIO_InitStruct->GPIO_Mode == GPIO_Mode_AF))
       {
         /* Check Speed mode parameters */
-        //assert_param(IS_GPIO_SPEED(GPIO_InitStruct->GPIO_Speed));
+        assert_param(IS_GPIO_SPEED(GPIO_InitStruct->GPIO_Speed));
 
         /* Speed mode configuration */
         GPIOx->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR0 << (pinpos * 2));
         GPIOx->OSPEEDR |= ((uint32_t)(GPIO_InitStruct->GPIO_Speed) << (pinpos * 2));
 
         /* Check Output mode parameters */
-        //assert_param(IS_GPIO_OTYPE(GPIO_InitStruct->GPIO_OType));
+        assert_param(IS_GPIO_OTYPE(GPIO_InitStruct->GPIO_OType));
 
         /* Output mode configuration */
         GPIOx->OTYPER &= ~((GPIO_OTYPER_OT_0) << ((uint16_t)pinpos));
@@ -247,8 +247,8 @@ void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   __IO uint32_t tmp = 0x00010000;
 
   /* Check the parameters */
-  //assert_param(IS_GPIO_LIST_PERIPH(GPIOx));
-  //assert_param(IS_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_LIST_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN(GPIO_Pin));
 
   tmp |= GPIO_Pin;
   /* Set LCKK bit */
@@ -296,8 +296,8 @@ uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   uint8_t bitstatus = 0x00;
 
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
 
   if ((GPIOx->IDR & GPIO_Pin) != (uint32_t)Bit_RESET)
   {
@@ -320,7 +320,7 @@ uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   return ((uint16_t)GPIOx->IDR);
 }
@@ -342,8 +342,8 @@ uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   uint8_t bitstatus = 0x00;
 
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
 
   if ((GPIOx->ODR & GPIO_Pin) != (uint32_t)Bit_RESET)
   {
@@ -366,7 +366,7 @@ uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   return ((uint16_t)GPIOx->ODR);
 }
@@ -386,8 +386,8 @@ uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
 void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN(GPIO_Pin));
 
   GPIOx->BSRR = GPIO_Pin;
 }
@@ -407,8 +407,8 @@ void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN(GPIO_Pin));
 
   GPIOx->BRR = GPIO_Pin;
 }
@@ -432,9 +432,9 @@ void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
-  //assert_param(IS_GPIO_BIT_ACTION(BitVal));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GET_GPIO_PIN(GPIO_Pin));
+  assert_param(IS_GPIO_BIT_ACTION(BitVal));
 
   if (BitVal != Bit_RESET)
   {
@@ -457,7 +457,7 @@ void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
 void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)
 {
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   GPIOx->ODR = PortVal;
 }
@@ -513,9 +513,9 @@ void GPIO_PinAFConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_PinSource, uint8_t GPIO
   uint32_t temp_2 = 0x00;
 
   /* Check the parameters */
-  //assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
-  //assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
-  //assert_param(IS_GPIO_AF(GPIO_AF));
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
+  assert_param(IS_GPIO_AF(GPIO_AF));
 
   temp = ((uint32_t)(GPIO_AF) << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4));
   GPIOx->AFR[GPIO_PinSource >> 0x03] &= ~((uint32_t)0xF << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4));
