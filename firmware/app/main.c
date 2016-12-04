@@ -33,6 +33,8 @@ int main(void){
  *******************************************************************************
  */
 void rccConfig(void){
+	RCC_HCLKConfig(RCC_SYSCLK_Div1);
+	RCC_PCLKConfig(RCC_HCLK_Div1);
 	/* GPIOA Peripheral clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	/* GPIOC Peripheral clock enable */
@@ -41,6 +43,9 @@ void rccConfig(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	/* Enable DMA1 clock */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+	/* Configure I2C Clock Source*/
+	RCC_I2CCLKConfig(RCC_I2C1CLK_HSI); //8 MHz clock source selected
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
 }
 
 /**
@@ -78,3 +83,4 @@ void taskC (void *argument) {
 void assert_failed(uint8_t* file, uint32_t line){
 	while (1);
 }
+/* * * END OF FILE * * */

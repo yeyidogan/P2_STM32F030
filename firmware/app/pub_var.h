@@ -3,8 +3,8 @@
 *	public variables
 *	Created date: 2015.01.03
 *******************************************************************************/
-#ifndef __PUB_VAR_H
-#define __PUB_VAR_H
+#ifndef __PUB_VAR_H_
+#define __PUB_VAR_H_
 
 #include "pub_s.h"
 #include "par_enums.h"

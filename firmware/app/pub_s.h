@@ -3,8 +3,8 @@
 *	public structures
 *	Created date: 2015.01.04
 *******************************************************************************/
-#ifndef __PUB_S_H
-#define __PUB_S_H
+#ifndef __PUB_S_H_
+#define __PUB_S_H_
 
 #include <stdint.h>
 
