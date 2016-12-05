@@ -3,8 +3,8 @@
 *	I2C functions
 *	Created date: 2016.12.03
 *******************************************************************************/
-#ifndef __I2C_H
-#define __I2C_H
+#ifndef __I2C_H_
+#define __I2C_H_
 
 #include "stm32f0xx.h"
 #include "stm32f0xx_i2c.h"

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\ct_start.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\ct_start.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sun Dec 04 23:13:17 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Dec 05 22:21:49 2016
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -35,7 +35,7 @@ Function Pointers
  <LI><a href="#[11]">EXTI4_15_IRQHandler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
  <LI><a href="#[d]">FLASH_IRQHandler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
  <LI><a href="#[7]">HardFault_Handler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
- <LI><a href="#[1d]">I2C1_IRQHandler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
+ <LI><a href="#[1d]">I2C1_IRQHandler</a> from i2c.o(i.I2C1_IRQHandler) referenced from startup_stm32f030x8.o(RESET)
  <LI><a href="#[1e]">I2C2_IRQHandler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
  <LI><a href="#[6]">NMI_Handler</a> from startup_stm32f030x8.o(.text) referenced from startup_stm32f030x8.o(RESET)
  <LI><a href="#[9]">PendSV_Handler</a> from irq_cm0.o(.text) referenced from startup_stm32f030x8.o(RESET)
@@ -75,8 +75,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[30]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
-<LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<BR><BR>[Calls]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
 <P><STRONG><a name="[31]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -158,8 +158,8 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[32]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
-<LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<BR><BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
 <P><STRONG><a name="[a3]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -254,9 +254,6 @@ Global Symbols
 <P><STRONG><a name="[d]"></a>FLASH_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
-<P><STRONG><a name="[1d]"></a>I2C1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
-</UL>
 <P><STRONG><a name="[1e]"></a>I2C2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
@@ -325,8 +322,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
-<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcMessageQueuePut
+<BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcMessageQueuePut
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 </UL>
 
 <P><STRONG><a name="[a7]"></a>__rt_memcpy</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, rt_memcpy.o(.text), UNUSED)
@@ -488,8 +485,8 @@ Global Symbols
 <P><STRONG><a name="[68]"></a>os_MemoryFree</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, rtx_memory.o(.text.os_MemoryFree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = os_MemoryFree
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
-<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
+<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
 </UL>
 
 <P><STRONG><a name="[63]"></a>os_MemoryInit</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, rtx_memory.o(.text.os_MemoryInit))
@@ -502,15 +499,15 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = os_MemoryPoolAlloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcMessageQueuePut
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 </UL>
 
 <P><STRONG><a name="[69]"></a>os_MemoryPoolFree</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, rtx_mempool.o(.text.os_MemoryPoolFree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = os_MemoryPoolFree
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
-<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
+<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
 </UL>
 
 <P><STRONG><a name="[64]"></a>os_MemoryPoolInit</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, rtx_mempool.o(.text.os_MemoryPoolInit))
@@ -522,8 +519,8 @@ Global Symbols
 <P><STRONG><a name="[53]"></a>os_MutexOwnerRelease</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, rtx_mutex.o(.text.os_MutexOwnerRelease))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = os_MutexOwnerRelease &rArr; os_ThreadWaitExit &rArr; os_ThreadDispatch &rArr; os_ThreadStackCheck &rArr; os_Error &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListGet
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitExit
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitExit
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListGet
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
 </UL>
@@ -571,15 +568,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadStackCheck
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_Tick_Handler
+<BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_Tick_Handler
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_PendSV_Handler
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitExit
+<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadNew
 </UL>
 
 <P><STRONG><a name="[54]"></a>os_ThreadListGet</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, rtx_thread.o(.text.os_ThreadListGet))
-<BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcKernelStart
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MutexOwnerRelease
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MutexOwnerRelease
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcKernelStart
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcMessageQueuePut
 </UL>
 
@@ -613,10 +610,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_Error
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadSwitch
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDispatch
-<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcThreadExit
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitEnter
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadSwitch
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDispatch
 </UL>
 
 <P><STRONG><a name="[5b]"></a>os_ThreadSwitch</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, rtx_thread.o(.text.os_ThreadSwitch))
@@ -624,8 +621,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadStackCheck
 </UL>
-<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcKernelStart
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_Tick_Handler
+<BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_Tick_Handler
+<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_svcKernelStart
 </UL>
 
 <P><STRONG><a name="[5c]"></a>os_ThreadWaitEnter</STRONG> (Thumb, 232 bytes, Stack size 16 bytes, rtx_thread.o(.text.os_ThreadWaitEnter))
@@ -649,12 +646,12 @@ Global Symbols
 <P><STRONG><a name="[42]"></a>os_Tick_Handler</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, rtx_system.o(.text.os_Tick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = os_Tick_Handler &rArr; os_TimerTick &rArr; osMessageQueuePut &rArr; os_PostProcess &rArr; os_Error &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_TimerTick
+<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadReadyPut
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListRemove
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_TimerTick
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadSwitch
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDispatch
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDelayTick
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadReadyPut
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListRemove
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_SysTimerAckIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
@@ -704,12 +701,12 @@ Global Symbols
 <P><STRONG><a name="[29]"></a>os_svcMessageQueuePut</STRONG> (Thumb, 308 bytes, Stack size 32 bytes, rtx_msgqueue.o(.text.os_svcMessageQueuePut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = os_svcMessageQueuePut &rArr; os_ThreadWaitExit &rArr; os_ThreadDispatch &rArr; os_ThreadStackCheck &rArr; os_Error &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListGet
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitExit
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitExit
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadWaitEnter
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadRegPtr
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListPut
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryPoolAlloc
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadListGet
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_msgqueue.o(.text.osMessageQueuePut)
@@ -727,11 +724,11 @@ Global Symbols
 <P><STRONG><a name="[2b]"></a>os_svcThreadNew</STRONG> (Thumb, 560 bytes, Stack size 48 bytes, rtx_thread.o(.text.os_svcThreadNew))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = os_svcThreadNew &rArr; os_ThreadDispatch &rArr; os_ThreadStackCheck &rArr; os_Error &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDispatch
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryPoolFree
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryPoolFree
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryPoolAlloc
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryFree
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_MemoryAlloc
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadDispatch
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset4
 </UL>
@@ -799,6 +796,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
 </UL>
 
+<P><STRONG><a name="[1d]"></a>I2C1_IRQHandler</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, i2c.o(i.I2C1_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
+</UL>
 <P><STRONG><a name="[74]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = RCC_AHBPeriphClockCmd
 </UL>
@@ -952,9 +952,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_TimerTick
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadStackCheck
+<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_ThreadStackCheck
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_PostProcess
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_TimerTick
 </UL>
 
 <P><STRONG><a name="[2c]"></a>os_IdleThread</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rtx_config.o(i.os_IdleThread))

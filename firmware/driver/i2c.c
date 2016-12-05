@@ -17,6 +17,50 @@ I2C_MSG_TX_TYPE stI2cMsgTx = {0x00};
 I2C_STATUS_TYPE stI2cStatus = {0x00};
 
 /**
+  * @brief i2c1 interrupt handler
+  * @param  None
+  * @retval None
+  */
+void I2C1_IRQHandler(void){
+	
+	//Transfer direction (slave mode) 0: wr, 1: rd
+	//I2C1->ISR & I2C_ISR_DIR
+	if (I2C1->ISR & I2C_ISR_ADDR){ //address matched in slave mode
+		I2C1->ICR = I2C_ICR_ADDRCF; //clear flag
+	}
+	if (I2C1->ISR & I2C_ISR_STOPF){ //stop detected
+		I2C1->ICR = I2C_ICR_STOPCF; //clear flag
+	}
+	if (I2C1->ISR & I2C_ISR_TC){ //transfer completed in master mode
+		/*This flag is set by hardware when RELOAD=0, AUTOEND=0 
+		and NBYTES data have been transferred. 
+		It is cleared by software when START bit or STOP bit is set.*/
+	}
+	if (I2C1->ISR & I2C_ISR_TXE){ //Transmit data register empty
+	}
+	if (I2C1->ISR & I2C_ISR_RXNE){ //Receive data register not empty
+	}
+	if (I2C1->ISR & I2C_ISR_NACKF){ //NACK received flag
+		I2C1->ICR = I2C_ICR_NACKCF; //clear flag
+	}
+	
+	//Error interrupts
+	if (I2C1->ISR & I2C_ISR_NACKF){ //NACK received flag
+	}
+	if (I2C1->ISR & I2C_ISR_BUSY){ //Bus busy
+	}
+	if (I2C1->ISR & I2C_ISR_OVR){ //Overrun/Underrun
+		I2C1->ICR = I2C_ICR_OVRCF; //clear flag
+	}
+	if (I2C1->ISR & I2C_ISR_ARLO){ //Arbitration lost
+		I2C1->ICR = I2C_ICR_ARLOCF; //clear flag
+	}
+	if (I2C1->ISR & I2C_ISR_BERR){ //Bus error
+		I2C1->ICR = I2C_ICR_BERRCF; //clear flag
+	}
+}
+
+/**
   * @brief init i2c
   * @param  None
   * @retval None
