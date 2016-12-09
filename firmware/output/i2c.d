@@ -9,3 +9,4 @@
 .\output\i2c.o: .\stm32_lib\inc\stm32f0xx_conf.h
 .\output\i2c.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\i2c.o: .\stm32_lib\inc\stm32f0xx_rcc.h
+.\output\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

@@ -1,5 +1,12 @@
-#include "cmsis_os2.h"
+/******************************************************************************
+*	Written by Yilmaz Eyidogan
+*	main functions
+*	Created date: 2016.12.09
+*******************************************************************************/
 #include "main.h"
+
+/* mutexes ---------------------------------------------------------*/
+osMutexId_t mutex_I2C;
 
 __NO_RETURN void thread1 (void *argument) {     
     //; // work a lot on data[] 
@@ -15,9 +22,12 @@ int main(void){
 	initGpio();
 	
 	if(osKernelGetState() == osKernelInactive)
-    osKernelInitialize();                                
+    osKernelInitialize();
+	
+	mutex_I2C = osMutexNew(NULL);
 	//osThreadNew(thread1, NULL, NULL);
 	osThreadNew(taskC, NULL, NULL);
+	//osThreadNew(get_temp_hum_from_HDC1080, NULL, NULL);
 
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution
@@ -59,7 +69,7 @@ void rccConfig(void){
  *******************************************************************************
  */
 #define BSRR_VAL 0x0300
-void taskC (void *argument) {
+__NO_RETURN void taskC (void *argument) {
 	//unsigned int led_num;
 	while (1) {
 		/* Set PC8 and PC9 */
