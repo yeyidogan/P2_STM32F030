@@ -20,6 +20,7 @@ int main(void){
 	SystemCoreClockUpdate();
 	rccConfig();
 	initGpio();
+	init_timers();
 	
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
@@ -43,8 +44,9 @@ int main(void){
  *******************************************************************************
  */
 void rccConfig(void){
-	RCC_HCLKConfig(RCC_SYSCLK_Div1);
-	RCC_PCLKConfig(RCC_HCLK_Div1);
+	//RCC_HCLKConfig(RCC_SYSCLK_Div1);
+	//RCC->CFGR |= RCC_CFGR_PPRE_DIV4;
+	//RCC_PCLKConfig(RCC_HCLK_Div4);
 	/* GPIOA Peripheral clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	/* GPIOC Peripheral clock enable */
@@ -56,6 +58,8 @@ void rccConfig(void){
 	/* Configure I2C Clock Source*/
 	RCC_I2CCLKConfig(RCC_I2C1CLK_HSI); //8 MHz clock source selected
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
+	
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
 }
 
 /**
@@ -70,7 +74,7 @@ void rccConfig(void){
  */
 #define BSRR_VAL 0x0300
 __NO_RETURN void taskC (void *argument) {
-	//unsigned int led_num;
+	unsigned int led_num;
 	while (1) {
 		/* Set PC8 and PC9 */
 		GPIOC->BSRR = BSRR_VAL;
@@ -82,6 +86,7 @@ __NO_RETURN void taskC (void *argument) {
 		/* Delay some time */
 		//for(times = 0; times < 500000; times++);
 		osDelay(50);
+		led_num = TIM14->CNT;
 	}
 }
 

@@ -12,6 +12,8 @@
 ".\output\gpio.o"
 ".\output\uart.o"
 ".\output\i2c.o"
+".\output\timer.o"
+".\output\stm32f0xx_tim.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM0.lib"
 ".\output\rtx_config.o"
 ".\output\startup_stm32f030x8.o"

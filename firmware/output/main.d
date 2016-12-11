@@ -14,5 +14,6 @@
 .\output\main.o: .\driver\i2c.h
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\main.o: .\driver\timer.h
 .\output\main.o: app\hdc1080.h
 .\output\main.o: app\main.h

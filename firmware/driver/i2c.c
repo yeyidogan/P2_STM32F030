@@ -12,13 +12,14 @@
 /* Private variables ---------------------------------------------------------*/
 uint8_t ucI2CTxBuf[I2C_TX_BUF_SIZE];
 uint8_t ucI2CRxBuf[I2C_RX_BUF_SIZE];
-uint8_t * i2cDataPtr;
+uint8_t * i2cTxBufPtr;
+uint8_t * i2cRxBufPtr;
 I2C_MSG_TX_TYPE stI2cMsgTx = {0x00};
 I2C_STATUS_TYPE stI2cStatus = {0x00};
 uint8_t ucI2CMasterSendStartStop = 0x00;
 
 uint32_t ulTempI2C = 0x00;
-
+uint16_t uiTimerI2C = 0x00; //to control loops
 
 /**
   * @brief i2c1 interrupt handler
@@ -32,6 +33,8 @@ void I2C1_IRQHandler(void){
 	if (I2C1->ISR & I2C_ISR_ADDR){ //address matched in slave mode
 		stI2cStatus.mode = I2C_SLAVE_MODE;
 		I2C1->ICR = I2C_ICR_ADDRCF; //clear flag
+		i2cRxBufPtr = ucI2CRxBuf;
+		i2cTxBufPtr = ucI2CTxBuf;
 	}
 	if (I2C1->ISR & I2C_ISR_STOPF){ //stop detected
 		I2C1->ICR = I2C_ICR_STOPCF; //clear flag
@@ -41,15 +44,10 @@ void I2C1_IRQHandler(void){
 		/*This flag is set by hardware when RELOAD=0, AUTOEND=0 
 		and NBYTES data have been transferred. 
 		It is cleared by software when START bit or STOP bit is set.*/
-		//if (stI2cMsgTx.length == 0x00){
-			/* Generate a STOP condition */
-		//	I2C1->CR2 |= I2C_CR2_STOP;
-		//	stI2cStatus.completed_flag = true;
-		//}
 		if (ucI2CMasterSendStartStop > I2C_MASTER_SEND_STOP){
 			ulTempI2C = (uint32_t)(((uint32_t)stI2cMsgTx.slaveAddress << 1) & I2C_CR2_SADD);
 			ulTempI2C |= I2C_CR2_RD_WRN;
-			i2cDataPtr = ucI2CRxBuf;
+			i2cRxBufPtr = ucI2CRxBuf;
 			ulTempI2C |= (uint32_t)(((uint32_t)stI2cMsgTx.length << 16 ) & I2C_CR2_NBYTES);
 			I2C1->CR2 = ulTempI2C;
 			/* Generate a START condition */
@@ -64,34 +62,31 @@ void I2C1_IRQHandler(void){
 	}
 	if (I2C1->ISR & I2C_ISR_TXE){ //Transmit data register empty
 		/* Write in the DR register the data to be sent */
-		I2C1->TXDR = (uint8_t)*i2cDataPtr;
-		++i2cDataPtr;
+		I2C1->TXDR = (uint8_t)*i2cTxBufPtr;
+		++i2cTxBufPtr;
 	}
 	if (I2C1->ISR & I2C_ISR_RXNE){ //Receive data register not empty
 		/* Return the data in the DR register */
-		*i2cDataPtr = (uint8_t)I2C1->RXDR;
-		++i2cDataPtr;
+		*i2cRxBufPtr = (uint8_t)I2C1->RXDR;
+		++i2cRxBufPtr;
 	}
 	if (I2C1->ISR & I2C_ISR_TXIS){ //Transmit interrupt status
 		/* Write in the DR register the data to be sent */
-		I2C1->TXDR = (uint8_t)*i2cDataPtr;
-		++i2cDataPtr;
+		I2C1->TXDR = (uint8_t)*i2cTxBufPtr;
+		++i2cTxBufPtr;
 	}
 	if (I2C1->ISR & I2C_ISR_NACKF){ //NACK received flag
 		I2C1->ICR = I2C_ICR_NACKCF; //clear flag
 	}
 	
 	//Error interrupts
-	if (I2C1->ISR & I2C_ISR_BUSY){ //Bus busy
-		stI2cStatus.bus_busy_flag = true;
-	}
 	if (I2C1->ISR & I2C_ISR_OVR){ //Overrun/Underrun in slave mode
 		I2C1->ICR = I2C_ICR_OVRCF; //clear flag
 		stI2cStatus.over_run_flag = true;
 	}
 	if (I2C1->ISR & I2C_ISR_ARLO){ //Arbitration lost
 		I2C1->ICR = I2C_ICR_ARLOCF; //clear flag
-		stI2cStatus.arbloss_flag = true;
+		stI2cStatus.arblost_flag = true;
 	}
 	if (I2C1->ISR & I2C_ISR_BERR){ //Bus error
 		I2C1->ICR = I2C_ICR_BERRCF; //clear flag
@@ -155,12 +150,12 @@ uint8_t i2c_master_process(uint8_t rw){
 	if (ucI2CMasterSendStartStop == 0x00 || ucI2CMasterSendStartStop > I2C_MASTER_SEND_MAX)
 		return false;
 	*(uint32_t *)&stI2cStatus = (uint32_t)0x00;
-	stI2cStatus.mode = I2C_MASTER_MODE;
-	i2cDataPtr = ucI2CTxBuf;
+	//stI2cStatus.mode = I2C_MASTER_MODE;
+	i2cTxBufPtr = ucI2CTxBuf;
 	ulTempI2C = (uint32_t)(((uint32_t)stI2cMsgTx.slaveAddress << 1) & I2C_CR2_SADD);
 	if (rw == I2C_MASTER_READ){
 		ulTempI2C |= I2C_CR2_RD_WRN;
-		i2cDataPtr = ucI2CRxBuf;
+		i2cRxBufPtr = ucI2CRxBuf;
 	}
 	//ulTempI2C |= I2C_CR2_AUTOEND; //auto end mode after nbyte transfer in master mode
 	if (stI2cMsgTx.length == 0x00)

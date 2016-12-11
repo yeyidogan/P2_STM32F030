@@ -1,26 +1,22 @@
 /******************************************************************************
 *	Written by Yilmaz Eyidogan
-*	main.c functions
-*	Created date: 2016.12.09
+*	Timer functions
+*	Created date: 2016.12.10
 *******************************************************************************/
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef __TIMER_H_
+#define __TIMER_H_
 
-#include "cmsis_os2.h"
+#include "stm32f0xx.h"
 #include "stm32f0xx_rcc.h"
-#include "gpio.h"
 #include "i2c.h"
-#include "timer.h"
-#include "hdc1080.h"
+#include <stdbool.h>
 
 /* define ------------------------------------------------------------*/
 /* macro -------------------------------------------------------------*/
 /* typedef -----------------------------------------------------------*/
-/* Functions ---------------------------------------------------------*/
-extern void rccConfig(void);
-extern void taskC (void *argument);
+/* functions ---------------------------------------------------------*/
+extern void init_timers(void);
 /* variables ---------------------------------------------------------*/
-extern /* mutexes ---------------------------------------------------------*/
-osMutexId_t mutex_I2C;
 
 #endif
+/* * * END OF FILE * * */

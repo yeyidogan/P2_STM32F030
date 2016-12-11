@@ -449,6 +449,16 @@
               <FileType>1</FileType>
               <FilePath>.\driver\i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\src\stm32f0xx_tim.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

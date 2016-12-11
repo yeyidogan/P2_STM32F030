@@ -220,6 +220,9 @@ void SystemInit(void)
   /* Clear PLL Source [16] and Multiplier [21:18] bits */
   RCC->CFGR &= ~(RCC_CFGR_PLLMULL | RCC_CFGR_PLLSRC);
   RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMUL12 | RCC_CFGR_SW_PLL);
+  /* Clear PPRE[2:0] bits */
+  RCC->CFGR &= ~RCC_CFGR_PPRE;
+	RCC->CFGR |= RCC_CFGR_PPRE_DIV16;
 	__NOP();
 	__NOP();
 	RCC->CR |= RCC_CR_HSION;

@@ -40,7 +40,7 @@ typedef struct{
 	uint32_t bus_busy_flag:1;
 	uint32_t bus_error_flag:1;
 	uint32_t over_run_flag:1;
-	uint32_t arbloss_flag:1;
+	uint32_t arblost_flag:1;
 	uint32_t completed_flag:1;
 }I2C_STATUS_TYPE;
 
@@ -55,10 +55,10 @@ extern uint8_t i2c_master_process(uint8_t rw);
 /* variables ---------------------------------------------------------*/
 extern uint8_t ucI2CTxBuf[];
 extern uint8_t ucI2CRxBuf[];
-extern uint8_t * i2cDataPtr;
+//extern uint8_t * i2cDataPtr;
 extern I2C_MSG_TX_TYPE stI2cMsgTx;
 extern I2C_STATUS_TYPE stI2cStatus;
 extern uint8_t ucI2CMasterSendStartStop;
-
+extern uint16_t uiTimerI2C;
 
 #endif
