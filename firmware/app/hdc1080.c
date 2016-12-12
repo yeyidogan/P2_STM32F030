@@ -11,6 +11,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 ST_HDC1080_RD_TEMP_HUM_TYPE stTempHum = {0x00};
+ST_HDC1080_STATUS_TYPE stHDC1080Status = {0x00};
+uint16_t uiTimerHDC1080 = 0x00; //to control loops
 /* Private functions ---------------------------------------------------------*/
 /**
   * @brief write configuration to HDC1080
@@ -21,7 +23,13 @@ void write_HDC1080_configuration(void){
 	stI2cMsgTx.length = HDC1080_WR_CONF_FRAME_SIZE;
 	stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 	i2c_master_process(I2C_MASTER_WRITE);
-	while (stI2cStatus.completed_flag == false);
+	START_HDC1080_TIMER;
+	while (stI2cStatus.byte == 0x00){
+		if (CHECK_HDC1080_TIMER_REACH_TO(HDC1080_COMM_TIMEOUT))
+			stHDC1080Status.ok = false;
+	}
+	if (stI2cStatus.bits.completed_flag == false)
+		stHDC1080Status.ok = false;
 }
 
 /**
@@ -38,7 +46,14 @@ void read_HDC1080_configuration(void){
 	stI2cMsgTx.length = HDC1080_RD_CONF_FRAME_SIZE; //3 bytes
 	stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 		
-	while (stI2cStatus.completed_flag == false);
+	START_HDC1080_TIMER;
+	while (stI2cStatus.byte == 0x00){
+		if (CHECK_HDC1080_TIMER_REACH_TO(HDC1080_COMM_TIMEOUT))
+			stHDC1080Status.ok = false;
+	}
+	if (stI2cStatus.bits.completed_flag == false)
+		stHDC1080Status.ok = false;
+
 }
 /**
   * @brief trig convertion of HDC1080
@@ -51,7 +66,14 @@ void start_HDC1080(void){
 	PTR_HDC1080_CONF_FRAME_WR->ucRegister = TEMP_REG;
 	PTR_HDC1080_CONF_FRAME_WR->uiData = (uint16_t)0x00;
 	i2c_master_process(I2C_MASTER_WRITE);
-	while (stI2cStatus.completed_flag == false);
+	
+	START_HDC1080_TIMER;
+	while (stI2cStatus.byte == 0x00){
+		if (CHECK_HDC1080_TIMER_REACH_TO(HDC1080_COMM_TIMEOUT))
+			stHDC1080Status.ok = false;
+	}
+	if (stI2cStatus.bits.completed_flag == false)
+		stHDC1080Status.ok = false;
 }
 /**
   * @brief init HDC1080
@@ -59,10 +81,15 @@ void start_HDC1080(void){
   * @retval None
   */
 void init_HDC1080(void){
+	stHDC1080Status.ok = true;
 	PTR_HDC1080_CONF_FRAME_WR->ucRegister = CONFIGURATION_REG;
 	PTR_HDC1080_CONF_FRAME_WR->uiData = HDC1080_CONF_REGISTER_VAL;
 	write_HDC1080_configuration();
+	if (stHDC1080Status.ok == false)
+		return;
 	start_HDC1080();
+	if (stHDC1080Status.ok == false)
+		return;
 	osDelay(2);
 }
 /**
@@ -77,10 +104,16 @@ __NO_RETURN void get_temp_hum_from_HDC1080(void *argument){
 	
 	threadId = osThreadGetId();
 	if (threadId != NULL) {
-		//statusT = osThreadSetPriority (threadId, osPriorityBelowNormal);
 		statusT = osThreadSetPriority (threadId, osPriorityBelowNormal);
 		//if (statusT == osOK) {
 		//}
+	}
+	ulTemp = (uint32_t)0x03;
+	while (ulTemp--){
+		init_HDC1080();
+		if (stHDC1080Status.ok == true)
+			break;
+		osDelay(200); //delay 2 sec
 	}
 	while (1){
 		statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
@@ -89,7 +122,19 @@ __NO_RETURN void get_temp_hum_from_HDC1080(void *argument){
 			stI2cMsgTx.length = sizeof(ST_HDC1080_RD_TEMP_HUM_TYPE);
 			stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 			i2c_master_process(I2C_MASTER_READ);
-			while (stI2cStatus.completed_flag == false);
+			
+			START_HDC1080_TIMER;
+			while (stI2cStatus.byte == 0x00){
+				if (CHECK_HDC1080_TIMER_REACH_TO(1000))
+					stHDC1080Status.ok = false;
+			}
+			if (stI2cStatus.bits.completed_flag == false){
+				stHDC1080Status.ok = false;
+				osMutexRelease(mutex_I2C);
+				osDelay(100); //1 second delay
+				continue;
+			}
+
 			stTempHum.uiTemperature = PTR_HDC1080_TEMP_HUM_RD->uiTemperature;
 			stTempHum.uiHumidity = PTR_HDC1080_TEMP_HUM_RD->uiHumidity;
 			
@@ -103,7 +148,7 @@ __NO_RETURN void get_temp_hum_from_HDC1080(void *argument){
 			osDelay(100); //1 second delay
 			continue;
 		}
-		osDelay(2); //20 milisecond delay if I2C mutex cannot be acquired
+		osDelay(10); //100 milisecond delay if I2C mutex cannot be acquired
 	}
 }
 /* * * END OF FILE * * */

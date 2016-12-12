@@ -165,7 +165,7 @@ void SystemInit(void)
 {
   /* Reset the RCC clock configuration to the default reset state ------------*/
   /* Set HSION bit */
-  RCC->CR |= (uint32_t)0x00000001U;
+  //RCC->CR |= (uint32_t)0x00000001U;
 
 #if defined (STM32F051x8) || defined (STM32F058x8)
   /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE and MCOSEL[2:0] bits */
@@ -222,13 +222,12 @@ void SystemInit(void)
   RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMUL12 | RCC_CFGR_SW_PLL);
   /* Clear PPRE[2:0] bits */
   RCC->CFGR &= ~RCC_CFGR_PPRE;
-	RCC->CFGR |= RCC_CFGR_PPRE_DIV16;
+	RCC->CFGR |= RCC_CFGR_PPRE_DIV4;
 	__NOP();
 	__NOP();
-	RCC->CR |= RCC_CR_HSION;
-	RCC->CR |= RCC_CR_PLLON;
+	RCC->CR |= RCC_CR_HSION | RCC_CR_PLLON;
+	//RCC->CR |= RCC_CR_PLLON;
 
-	
   /* Disable all interrupts */
   RCC->CIR = 0x00000000U;
 

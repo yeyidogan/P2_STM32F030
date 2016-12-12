@@ -20,7 +20,7 @@ int main(void){
 	SystemCoreClockUpdate();
 	rccConfig();
 	initGpio();
-	init_timers();
+	initTimers();
 	
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
@@ -74,7 +74,7 @@ void rccConfig(void){
  */
 #define BSRR_VAL 0x0300
 __NO_RETURN void taskC (void *argument) {
-	unsigned int led_num;
+	//unsigned int led_num;
 	while (1) {
 		/* Set PC8 and PC9 */
 		GPIOC->BSRR = BSRR_VAL;
@@ -85,8 +85,7 @@ __NO_RETURN void taskC (void *argument) {
 		GPIOC->BRR = BSRR_VAL;
 		/* Delay some time */
 		//for(times = 0; times < 500000; times++);
-		osDelay(50);
-		led_num = TIM14->CNT;
+		osDelay(40);
 	}
 }
 

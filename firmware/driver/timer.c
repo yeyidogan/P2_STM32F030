@@ -17,10 +17,11 @@
   * @retval None
   */
 void TIM6_IRQHandler(void){
-	if (uiTimerI2C < 20000)
+	if (uiTimerI2C < 20000) //max 20 seconds
 		++uiTimerI2C;
-	else
-		__NOP;
+	if (uiTimerHDC1080 < 20000) //max 20 seconds
+		++uiTimerHDC1080;
+	
 	/* Clear the IT pending Bit */
 	TIM6->SR = (uint16_t)~0x0001;
 }
@@ -29,7 +30,7 @@ void TIM6_IRQHandler(void){
   * @param  None
   * @retval None
   */
-void init_timers(void){
+void initTimers(void){
 	//     TIMER 6              //
 	/* Enable Timer 6 reset state */
 	RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM6, ENABLE);
@@ -49,7 +50,7 @@ void init_timers(void){
 	TIM6->DIER = (uint16_t)0x0001;
 	//TIM6->EGR = (uint16_t)0x0001;
 	TIM6->PSC = (uint16_t)1199; //0.1 milisecond CNT counter
-	TIM6->ARR = (uint16_t)9;  //1 milisecond timer
+	TIM6->ARR = (uint16_t)39;  //1 milisecond timer
 	
 	TIM6->CR1 |= (uint16_t)0x0001; //counter enabled
 	NVIC_EnableIRQ(TIM6_IRQn);

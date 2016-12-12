@@ -31,14 +31,13 @@ void I2C1_IRQHandler(void){
 	//Transfer direction (slave mode) 0: wr, 1: rd
 	//I2C1->ISR & I2C_ISR_DIR
 	if (I2C1->ISR & I2C_ISR_ADDR){ //address matched in slave mode
-		stI2cStatus.mode = I2C_SLAVE_MODE;
 		I2C1->ICR = I2C_ICR_ADDRCF; //clear flag
 		i2cRxBufPtr = ucI2CRxBuf;
 		i2cTxBufPtr = ucI2CTxBuf;
 	}
 	if (I2C1->ISR & I2C_ISR_STOPF){ //stop detected
 		I2C1->ICR = I2C_ICR_STOPCF; //clear flag
-		stI2cStatus.completed_flag = true;
+		stI2cStatus.bits.completed_flag = true;
 	}
 	if (I2C1->ISR & I2C_ISR_TC){ //transfer completed in master mode
 		/*This flag is set by hardware when RELOAD=0, AUTOEND=0 
@@ -57,7 +56,7 @@ void I2C1_IRQHandler(void){
 		else{
 			/* Generate a STOP condition */
 			I2C1->CR2 |= I2C_CR2_STOP;
-			stI2cStatus.completed_flag = true;
+			stI2cStatus.bits.completed_flag = true;
 		}
 	}
 	if (I2C1->ISR & I2C_ISR_TXE){ //Transmit data register empty
@@ -82,15 +81,15 @@ void I2C1_IRQHandler(void){
 	//Error interrupts
 	if (I2C1->ISR & I2C_ISR_OVR){ //Overrun/Underrun in slave mode
 		I2C1->ICR = I2C_ICR_OVRCF; //clear flag
-		stI2cStatus.over_run_flag = true;
+		stI2cStatus.bits.over_run_flag = true;
 	}
 	if (I2C1->ISR & I2C_ISR_ARLO){ //Arbitration lost
 		I2C1->ICR = I2C_ICR_ARLOCF; //clear flag
-		stI2cStatus.arblost_flag = true;
+		stI2cStatus.bits.arblost_flag = true;
 	}
 	if (I2C1->ISR & I2C_ISR_BERR){ //Bus error
 		I2C1->ICR = I2C_ICR_BERRCF; //clear flag
-		stI2cStatus.bus_error_flag = true;
+		stI2cStatus.bits.bus_error_flag = true;
 	}
 }
 
@@ -149,8 +148,7 @@ uint8_t i2c_master_process(uint8_t rw){
 	
 	if (ucI2CMasterSendStartStop == 0x00 || ucI2CMasterSendStartStop > I2C_MASTER_SEND_MAX)
 		return false;
-	*(uint32_t *)&stI2cStatus = (uint32_t)0x00;
-	//stI2cStatus.mode = I2C_MASTER_MODE;
+	stI2cStatus.byte = (uint8_t)0x00;
 	i2cTxBufPtr = ucI2CTxBuf;
 	ulTempI2C = (uint32_t)(((uint32_t)stI2cMsgTx.slaveAddress << 1) & I2C_CR2_SADD);
 	if (rw == I2C_MASTER_READ){
@@ -165,7 +163,11 @@ uint8_t i2c_master_process(uint8_t rw){
 	I2C1->CR2 = ulTempI2C;
 	
 	//wait while bus is not free
-	while (I2C1->ISR & I2C_ISR_BUSY); //add a timer is better
+	START_I2C_TIMER;
+	while (I2C1->ISR & I2C_ISR_BUSY){
+		if (CHECK_I2C_TIMER_REACH_TO(1000))
+			return false;
+	}
 	/* Generate a START condition */
 	I2C1->CR2 |= I2C_CR2_START;
 	--ucI2CMasterSendStartStop;

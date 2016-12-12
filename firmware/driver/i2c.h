@@ -16,6 +16,10 @@
 #define I2C_TX_BUF_SIZE 32
 #define I2C_RX_BUF_SIZE 32
 
+/* Private macro ------------------------------------------------------------*/
+#define START_I2C_TIMER uiTimerI2C=(uint16_t)0x00
+#define CHECK_I2C_TIMER_REACH_TO(x) uiTimerI2C<(uint16_t)x
+
 enum {
 	I2C_MASTER_WRITE,
 	I2C_MASTER_READ
@@ -35,13 +39,15 @@ enum {
 /* macro -------------------------------------------------------------*/
 
 /* typedef -----------------------------------------------------------*/
-typedef struct{
-	uint32_t mode:1;
-	uint32_t bus_busy_flag:1;
-	uint32_t bus_error_flag:1;
-	uint32_t over_run_flag:1;
-	uint32_t arblost_flag:1;
-	uint32_t completed_flag:1;
+typedef union{
+	uint8_t byte;
+	struct {
+		uint8_t bus_busy_flag:1;
+		uint8_t bus_error_flag:1;
+		uint8_t over_run_flag:1;
+		uint8_t arblost_flag:1;
+		uint8_t completed_flag:1;
+	}bits;
 }I2C_STATUS_TYPE;
 
 typedef struct{

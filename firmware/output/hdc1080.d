@@ -16,4 +16,4 @@
 .\output\hdc1080.o: app\main.h
 .\output\hdc1080.o: .\driver\gpio.h
 .\output\hdc1080.o: .\driver\timer.h
-.\output\hdc1080.o: app\hdc1080.h
+.\output\hdc1080.o: .\app\hdc1080.h
