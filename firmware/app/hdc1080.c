@@ -97,11 +97,13 @@ void init_HDC1080(void){
   * @param  None
   * @retval None
   */
-__NO_RETURN void get_temp_hum_from_HDC1080(void *argument){
-	uint32_t ulTemp;
-	osThreadId_t threadId;
-	osStatus_t statusT;
-	
+__NO_RETURN void task_HDC1080(void *argument){
+	//uint32_t ulTemp;
+	//osThreadId_t threadId;
+	//osStatus_t statusT;
+	while(1)
+		osDelay(200); //delay 2 sec
+#if 0
 	threadId = osThreadGetId();
 	if (threadId != NULL) {
 		statusT = osThreadSetPriority (threadId, osPriorityBelowNormal);
@@ -150,5 +152,6 @@ __NO_RETURN void get_temp_hum_from_HDC1080(void *argument){
 		}
 		osDelay(10); //100 milisecond delay if I2C mutex cannot be acquired
 	}
+#endif
 }
 /* * * END OF FILE * * */

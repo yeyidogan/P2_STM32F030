@@ -10,8 +10,11 @@ osMutexId_t mutex_I2C;
 
 __NO_RETURN void thread1 (void *argument) {     
     //; // work a lot on data[] 
-        osDelay(1000);       
-        osThreadExit();
+	while (1){
+		osDelay(100);
+		osDelay(100);
+	}		
+		//osThreadExit();
 }
 
 //osThreadAttr_t thread1_attr = {0};
@@ -21,6 +24,7 @@ int main(void){
 	rccConfig();
 	initGpio();
 	initTimers();
+	i2c_init();
 	
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
@@ -28,7 +32,7 @@ int main(void){
 	mutex_I2C = osMutexNew(NULL);
 	//osThreadNew(thread1, NULL, NULL);
 	osThreadNew(taskC, NULL, NULL);
-	//osThreadNew(get_temp_hum_from_HDC1080, NULL, NULL);
+	osThreadNew(thread1, NULL, NULL);
 
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution

@@ -3,13 +3,10 @@
 *	GPIO functions
 *	Created date: 2014.12.22
 *******************************************************************************/
-#include "stm32f0xx.h"
-#include "stm32f0xx_gpio.h"
 #include "gpio.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 uint32_t ulInputs, ulOutputs, ulTmp;
@@ -55,7 +52,7 @@ void initGpio(void) {
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_Level_1;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	/***************************************************/
 

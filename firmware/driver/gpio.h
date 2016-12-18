@@ -6,6 +6,9 @@
 #ifndef __GPIO_H
 #define __GPIO_H
 
+#include "stm32f0xx.h"
+#include "stm32f0xx_gpio.h"
+
 /* Private variables -----------------------------------------------------------*/
 extern uint32_t ulInputs, ulOutputs;
 /* Private typedef -----------------------------------------------------------*/

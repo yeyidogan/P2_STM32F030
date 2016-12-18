@@ -65,7 +65,7 @@ typedef struct{
 #define PTR_HDC1080_TEMP_HUM_RD ((ST_HDC1080_RD_TEMP_HUM_TYPE *)ucI2CRxBuf)
 
 /* Functions ---------------------------------------------------------*/
-extern __NO_RETURN void get_temp_hum_from_HDC1080(void *argument);
+extern __NO_RETURN void task_HDC1080(void *argument);
 /* variables ---------------------------------------------------------*/
 extern uint16_t uiTimerHDC1080;
 extern ST_HDC1080_STATUS_TYPE stHDC1080Status;

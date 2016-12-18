@@ -15,5 +15,6 @@
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\hdc1080.o: app\main.h
 .\output\hdc1080.o: .\driver\gpio.h
+.\output\hdc1080.o: .\stm32_lib\inc\stm32f0xx_gpio.h
 .\output\hdc1080.o: .\driver\timer.h
 .\output\hdc1080.o: .\app\hdc1080.h
