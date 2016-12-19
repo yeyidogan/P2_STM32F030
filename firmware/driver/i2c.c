@@ -10,8 +10,8 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-uint8_t ucI2CTxBuf[I2C_TX_BUF_SIZE];
-uint8_t ucI2CRxBuf[I2C_RX_BUF_SIZE];
+uint8_t ucI2CTxBuf[I2C_TX_BUF_SIZE] = {0x00};
+uint8_t ucI2CRxBuf[I2C_RX_BUF_SIZE] = {0x00};
 uint8_t * i2cTxBufPtr;
 uint8_t * i2cRxBufPtr;
 I2C_MSG_TX_TYPE stI2cMsgTx = {0x00};
@@ -98,7 +98,7 @@ void I2C1_IRQHandler(void){
   * @param  None
   * @retval None
   */
-void i2c_init(void){
+void initI2C(void){
 	/* Enable I2C1 reset state */
 	RCC_APB1PeriphResetCmd(RCC_APB1Periph_I2C1, ENABLE);
 	/* Release I2C1 from reset state */
@@ -137,6 +137,9 @@ void i2c_init(void){
 	
   /* Enable I2Cx Peripheral */
   I2C1->CR1 |= I2C_CR1_PE;
+	
+	NVIC_EnableIRQ(I2C1_IRQn); //defined in core_cm0.h
+	NVIC_SetPriority(I2C1_IRQn,0);
 }
 
 /**

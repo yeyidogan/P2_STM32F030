@@ -38,7 +38,7 @@
 //   <o>Kernel Tick Frequency [Hz] <1-1000000>
 //   <i> Defines base time unit for delays and timeouts.
 //   <i> Default: 1000 (1ms tick)
-#define OS_TICK_FREQ                100
+#define OS_TICK_FREQ                1000
  
 //   <e>Round-Robin Thread switching
 //   <i> Enables Round-Robin Thread switching.

@@ -39,7 +39,7 @@
 #define HDC1080_COMM_TIMEOUT 1000
 /* macro -------------------------------------------------------------*/
 #define START_HDC1080_TIMER uiTimerHDC1080=(uint16_t)0x00
-#define CHECK_HDC1080_TIMER_REACH_TO(x) uiTimerHDC1080<(uint16_t)x
+#define CHECK_HDC1080_TIMER_REACH_TO(x) uiTimerHDC1080>(uint16_t)x
 
 /* typedef -----------------------------------------------------------*/
 typedef struct{

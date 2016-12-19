@@ -8,23 +8,13 @@
 /* mutexes ---------------------------------------------------------*/
 osMutexId_t mutex_I2C;
 
-__NO_RETURN void thread1 (void *argument) {     
-    //; // work a lot on data[] 
-	while (1){
-		osDelay(100);
-		osDelay(100);
-	}		
-		//osThreadExit();
-}
-
-//osThreadAttr_t thread1_attr = {0};
 extern void SystemCoreClockUpdate (void);
 int main(void){
 	SystemCoreClockUpdate();
 	rccConfig();
 	initGpio();
 	initTimers();
-	i2c_init();
+	initI2C();
 	
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
@@ -32,7 +22,7 @@ int main(void){
 	mutex_I2C = osMutexNew(NULL);
 	//osThreadNew(thread1, NULL, NULL);
 	osThreadNew(taskC, NULL, NULL);
-	osThreadNew(thread1, NULL, NULL);
+	osThreadNew(task_HDC1080, NULL, NULL);
 
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution
@@ -53,6 +43,8 @@ void rccConfig(void){
 	//RCC_PCLKConfig(RCC_HCLK_Div4);
 	/* GPIOA Peripheral clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+	/* GPIOB Peripheral clock enable */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	/* GPIOC Peripheral clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 	/* Enable USART1 APB clock */

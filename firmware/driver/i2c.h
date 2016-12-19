@@ -18,7 +18,7 @@
 
 /* Private macro ------------------------------------------------------------*/
 #define START_I2C_TIMER uiTimerI2C=(uint16_t)0x00
-#define CHECK_I2C_TIMER_REACH_TO(x) uiTimerI2C<(uint16_t)x
+#define CHECK_I2C_TIMER_REACH_TO(x) uiTimerI2C>(uint16_t)x
 
 enum {
 	I2C_MASTER_WRITE,
@@ -56,7 +56,7 @@ typedef struct{
 }I2C_MSG_TX_TYPE;
 
 /* Functions ---------------------------------------------------------*/
-extern void i2c_init(void);
+extern void initI2C(void);
 extern uint8_t i2c_master_process(uint8_t rw);
 /* variables ---------------------------------------------------------*/
 extern uint8_t ucI2CTxBuf[];
