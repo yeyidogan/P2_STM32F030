@@ -6,10 +6,16 @@
 #ifndef __HDC1080_H_
 #define __HDC1080_H_
 
-#include "cmsis_os2.h"
-#include "i2c.h"
-#include "main.h"
+#if defined(__CC_ARM)
+	#include "cmsis_os2.h"
+#elif defined(__GNUC__)
+	#include "CoOs.h"
+#endif
 #include <stdbool.h>
+#include <stdint.h>
+#include "plt_free_os_def.h"
+#include "main.h"
+#include "i2c.h"
 
 /* Private define ----------------------------------------------------*/
 #define HDC1080_I2C_SLAVE_ADD 0x40

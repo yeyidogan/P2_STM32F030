@@ -12,8 +12,10 @@
 /* Private variables ---------------------------------------------------------*/
 ST_HDC1080_RD_TEMP_HUM_TYPE stTempHum = {0x00};
 ST_HDC1080_STATUS_TYPE stHDC1080Status = {0x00};
-osStatus_t statusT;
 uint16_t uiTimerHDC1080 = 0x00; //to control loops
+#if defined(__CC_ARM)
+	osStatus_t statusT;
+#endif
 /* Private functions ---------------------------------------------------------*/
 /**
   * @brief write configuration to HDC1080
@@ -21,8 +23,12 @@ uint16_t uiTimerHDC1080 = 0x00; //to control loops
   * @retval None
   */
 void write_HDC1080_configuration(void){
+#if defined(__CC_ARM)
 	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
 	if (statusT == osOK){
+#elif defined(__GNUC__)
+		CoEnterMutexSection(mutex_I2C);
+#endif
 		ucI2CMasterSendStartStop = I2C_MASTER_SEND_START;
 		stI2cMsgTx.length = HDC1080_WR_CONF_FRAME_SIZE;
 		stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
@@ -37,10 +43,13 @@ void write_HDC1080_configuration(void){
 		if (stI2cStatus.bits.completed_flag == false)
 			stHDC1080Status.ok = false;
 	}
+#if defined(__CC_ARM)
 	else
 		stHDC1080Status.ok = false;
-	
 	osMutexRelease(mutex_I2C);
+#elif defined(__GNUC__)
+		CoLeaveMutexSection(mutex_I2C);
+#endif
 }
 
 /**
@@ -49,8 +58,12 @@ void write_HDC1080_configuration(void){
   * @retval None
   */
 void read_HDC1080_configuration(void){
+#if defined(__CC_ARM)
 	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
 	if (statusT == osOK){
+#elif defined(__GNUC__)
+		CoEnterMutexSection(mutex_I2C);
+#endif
 		ucI2CMasterSendStartStop = I2C_MASTER_SEND_RESTART;
 		stI2cMsgTx.length = HDC1080_RD_WR_CONF_POINTER_SIZE; //1 byte
 		stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
@@ -69,10 +82,13 @@ void read_HDC1080_configuration(void){
 		if (stI2cStatus.bits.completed_flag == false)
 			stHDC1080Status.ok = false;
 	}
+#if defined(__CC_ARM)
 	else
 		stHDC1080Status.ok = false;
-	
 	osMutexRelease(mutex_I2C);
+#elif defined(__GNUC__)
+		CoLeaveMutexSection(mutex_I2C);
+#endif
 }
 /**
   * @brief trig convertion of HDC1080
@@ -80,8 +96,12 @@ void read_HDC1080_configuration(void){
   * @retval None
   */
 void trig_HDC1080(void){
+#if defined(__CC_ARM)
 	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
 	if (statusT == osOK){
+#elif defined(__GNUC__)
+		CoEnterMutexSection(mutex_I2C);
+#endif
 		ucI2CMasterSendStartStop = I2C_MASTER_SEND_START;
 		stI2cMsgTx.length = sizeof(ST_HDC1080_WR_CONF_FRAME_TYPE);
 		stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
@@ -99,10 +119,13 @@ void trig_HDC1080(void){
 		if (stI2cStatus.bits.completed_flag == false)
 			stHDC1080Status.ok = false;
 	}
+#if defined(__CC_ARM)
 	else
 		stHDC1080Status.ok = false;
-	
 	osMutexRelease(mutex_I2C);
+#elif defined(__GNUC__)
+		CoLeaveMutexSection(mutex_I2C);
+#endif
 }
 /**
   * @brief init HDC1080
@@ -114,7 +137,7 @@ void init_HDC1080(void){
 	PTR_HDC1080_CONF_FRAME_WR->ucRegister = CONFIGURATION_REG;
 	PTR_HDC1080_CONF_FRAME_WR->uiData = HDC1080_CONF_REGISTER_VAL;
 	write_HDC1080_configuration();
-	osDelay(200);
+	pltFreeOsDelay(200);
 }
 /**
   * @brief get temperature and humidity from HDC1080
@@ -123,6 +146,7 @@ void init_HDC1080(void){
   */
 __NO_RETURN void task_HDC1080(void *argument){
 	uint32_t ulTemp;
+#if defined(__CC_ARM)
 	osThreadId_t threadId;
 
 	threadId = osThreadGetId();
@@ -131,24 +155,31 @@ __NO_RETURN void task_HDC1080(void *argument){
 		//if (statusT == osOK) {
 		//}
 	}
-	ulTemp = (uint32_t)0x03;
-	while (ulTemp--){
-		init_HDC1080();
-		if (stHDC1080Status.ok == true)
-			break;
-		osDelay(200); //delay 2 sec
-	}
+#endif
+
+	//ulTemp = (uint32_t)0x03;
+	//while (ulTemp--){
+	//	init_HDC1080();
+	//	if (stHDC1080Status.ok == true){
+	//		break;
+	//	}
+	//	pltFreeOsDelay(200); //delay 0.2 sec
+	//}
 	while (1){
 		if (stHDC1080Status.ok == true){
 			trig_HDC1080();
 			if (stHDC1080Status.ok == false){
-				osDelay(200); //delay 0.2 sec
+				pltFreeOsDelay(200); //delay 0.2 sec
 				continue;
 			}
-			osDelay(200); //delay 0.2 sec
+			pltFreeOsDelay(200); //delay 0.2 sec
 
+		#if defined(__CC_ARM)
 			statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
 			if (statusT == osOK){
+		#elif defined(__GNUC__)
+				CoEnterMutexSection(mutex_I2C);
+		#endif
 				ucI2CMasterSendStartStop = I2C_MASTER_SEND_RESTART;
 				stI2cMsgTx.length = sizeof(ST_HDC1080_RD_TEMP_HUM_TYPE);
 				stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
@@ -161,8 +192,14 @@ __NO_RETURN void task_HDC1080(void *argument){
 						break;
 					}
 				}
+		#if defined(__CC_ARM)	
 			}
+		#endif
+		#if defined(__CC_ARM)
 			osMutexRelease(mutex_I2C);
+		#elif defined(__GNUC__)
+			CoLeaveMutexSection(mutex_I2C);
+		#endif		
 
 			if (stHDC1080Status.ok == true){
 				stTempHum.uiTemperature = PTR_HDC1080_TEMP_HUM_RD->uiTemperature;
@@ -175,7 +212,10 @@ __NO_RETURN void task_HDC1080(void *argument){
 				stTempHum.uiHumidity = (uint16_t)ulTemp;
 			}
 		}
-		osDelay(1000); //1000 milisecond delay
+		else{
+			init_HDC1080();
+		}
+		pltFreeOsDelay(1000); //1000 milisecond delay
 	}
 }
 /* * * END OF FILE * * */

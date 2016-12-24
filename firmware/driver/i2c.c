@@ -56,7 +56,8 @@ void I2C1_IRQHandler(void){
 		else{
 			/* Generate a STOP condition */
 			I2C1->CR2 |= I2C_CR2_STOP;
-			stI2cStatus.bits.completed_flag = true;
+			if (stI2cStatus.bits.nack_flag == false)
+				stI2cStatus.bits.completed_flag = true;
 		}
 	}
 	if (I2C1->ISR & I2C_ISR_TXE){ //Transmit data register empty
@@ -76,6 +77,7 @@ void I2C1_IRQHandler(void){
 	}
 	if (I2C1->ISR & I2C_ISR_NACKF){ //NACK received flag
 		I2C1->ICR = I2C_ICR_NACKCF; //clear flag
+		stI2cStatus.bits.nack_flag = true;
 	}
 	
 	//Error interrupts

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\ct_start.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\ct_start.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Dec 19 19:19:38 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sat Dec 24 11:49:27 2016
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -875,7 +875,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphResetCmd
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
 </UL>
 
 <P><STRONG><a name="[7b]"></a>GPIO_Init</STRONG> (Thumb, 326 bytes, Stack size 24 bytes, stm32f0xx_gpio.o(i.GPIO_Init))
@@ -883,7 +883,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
 </UL>
 
 <P><STRONG><a name="[7c]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 250 bytes, Stack size 24 bytes, stm32f0xx_gpio.o(i.GPIO_PinAFConfig))
@@ -891,10 +891,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
 </UL>
 
-<P><STRONG><a name="[1e]"></a>I2C1_IRQHandler</STRONG> (Thumb, 412 bytes, Stack size 0 bytes, i2c.o(i.I2C1_IRQHandler))
+<P><STRONG><a name="[1e]"></a>I2C1_IRQHandler</STRONG> (Thumb, 410 bytes, Stack size 0 bytes, i2c.o(i.I2C1_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
 <P><STRONG><a name="[7d]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32f0xx_rcc.o(i.RCC_AHBPeriphClockCmd))
@@ -927,7 +927,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initTimers
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initI2C
 </UL>
 
 <P><STRONG><a name="[80]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32f0xx_rcc.o(i.RCC_APB2PeriphClockCmd))
@@ -1016,27 +1016,27 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
 </UL>
 
-<P><STRONG><a name="[86]"></a>i2c_init</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, i2c.o(i.i2c_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = i2c_init &rArr; RCC_APB1PeriphResetCmd
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
-</UL>
-<BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
 <P><STRONG><a name="[96]"></a>i2c_master_process</STRONG> (Thumb, 170 bytes, Stack size 0 bytes, i2c.o(i.i2c_master_process))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_HDC1080_configuration
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trig_HDC1080
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task_HDC1080
 </UL>
 
-<P><STRONG><a name="[88]"></a>initGpio</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, gpio.o(i.initGpio))
+<P><STRONG><a name="[86]"></a>initGpio</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, gpio.o(i.initGpio))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = initGpio &rArr; GPIO_PinAFConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_DeInit
+</UL>
+<BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[87]"></a>initI2C</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, i2c.o(i.initI2C))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = initI2C &rArr; RCC_APB1PeriphResetCmd
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1068,8 +1068,8 @@ Global Symbols
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelGetState
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initTimers
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initI2C
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initGpio
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rccConfig
 </UL>
@@ -1107,7 +1107,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[36]"></a>task_HDC1080</STRONG> (Thumb, 272 bytes, Stack size 0 bytes, hdc1080.o(i.task_HDC1080))
+<P><STRONG><a name="[36]"></a>task_HDC1080</STRONG> (Thumb, 240 bytes, Stack size 0 bytes, hdc1080.o(i.task_HDC1080))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = task_HDC1080 &rArr; init_HDC1080 &rArr; write_HDC1080_configuration &rArr; osMutexRelease
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadSetPriority
@@ -1144,10 +1144,10 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[87]"></a>NVIC_SetPriority</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, i2c.o(i.NVIC_SetPriority))
+<P><STRONG><a name="[88]"></a>NVIC_SetPriority</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, i2c.o(i.NVIC_SetPriority))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initI2C
 </UL>
 
 <P><STRONG><a name="[8a]"></a>NVIC_SetPriority</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, timer.o(i.NVIC_SetPriority))

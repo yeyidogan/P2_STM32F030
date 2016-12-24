@@ -17,4 +17,5 @@
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\main.o: .\driver\timer.h
 .\output\main.o: .\app\hdc1080.h
+.\output\main.o: .\app\plt_free_os_def.h
 .\output\main.o: .\app\main.h

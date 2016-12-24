@@ -197,9 +197,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>178</LineNumber>
+          <LineNumber>218</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134230376</Address>
+          <Address>134230344</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -208,14 +208,30 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;.\app\hdc1080.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\ct_start\app/hdc1080.c\178</Expression>
+          <Expression>\\ct_start\app/hdc1080.c\218</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
+          <LineNumber>174</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134229330</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;.\driver\i2c.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\ct_start\driver/i2c.c\174</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
           <LineNumber>116</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229860</Address>
+          <Address>134230490</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -227,11 +243,11 @@
           <Expression>\\ct_start\app/hdc1080.c\116</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>90</LineNumber>
+          <LineNumber>110</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134230484</Address>
+          <Address>134230452</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -240,7 +256,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;.\app\hdc1080.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\ct_start\app/hdc1080.c\90</Expression>
+          <Expression>\\ct_start\app/hdc1080.c\110</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -253,6 +269,21 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>ucI2CTxBuf</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>stI2cStatus</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\ct_start\driver/i2c.c\stI2cStatus</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ucI2CRxBuf</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
