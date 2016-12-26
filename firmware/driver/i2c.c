@@ -28,6 +28,9 @@ uint16_t uiTimerI2C = 0x00; //to control loops
   */
 void I2C1_IRQHandler(void){
 	
+#if defined(__GNUC__)
+	CoEnterISR();
+#endif
 	//Transfer direction (slave mode) 0: wr, 1: rd
 	//I2C1->ISR & I2C_ISR_DIR
 	if (I2C1->ISR & I2C_ISR_ADDR){ //address matched in slave mode
@@ -93,6 +96,10 @@ void I2C1_IRQHandler(void){
 		I2C1->ICR = I2C_ICR_BERRCF; //clear flag
 		stI2cStatus.bits.bus_error_flag = true;
 	}
+
+#if defined(__GNUC__)
+	CoExitISR();
+#endif
 }
 
 /**

@@ -214,6 +214,9 @@ void SystemInit(void)
  #warning "No target selected"
 #endif
 
+  /* Disable all interrupts */
+  RCC->CIR = 0x00000000U;
+
   /* Reset HSI14 bit */
   RCC->CR2 &= (uint32_t)0xFFFFFFFEU;
 
@@ -228,9 +231,21 @@ void SystemInit(void)
 	RCC->CR |= RCC_CR_HSION | RCC_CR_PLLON;
 	//RCC->CR |= RCC_CR_PLLON;
 
-  /* Disable all interrupts */
-  RCC->CIR = 0x00000000U;
 
+
+    /* Wait till PLL is ready */
+    while((RCC->CR & RCC_CR_PLLRDY) == 0)
+    {
+    }
+
+    /* Select PLL as system clock source */
+    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+    RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+
+    /* Wait till PLL is used as system clock source */
+    while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)RCC_CFGR_SWS_PLL)
+    {
+    }
 }
 
 /**

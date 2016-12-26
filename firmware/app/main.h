@@ -6,9 +6,16 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-#include "cmsis_os2.h"
+#if defined(__CC_ARM)
+	#include "cmsis_os2.h"
+#elif defined(__GNUC__)
+	#include "CoOs.h"
+#endif
+#include "plt_free_os_def.h"
 #include "stm32f0xx_rcc.h"
+#include "pub_var.h"
 #include "gpio.h"
+#include "uart.h"
 #include "i2c.h"
 #include "timer.h"
 #include "hdc1080.h"
@@ -17,10 +24,8 @@
 /* macro -------------------------------------------------------------*/
 /* typedef -----------------------------------------------------------*/
 /* Functions ---------------------------------------------------------*/
-extern void rccConfig(void);
-extern void taskC (void *argument);
 /* variables ---------------------------------------------------------*/
-extern /* mutexes ---------------------------------------------------------*/
-osMutexId_t mutex_I2C;
+/* mutexes ---------------------------------------------------------*/
+extern PLT_FREE_OS_MUTEX_ID mutex_I2C;
 
 #endif

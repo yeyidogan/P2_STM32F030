@@ -7,6 +7,21 @@
 #define __UART_H
 
 #include <stdint.h>
+#include "stm32f0xx.h"
+#include "stm32f0xx_usart.h"
+#include "stm32f0xx_misc.h"
+#include "stm32f0xx_dma.h"
+#if defined(__CC_ARM)
+	#include "cmsis_os2.h"
+#elif defined(__GNUC__)
+	#include "CoOs.h"
+#endif
+#include "plt_free_os_def.h"
+#include "uart.h"
+#include "par_enums.h"
+#include "modbus.h"
+#include "util.h"
+#include "pub_var.h"
 
 /* Private define */
 #define UART_RX_BUFFER_SIZE 0x20 //use power of 2
@@ -28,7 +43,7 @@ void initUart1(uint32_t baudRate);
 void uart1NvicConfig(void);
 void initUartDma(void);
 void uart1TxCmd(uint8_t *ptr, uint8_t length);
-void taskUart1 (void *pdata);
+void task_Uart1 (void *pdata);
 
 /* Private typedef */
 typedef struct {

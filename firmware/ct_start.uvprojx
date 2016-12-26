@@ -399,6 +399,16 @@
               <FileType>1</FileType>
               <FilePath>.\app\hdc1080.c</FilePath>
             </File>
+            <File>
+              <FileName>modbus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\modbus.c</FilePath>
+            </File>
+            <File>
+              <FileName>modbus_func.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\modbus_func.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

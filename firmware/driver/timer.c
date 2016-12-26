@@ -16,7 +16,10 @@
   * @param  None
   * @retval None
   */
-void TIM6_IRQHandler(void){
+void TIM6_DAC_IRQHandler(void){
+#if defined(__GNUC__)
+	CoEnterISR();
+#endif
 	if (uiTimerI2C < 20000) //max 20 seconds
 		++uiTimerI2C;
 	if (uiTimerHDC1080 < 20000) //max 20 seconds
@@ -24,6 +27,9 @@ void TIM6_IRQHandler(void){
 	
 	/* Clear the IT pending Bit */
 	TIM6->SR = (uint16_t)~0x0001;
+#if defined(__GNUC__)
+	CoExitISR();
+#endif
 }
 /**
   * @brief init timers
@@ -53,8 +59,8 @@ void initTimers(void){
 	TIM6->ARR = (uint16_t)39;  //1 milisecond timer
 	
 	TIM6->CR1 |= (uint16_t)0x0001; //counter enabled
-	NVIC_EnableIRQ(TIM6_IRQn);
-	NVIC_SetPriority(TIM6_IRQn,0);
+	NVIC_EnableIRQ(TIM6_DAC_IRQn);
+	NVIC_SetPriority(TIM6_DAC_IRQn, 0);
 }
 
 /* * * END OF FILE * * */

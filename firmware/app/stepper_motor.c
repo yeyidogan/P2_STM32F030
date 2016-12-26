@@ -3,7 +3,7 @@
 *	stepper motor functions
 *	Created date: 2016.12.15
 *******************************************************************************/
-
+#include "stepper_motor.h"
 /* typedef -----------------------------------------------------------*/
 /* define ------------------------------------------------------------*/
 /* macro -------------------------------------------------------------*/
@@ -18,8 +18,8 @@ STEPPER_MOTOR_CONTROL_TYPE stStepperMotorControl = {0x00};
   * @retval None
   */
 void driveStepper(uint8_t ucDir, uint16_t uiStepSize) {
+#if 0
 	uint16_t i = 0x00;
-	
 	if (ucDir == STEPPER_FORWARD){
 		for (i=0, i++; i<uiStepSize){
 			stStepperMotorControl.
@@ -27,6 +27,7 @@ void driveStepper(uint8_t ucDir, uint16_t uiStepSize) {
 	}
 	else {
 	}
+#endif
 }
 
 

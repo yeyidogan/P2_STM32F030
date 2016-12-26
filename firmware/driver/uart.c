@@ -3,16 +3,7 @@
 *	UART functions
 *	Created date: 2014.12.24
 *******************************************************************************/
-#include "stm32f0xx.h"
-#include "stm32f0xx_usart.h"
-#include "stm32f0xx_misc.h"
-#include "stm32f0xx_dma.h"
 #include "uart.h"
-#include "pub_var.h"
-#include "par_enums.h"
-//#include "modbus.h"
-#include "util.h"
-//#include "CoOs.h"
 
 /* Private typedef */
 /* Private define */
@@ -25,47 +16,17 @@ UART_TX_BUFFER_TYPE uart1Tx = {0x00, 0x15, "uart1 transmit data\r\n"};
 UART_STATUS_TYPE uart1Flags = {0x00};
 uint8_t uiTmp = 0x00;
 
-//const uint8_t *ptrUart1RxMin = &(uart1Rx.buffer[0]);
-//const uint8_t *ptrUart1RxMax = &(uart1Rx.buffer[UART_RX_BUFFER_SIZE - 1]);
-/**
-  * @brief Configure the USART1 Device
-  * @param  baudRate
-  * @retval None
-  */
-void initUart1(uint32_t baudRate) {
-	/* USARTx configured as follow:
-	- BaudRate = 9600 baud
-	- Word Length = 8 Bits
-	- Stop Bit = 1 Stop Bit
-	- Parity = No Parity
-	- Hardware flow control disabled (RTS and CTS signals)
-	- Receive and transmit enabled
-	*/
-	USART_InitTypeDef USART_InitStructure;
-
-	USART_DeInit(USART1);
-	USART_InitStructure.USART_BaudRate = baudRate; //9600;
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-	USART_InitStructure.USART_Parity = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(USART1, &USART_InitStructure);
-
-	USART_SetReceiverTimeOut(USART1, UART1_RX_TIMEOUT);
-	USART_ReceiverTimeOutCmd(USART1, ENABLE);
-	USART_ITConfig(USART1, USART_IT_RTO, ENABLE); //enable usart1 timeout, required for modbus
-
-	USART_Cmd(USART1, ENABLE); /* Enable USART */
-}
 
 /**
   * @brief  This function handles USART1 global interrupt request.
   * @param  None
   * @retval None
   */
-void USART1_IRQHandler(void) {
-	//CoEnterISR();
+void USART1_IRQHandler(void){
+
+#if defined(__GNUC__)
+	CoEnterISR();
+#endif
 	if (USART_GetITStatus(USART1, USART_IT_RTO) != RESET) { //timeout flag
 		uart1Flags.rxTimeOut = TRUE;
 	}
@@ -111,7 +72,42 @@ void USART1_IRQHandler(void) {
 	    }
 	}
 	#endif
-	//CoExitISR();
+
+#if defined(__GNUC__)
+	CoExitISR();
+#endif
+}
+
+/**
+  * @brief Configure the USART1 Device
+  * @param  baudRate
+  * @retval None
+  */
+void initUart1(uint32_t baudRate) {
+	/* USARTx configured as follow:
+	- BaudRate = 9600 baud
+	- Word Length = 8 Bits
+	- Stop Bit = 1 Stop Bit
+	- Parity = No Parity
+	- Hardware flow control disabled (RTS and CTS signals)
+	- Receive and transmit enabled
+	*/
+	USART_InitTypeDef USART_InitStructure;
+
+	USART_DeInit(USART1);
+	USART_InitStructure.USART_BaudRate = baudRate; //9600;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(USART1, &USART_InitStructure);
+
+	USART_SetReceiverTimeOut(USART1, UART1_RX_TIMEOUT);
+	USART_ReceiverTimeOutCmd(USART1, ENABLE);
+	USART_ITConfig(USART1, USART_IT_RTO, ENABLE); //enable usart1 timeout, required for modbus
+
+	USART_Cmd(USART1, ENABLE); /* Enable USART */
 }
 
 /**
@@ -235,9 +231,8 @@ void uart1TxCmd(uint8_t *ptr, uint8_t length) {
 * @details    none.
 *******************************************************************************
 */
-void taskUart1(void* pdata) {
+void task_Uart1(void* pdata) {
 
-	#if 0
 	while (1) {
 
 		switch (sys_par.uart1_protocol) {
@@ -263,7 +258,7 @@ void taskUart1(void* pdata) {
 				}
 
 				if (uart1Tx.length) {
-					CoTickDelay(2);
+					PLT_FREE_OS_DELAY(2);
 					uart1TxCmd(uart1Tx.buffer, uart1Tx.length);
 				}
 
@@ -274,5 +269,4 @@ void taskUart1(void* pdata) {
 				break;
 		}
 	}
-	#endif
 }

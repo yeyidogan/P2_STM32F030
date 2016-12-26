@@ -184,7 +184,7 @@ ARM Macro Assembler    Page 3
                                                             re Compare
   109 0000007C 00000000        DCD              0           ; Reserved
   110 00000080 00000000        DCD              TIM3_IRQHandler ; TIM3
-  111 00000084 00000000        DCD              TIM6_IRQHandler ; TIM3
+  111 00000084 00000000        DCD              TIM6_DAC_IRQHandler ; TIM3
   112 00000088 00000000        DCD              0           ; Reserved
   113 0000008C 00000000        DCD              TIM14_IRQHandler ; TIM14
   114 00000090 00000000        DCD              TIM15_IRQHandler ; TIM15
@@ -295,8 +295,8 @@ ARM Macro Assembler    Page 5
 [WEAK]
   180 00000012                 EXPORT           TIM3_IRQHandler                
 [WEAK]
-  181 00000012                 EXPORT           TIM6_IRQHandler                
-[WEAK]
+  181 00000012                 EXPORT           TIM6_DAC_IRQHandler            
+    [WEAK]
   182 00000012                 EXPORT           TIM14_IRQHandler               
 [WEAK]
   183 00000012                 EXPORT           TIM15_IRQHandler               
@@ -339,7 +339,7 @@ ARM Macro Assembler    Page 6
   205 00000012         TIM1_BRK_UP_TRG_COM_IRQHandler
   206 00000012         TIM1_CC_IRQHandler
   207 00000012         TIM3_IRQHandler
-  208 00000012         TIM6_IRQHandler
+  208 00000012         TIM6_DAC_IRQHandler
   209 00000012         TIM14_IRQHandler
   210 00000012         TIM15_IRQHandler
   211 00000012         TIM16_IRQHandler
@@ -795,9 +795,9 @@ Symbol: TIM3_IRQHandler
       At line 110 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 180 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-TIM6_IRQHandler 00000012
+TIM6_DAC_IRQHandler 00000012
 
-Symbol: TIM6_IRQHandler
+Symbol: TIM6_DAC_IRQHandler
    Definitions
       At line 208 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses

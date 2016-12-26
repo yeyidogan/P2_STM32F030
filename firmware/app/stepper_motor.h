@@ -6,9 +6,10 @@
 #ifndef __STEPPER_MOTOR_H_
 #define __STEPPER_MOTOR_H_
 
+#include <stdbool.h>
+#include <stdint.h>
 #include "stm32f0xx.h"
 #include "stm32f0xx_gpio.h"
-#include <stdbool.h>
 
 /* typedef -----------------------------------------------------------*/
 typedef struct{

@@ -40,10 +40,11 @@ void write_HDC1080_configuration(void){
 				break;
 			}
 		}
-		if (stI2cStatus.bits.completed_flag == false)
+		if (stI2cStatus.bits.completed_flag == false){
 			stHDC1080Status.ok = false;
-	}
+		}
 #if defined(__CC_ARM)
+	}
 	else
 		stHDC1080Status.ok = false;
 	osMutexRelease(mutex_I2C);
@@ -79,10 +80,11 @@ void read_HDC1080_configuration(void){
 				break;
 			}
 		}
-		if (stI2cStatus.bits.completed_flag == false)
+		if (stI2cStatus.bits.completed_flag == false){
 			stHDC1080Status.ok = false;
-	}
+		}
 #if defined(__CC_ARM)
+	}
 	else
 		stHDC1080Status.ok = false;
 	osMutexRelease(mutex_I2C);
@@ -116,10 +118,11 @@ void trig_HDC1080(void){
 				break;
 			}
 		}
-		if (stI2cStatus.bits.completed_flag == false)
+		if (stI2cStatus.bits.completed_flag == false){
 			stHDC1080Status.ok = false;
-	}
+		}
 #if defined(__CC_ARM)
+	}
 	else
 		stHDC1080Status.ok = false;
 	osMutexRelease(mutex_I2C);
@@ -137,7 +140,7 @@ void init_HDC1080(void){
 	PTR_HDC1080_CONF_FRAME_WR->ucRegister = CONFIGURATION_REG;
 	PTR_HDC1080_CONF_FRAME_WR->uiData = HDC1080_CONF_REGISTER_VAL;
 	write_HDC1080_configuration();
-	pltFreeOsDelay(200);
+	PLT_FREE_OS_DELAY(200);
 }
 /**
   * @brief get temperature and humidity from HDC1080
@@ -163,16 +166,16 @@ __NO_RETURN void task_HDC1080(void *argument){
 	//	if (stHDC1080Status.ok == true){
 	//		break;
 	//	}
-	//	pltFreeOsDelay(200); //delay 0.2 sec
+	//	PLT_FREE_OS_DELAY(200); //delay 0.2 sec
 	//}
 	while (1){
 		if (stHDC1080Status.ok == true){
 			trig_HDC1080();
 			if (stHDC1080Status.ok == false){
-				pltFreeOsDelay(200); //delay 0.2 sec
+				PLT_FREE_OS_DELAY(200); //delay 0.2 sec
 				continue;
 			}
-			pltFreeOsDelay(200); //delay 0.2 sec
+			PLT_FREE_OS_DELAY(200); //delay 0.2 sec
 
 		#if defined(__CC_ARM)
 			statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
@@ -194,8 +197,6 @@ __NO_RETURN void task_HDC1080(void *argument){
 				}
 		#if defined(__CC_ARM)	
 			}
-		#endif
-		#if defined(__CC_ARM)
 			osMutexRelease(mutex_I2C);
 		#elif defined(__GNUC__)
 			CoLeaveMutexSection(mutex_I2C);
@@ -215,7 +216,7 @@ __NO_RETURN void task_HDC1080(void *argument){
 		else{
 			init_HDC1080();
 		}
-		pltFreeOsDelay(1000); //1000 milisecond delay
+		PLT_FREE_OS_DELAY(1000); //1000 milisecond delay
 	}
 }
 /* * * END OF FILE * * */

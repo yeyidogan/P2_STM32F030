@@ -12,12 +12,12 @@
 typedef struct {
 	uint8_t low_byte;
 	uint8_t high_byte;
-}UINT16_BYTE_TYPE;
+}__attribute__((packed)) UINT16_BYTE_TYPE;
 
 typedef union {
 	uint16_t word;
 	UINT16_BYTE_TYPE bytes;
-}UINT16_TYPE;
+}__attribute__((packed)) UINT16_TYPE;
 
 typedef struct {
 	uint8_t uart1_protocol;
