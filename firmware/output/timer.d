@@ -15,6 +15,7 @@
 .\output\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\timer.o: .\app\plt_free_os_def.h
 .\output\timer.o: .\app\main.h
+.\output\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\timer.o: .\app\pub_var.h
 .\output\timer.o: .\app\pub_s.h
 .\output\timer.o: .\app\par_enums.h

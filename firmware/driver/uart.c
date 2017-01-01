@@ -12,7 +12,7 @@
 /* Private variables */
 
 UART_RX_BUFFER_TYPE uart1Rx = {0x00, 0x00, {0x00}};
-UART_TX_BUFFER_TYPE uart1Tx = {0x00, 0x15, "uart1 transmit data\r\n"};
+UART_TX_BUFFER_TYPE uart1Tx = {0x00, 0x00, "uart1 transmit data\r\n"};
 UART_STATUS_TYPE uart1Flags = {0x00};
 uint8_t uiTmp = 0x00;
 uint16_t uiTimerUart1 = 0x00; //to control loops
@@ -215,7 +215,11 @@ void initUartDma(void) {
 *******************************************************************************
 */
 void uart1TxCmd(uint8_t *ptr, uint8_t length) {
-	while (uart1Flags.txBusy == UART_TX_BUSY);
+	START_UART1_TIMER;
+	while (uart1Flags.txBusy == UART_TX_BUSY){
+		if (CHECK_UART1_TIMER_REACH_TO(1000))
+			break;
+	}
 	//wait while bus is not free
 	START_UART1_TIMER;
 	while (I2C1->ISR & I2C_ISR_BUSY){

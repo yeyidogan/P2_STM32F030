@@ -11,6 +11,7 @@
 #elif defined(__GNUC__)
 	#include "CoOs.h"
 #endif
+#include <stdio.h>
 #include "plt_free_os_def.h"
 #include "pub_var.h"
 #include "gpio.h"

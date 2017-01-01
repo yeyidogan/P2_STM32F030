@@ -6,6 +6,7 @@
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\output\hdc1080.o: app\plt_free_os_def.h
 .\output\hdc1080.o: app\main.h
+.\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\hdc1080.o: app\pub_var.h
 .\output\hdc1080.o: app\pub_s.h
 .\output\hdc1080.o: app\par_enums.h

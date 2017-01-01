@@ -55,18 +55,17 @@ void rccConfig(void){
  */
 #define BSRR_VAL 0x0300
 __NO_RETURN void task_Led(void *argument) {
-	//unsigned int led_num;
 	while (1) {
 		/* Set PC8 and PC9 */
 		GPIOC->BSRR = BSRR_VAL;
 		/* Delay some time */
 		//for(times = 0; times < 500000; times++);
-		PLT_FREE_OS_DELAY(10);
+		PLT_FREE_OS_DELAY(100);
 		/* Reset PC8 and PC9 */
 		GPIOC->BRR = BSRR_VAL;
 		/* Delay some time */
 		//for(times = 0; times < 500000; times++);
-		PLT_FREE_OS_DELAY(40);
+		PLT_FREE_OS_DELAY(400);
 	}
 }
 
@@ -82,6 +81,15 @@ extern void SystemCoreClockUpdate (void);
  *******************************************************************************
  */
 int main(void){
+#if defined(__CC_ARM)
+	osThreadId_t osID;
+#endif
+	const uint8_t msgStart[] = "software started\r\n";
+	const uint8_t msgTaskLed[] = "task LED started\r\n";
+	const uint8_t msgTaskUart[] = "task uart started\r\n";
+	const uint8_t msgTaskHdc1080[] = "task HDC1080 started\r\n";
+	const uint8_t msgTaskError[] = "task couldn't created\r\n";
+	const uint8_t msgNewLine[] = "\r\n";
 	SystemCoreClockUpdate();
 	//rccConfig();
 	initGpio();
@@ -93,15 +101,33 @@ int main(void){
 	initTimers();
 	initI2C();
 
+	uart1TxCmd((uint8_t *)msgStart, sizeof(msgStart));
 #if defined(__CC_ARM)
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
 	
 	mutex_I2C = osMutexNew(NULL);
-	osThreadNew(task_Led, NULL, NULL);
-	osThreadNew(task_HDC1080, NULL, NULL);
-	osThreadNew(task_Uart1, NULL, NULL);
+	
+	osID = osThreadNew(task_Led, NULL, NULL);
+	if (osID == NULL)
+		uart1TxCmd((uint8_t *)msgTaskError, sizeof(msgTaskError));
+	else
+		uart1TxCmd((uint8_t *)msgTaskLed, sizeof(msgTaskLed));
+	
+	osID = osThreadNew(task_HDC1080, NULL, NULL);
+	if (osID == NULL)
+		uart1TxCmd((uint8_t *)msgTaskError, sizeof(msgTaskError));
+	else
+		uart1TxCmd((uint8_t *)msgTaskHdc1080, sizeof(msgTaskHdc1080));
+	
+	osID = osThreadNew(task_Uart1, NULL, NULL);
+	if (osID == NULL)
+		uart1TxCmd((uint8_t *)msgTaskError, sizeof(msgTaskError));
+	else
+		uart1TxCmd((uint8_t *)msgTaskUart, sizeof(msgTaskUart));
 
+	uart1TxCmd((uint8_t *)msgNewLine, sizeof(msgNewLine));
+	
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution
   }
@@ -123,6 +149,10 @@ int main(void){
  *******************************************************************************
  */
 void assert_failed(uint8_t* file, uint32_t line){
+	uint8_t msg[32] = "";
+	sprintf(msg, "line %d", line);
+	uart1TxCmd((uint8_t *)file, 6);
+	uart1TxCmd((uint8_t *)msg, 8);
 	while (1);
 }
 /* * * END OF FILE * * */
