@@ -19,7 +19,11 @@ uint32_t ulInputs, ulOutputs, ulTmp;
 void initGpio(void) {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	GPIO_DeInit(GPIOA);
+	/* GPIOA Peripheral clock enable */
+	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+	//GPIO DeInit
+	RCC->AHBRSTR |= (RCC_AHBENR_GPIOAEN|RCC_AHBENR_GPIOBEN|RCC_AHBENR_GPIOCEN);
+	RCC->AHBRSTR &= ~(RCC_AHBENR_GPIOAEN|RCC_AHBENR_GPIOBEN|RCC_AHBENR_GPIOCEN);
 
 	/* USART1 Pins configuration */
 	/* Connect pin to Peripherals */
@@ -42,9 +46,10 @@ void initGpio(void) {
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	/***************************************************/
 
+	/* GPIOB Peripheral clock enable */
+	RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
 	/* I2C1 Pins Configuration */
 	/* Connect pin to Peripherals */
-	GPIO_DeInit(GPIOB);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_1);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_1);
 	//PB6 = I2C1_SCL, PB7 = I2C1_SDA
@@ -56,7 +61,8 @@ void initGpio(void) {
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	/***************************************************/
 
-	GPIO_DeInit(GPIOC);
+	/* GPIOC Peripheral clock enable */
+	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
 	/* Configure PC0 to PC9 in output push-pull mode */
 	GPIO_InitStructure.GPIO_Pin = ((uint16_t)0x03FF); //PC0..PC9;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;

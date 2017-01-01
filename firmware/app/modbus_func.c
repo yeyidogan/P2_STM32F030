@@ -107,14 +107,14 @@ uint8_t writeSingleCoil(void){
 	PTR_WRITE_SINGLE_COIL_RESP->functionCode = FUNC_WRITE_SINGLE_COIL;
 	PTR_WRITE_SINGLE_COIL_RESP->address.word = PTR_MODBUS_WRITE_SINGLE_REQ->address.word;
 	PTR_WRITE_SINGLE_COIL_RESP->value.word = PTR_MODBUS_WRITE_SINGLE_REQ->value.word;
-	if (PTR_MODBUS_WRITE_SINGLE_REQ->value.word == 0xFF00){ //COIL=ON
+	if (PTR_MODBUS_WRITE_SINGLE_REQ->value.word == 0x00FF){ //COIL=ON FF00 chanded to 00FF, endian problem
 		ulMfTmp = 1UL;
-		ulMfTmp <<= PTR_MODBUS_WRITE_SINGLE_REQ->address.word;
+		ulMfTmp <<= wordEndianer(PTR_MODBUS_WRITE_SINGLE_REQ->address.word);
 		ulOutputs |= ulMfTmp;
 	}
 	else if (PTR_MODBUS_WRITE_SINGLE_REQ->value.word == 0x0000){ //COIL=OFF
 		ulMfTmp = 0xFFFFFFFE;
-		ulMfTmp <<= PTR_MODBUS_WRITE_SINGLE_REQ->address.word;
+		ulMfTmp <<= wordEndianer(PTR_MODBUS_WRITE_SINGLE_REQ->address.word);
 		ulOutputs &= ulMfTmp;
 	}
 	else {

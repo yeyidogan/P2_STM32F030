@@ -15,6 +15,7 @@ UART_RX_BUFFER_TYPE uart1Rx = {0x00, 0x00, {0x00}};
 UART_TX_BUFFER_TYPE uart1Tx = {0x00, 0x15, "uart1 transmit data\r\n"};
 UART_STATUS_TYPE uart1Flags = {0x00};
 uint8_t uiTmp = 0x00;
+uint16_t uiTimerUart1 = 0x00; //to control loops
 
 
 /**
@@ -92,9 +93,13 @@ void initUart1(uint32_t baudRate) {
 	- Hardware flow control disabled (RTS and CTS signals)
 	- Receive and transmit enabled
 	*/
+	RCC->APB2ENR |= RCC_APB2ENR_USART1EN; //Enable Usart1 clock
 	USART_InitTypeDef USART_InitStructure;
 
-	USART_DeInit(USART1);
+	//USART DeInit
+	RCC->APB2RSTR |= RCC_APB2ENR_USART1EN;
+	RCC->APB2RSTR &= ~RCC_APB2ENR_USART1EN;
+	
 	USART_InitStructure.USART_BaudRate = baudRate; //9600;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
@@ -107,7 +112,7 @@ void initUart1(uint32_t baudRate) {
 	USART_ReceiverTimeOutCmd(USART1, ENABLE);
 	USART_ITConfig(USART1, USART_IT_RTO, ENABLE); //enable usart1 timeout, required for modbus
 
-	USART_Cmd(USART1, ENABLE); /* Enable USART */
+	USART1->CR1 |= USART_CR1_UE; /* Enable USART */
 }
 
 /**
@@ -116,7 +121,9 @@ void initUart1(uint32_t baudRate) {
   * @retval None
   */
 void DMA1_Channel2_3_IRQHandler(void) {
-	//CoEnterISR();
+#if defined(__GNUC__)
+	CoEnterISR();
+#endif
 	DMA_Cmd(DMA1_Channel2, DISABLE); //uart1 tx dma
 	DMA_ClearFlag(DMA1_FLAG_GL2);
 	//DMA_ClearFlag(DMA1_FLAG_GL3);
@@ -125,7 +132,9 @@ void DMA1_Channel2_3_IRQHandler(void) {
 	uart1Flags.txBusy = UART_TX_READY;
 
 	DMA_Cmd(DMA1_Channel2, ENABLE); //uart1 tx dma
-	//CoExitISR();
+#if defined(__GNUC__)
+	CoExitISR();
+#endif
 }
 /**
   * @brief  Configures the nested vectored interrupt controller.
@@ -207,6 +216,12 @@ void initUartDma(void) {
 */
 void uart1TxCmd(uint8_t *ptr, uint8_t length) {
 	while (uart1Flags.txBusy == UART_TX_BUSY);
+	//wait while bus is not free
+	START_UART1_TIMER;
+	while (I2C1->ISR & I2C_ISR_BUSY){
+		if (CHECK_UART1_TIMER_REACH_TO(1000))
+			return;
+	}
 
 	uart1Flags.txBusy = UART_TX_BUSY;
 	DMA_Cmd(DMA1_Channel2, DISABLE);
@@ -258,7 +273,7 @@ void task_Uart1(void* pdata) {
 				}
 
 				if (uart1Tx.length) {
-					PLT_FREE_OS_DELAY(2);
+					PLT_FREE_OS_DELAY(5);
 					uart1TxCmd(uart1Tx.buffer, uart1Tx.length);
 				}
 
@@ -268,5 +283,7 @@ void task_Uart1(void* pdata) {
 			default:
 				break;
 		}
+		
+		PLT_FREE_OS_DELAY(5);
 	}
 }

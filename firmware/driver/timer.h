@@ -7,9 +7,9 @@
 #define __TIMER_H_
 
 #include "stm32f0xx.h"
-#include "stm32f0xx_rcc.h"
 #include "i2c.h"
 #include "hdc1080.h"
+#include "uart.h"
 #include <stdbool.h>
 
 /* define ------------------------------------------------------------*/

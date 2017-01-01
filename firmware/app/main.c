@@ -27,20 +27,20 @@ void rccConfig(void){
 	//RCC->CFGR |= RCC_CFGR_PPRE_DIV4;
 	//RCC_PCLKConfig(RCC_HCLK_Div4);
 	/* GPIOA Peripheral clock enable */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	/* GPIOB Peripheral clock enable */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	/* GPIOC Peripheral clock enable */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 	/* Enable USART1 APB clock */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	/* Enable DMA1 clock */
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 	/* Configure I2C Clock Source*/
-	RCC_I2CCLKConfig(RCC_I2C1CLK_HSI); //8 MHz clock source selected
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
+//	RCC_I2CCLKConfig(RCC_I2C1CLK_HSI); //8 MHz clock source selected
+//	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
 	
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
+//	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
 }
 
 /**
@@ -83,10 +83,11 @@ extern void SystemCoreClockUpdate (void);
  */
 int main(void){
 	SystemCoreClockUpdate();
-	rccConfig();
+	//rccConfig();
 	initGpio();
 	setParameters();
 	initUart1(sys_par.uart1_baudrate);
+	RCC->AHBENR |= RCC_AHBENR_DMAEN; /* Enable DMA1 clock */
 	initUartDma();
 	uart1NvicConfig();
 	initTimers();

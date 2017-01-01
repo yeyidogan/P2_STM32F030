@@ -108,10 +108,11 @@ void I2C1_IRQHandler(void){
   * @retval None
   */
 void initI2C(void){
+	RCC->APB1ENR |= RCC_APB1ENR_I2C1EN; //Enable I2C1 clock
 	/* Enable I2C1 reset state */
-	RCC_APB1PeriphResetCmd(RCC_APB1Periph_I2C1, ENABLE);
+	RCC->APB1RSTR |= RCC_APB1ENR_I2C1EN;
 	/* Release I2C1 from reset state */
-	RCC_APB1PeriphResetCmd(RCC_APB1Periph_I2C1, DISABLE);
+	RCC->APB1RSTR &= ~RCC_APB1ENR_I2C1EN;
 	
 	/* Disable I2Cx Peripheral */
 	I2C1->CR1 &= (uint32_t)~((uint32_t)I2C_CR1_PE);
@@ -149,6 +150,13 @@ void initI2C(void){
 	
 	NVIC_EnableIRQ(I2C1_IRQn); //defined in core_cm0.h
 	NVIC_SetPriority(I2C1_IRQn,0);
+	
+	//Configure the I2C1 clock (I2C1CLK)
+  /* Clear I2CSW bit */
+  RCC->CFGR3 &= ~RCC_CFGR3_I2C1SW;
+  /* Set I2CSW bits according to RCC_I2CCLK value */
+  //RCC->CFGR3 |= ((uint32_t)0x00000000);
+	
 }
 
 /**

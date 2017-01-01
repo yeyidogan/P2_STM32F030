@@ -12,7 +12,6 @@
 	#include "CoOs.h"
 #endif
 #include "plt_free_os_def.h"
-#include "stm32f0xx_rcc.h"
 #include "pub_var.h"
 #include "gpio.h"
 #include "uart.h"

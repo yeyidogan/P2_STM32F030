@@ -24,6 +24,8 @@ void TIM6_DAC_IRQHandler(void){
 		++uiTimerI2C;
 	if (uiTimerHDC1080 < 20000) //max 20 seconds
 		++uiTimerHDC1080;
+	if (uiTimerUart1 < 20000) //max 20 seconds
+		++uiTimerUart1;
 	
 	/* Clear the IT pending Bit */
 	TIM6->SR = (uint16_t)~0x0001;
@@ -38,11 +40,14 @@ void TIM6_DAC_IRQHandler(void){
   */
 void initTimers(void){
 	//     TIMER 6              //
+	
+	RCC->APB1ENR |= RCC_APB1ENR_TIM6EN; //Enable Timer6 clock
+	
 	/* Enable Timer 6 reset state */
-	RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM6, ENABLE);
+	RCC->APB1RSTR |= RCC_APB1ENR_TIM6EN;
 	/* Release Timer 6 from reset state */
-	RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM6, DISABLE);
-
+	RCC->APB1RSTR &= ~RCC_APB1ENR_TIM6EN;
+	
 	TIM6->CR1 = (uint16_t)0x0084;
 	//bit15-8:0 reserved
 	//bit7:1 ARPE auto reload preload enabled

@@ -7,7 +7,6 @@
 .\output\timer.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_armcc.h
 .\output\timer.o: C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\system_stm32f0xx.h
 .\output\timer.o: .\stm32_lib\inc\stm32f0xx_conf.h
-.\output\timer.o: .\stm32_lib\inc\stm32f0xx_rcc.h
 .\output\timer.o: driver\i2c.h
 .\output\timer.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

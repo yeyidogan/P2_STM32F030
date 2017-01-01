@@ -37,6 +37,8 @@ enum {
 #define UART_RX_BUFFER2_WAITING FALSE
 
 /* Private macro */
+#define START_UART1_TIMER uiTimerUart1=(uint16_t)0x00
+#define CHECK_UART1_TIMER_REACH_TO(x) uiTimerUart1>(uint16_t)x
 
 /* Private function declarations */
 void initUart1(uint32_t baudRate);
@@ -74,5 +76,6 @@ typedef struct {
 extern UART_RX_BUFFER_TYPE uart1Rx;
 extern UART_TX_BUFFER_TYPE uart1Tx;
 extern UART_STATUS_TYPE uart1Flags;
+extern uint16_t uiTimerUart1;
 
 #endif
