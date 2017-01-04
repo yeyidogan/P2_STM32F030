@@ -27,5 +27,16 @@
 /* variables ---------------------------------------------------------*/
 /* mutexes ---------------------------------------------------------*/
 extern PLT_FREE_OS_MUTEX_ID mutex_I2C;
+/* flags -----------------------------------------------------------*/
+#if defined(__CC_ARM)
+	#define EVENT_MASK_UART1_TIMEOUT 0x00000001ul
+	extern osEventFlagsId_t event_Uart; 
+#elif defined(__GNUC__)
+	#define FLAG_RESET_AUTO true
+	#define FLAG_RESET_MANUAL false
+	#define FLAG_READY_STATE true
+	#define FLAG_NON_READY_STATE false
+	extern OS_FlagID flag_UartTimeout;
+#endif
 
 #endif

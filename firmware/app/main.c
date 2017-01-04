@@ -14,8 +14,15 @@ OS_STK taskLed_stk[STACK_SIZE_TASK_LED];	/*!< Define "led" task stack   */
 OS_STK taskUart_stk[STACK_SIZE_TASK_UART];	/*!< Define "uart" task stack   */
 OS_STK taskHDC1080_stk[STACK_SIZE_TASK_HDC1080];	/*!< Define "uart" task stack   */
 #endif
+
 /* mutexes ---------------------------------------------------------*/
 PLT_FREE_OS_MUTEX_ID mutex_I2C;
+/* flags -----------------------------------------------------------*/
+#if defined(__CC_ARM)
+osEventFlagsId_t event_Uart; 
+#elif defined(__GNUC__)
+OS_FlagID flag_UartTimeout;
+#endif
 
 /*
  *******************************************************************************
@@ -107,6 +114,7 @@ int main(void){
     osKernelInitialize();
 	
 	mutex_I2C = osMutexNew(NULL);
+	event_Uart = osEventFlagsNew(NULL);
 	
 	osID = osThreadNew(task_Led, NULL, NULL);
 	if (osID == NULL)
@@ -133,6 +141,7 @@ int main(void){
   }
 #elif defined(__GNUC__)
 	mutex_I2C = CoCreateMutex();
+	flag_UartTimeout = CoCreateFlag(FLAG_RESET_AUTO, FLAG_NON_READY_STATE);
 	CoInitOS(); /*!< Initial CooCox CoOS */
 	/*!< Create three tasks	*/
 	CoCreateTask((FUNCPtr)task_Led,(void *)0,2,&taskLed_stk[STACK_SIZE_TASK_LED-1],STACK_SIZE_TASK_LED);

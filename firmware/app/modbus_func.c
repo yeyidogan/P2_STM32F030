@@ -113,9 +113,9 @@ uint8_t writeSingleCoil(void){
 		ulOutputs |= ulMfTmp;
 	}
 	else if (PTR_MODBUS_WRITE_SINGLE_REQ->value.word == 0x0000){ //COIL=OFF
-		ulMfTmp = 0xFFFFFFFE;
+		ulMfTmp = 1UL;
 		ulMfTmp <<= wordEndianer(PTR_MODBUS_WRITE_SINGLE_REQ->address.word);
-		ulOutputs &= ulMfTmp;
+		ulOutputs &= ~ulMfTmp;
 	}
 	else {
 		return false;

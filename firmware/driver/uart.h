@@ -16,6 +16,7 @@
 #elif defined(__GNUC__)
 	#include "CoOs.h"
 #endif
+#include "main.h"
 #include "plt_free_os_def.h"
 #include "uart.h"
 #include "par_enums.h"

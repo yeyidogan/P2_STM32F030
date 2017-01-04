@@ -22,6 +22,7 @@
 .\output\hdc1080.o: .\stm32_lib\inc\stm32f0xx_usart.h
 .\output\hdc1080.o: .\stm32_lib\inc\stm32f0xx_misc.h
 .\output\hdc1080.o: .\stm32_lib\inc\stm32f0xx_dma.h
+.\output\hdc1080.o: .\app\main.h
 .\output\hdc1080.o: .\driver\uart.h
 .\output\hdc1080.o: .\app\modbus.h
 .\output\hdc1080.o: .\app\util.h

@@ -20,6 +20,7 @@
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_usart.h
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_misc.h
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_dma.h
+.\output\main.o: .\app\main.h
 .\output\main.o: .\driver\uart.h
 .\output\main.o: .\app\modbus.h
 .\output\main.o: .\app\util.h
@@ -30,4 +31,3 @@
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\main.o: .\driver\timer.h
 .\output\main.o: .\app\hdc1080.h
-.\output\main.o: .\app\main.h

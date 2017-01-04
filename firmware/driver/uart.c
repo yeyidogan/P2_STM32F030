@@ -46,7 +46,11 @@ void USART1_IRQHandler(void){
 	}
 	DMA1_Channel3->CNDTR = UART_RX_BUFFER_SIZE;
 	DMA_Cmd(DMA1_Channel3, ENABLE); //uart1 rx dma
-
+#if defined(__CC_ARM)
+	osEventFlagsSet(event_Uart, EVENT_MASK_UART1_TIMEOUT);
+#elif defined(__GNUC__)
+	isr_SetFlag(flag_UartTimeout);
+#endif
 	#if 0
 	//TX and RX interrupts
 	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
@@ -253,7 +257,11 @@ void uart1TxCmd(uint8_t *ptr, uint8_t length) {
 void task_Uart1(void* pdata) {
 
 	while (1) {
-
+		#if defined(__CC_ARM)
+		osEventFlagsWait(event_Uart, EVENT_MASK_UART1_TIMEOUT, osFlagsWaitAny, osWaitForever);
+		#elif defined(__GNUC__)
+		CoWaitForSingleFlag(flag_UartTimeout, 0); //no time-out
+		#endif
 		switch (sys_par.uart1_protocol) {
 			case PROTOCOL_MODBUS:
 				uart1Tx.length = 0x00; //clear transmit data
@@ -288,6 +296,6 @@ void task_Uart1(void* pdata) {
 				break;
 		}
 		
-		PLT_FREE_OS_DELAY(5);
+		//PLT_FREE_OS_DELAY(5);
 	}
 }

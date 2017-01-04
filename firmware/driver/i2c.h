@@ -9,6 +9,9 @@
 #include "stm32f0xx.h"
 #include "stm32f0xx_i2c.h"
 #include <stdbool.h>
+#if defined(__GNUC__)
+	#include "CoOs.h"
+#endif
 
 /* Private define ------------------------------------------------------------*/
 #define I2C_OWN_ADDR 0x0A

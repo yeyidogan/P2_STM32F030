@@ -25,6 +25,7 @@
 .\output\timer.o: .\stm32_lib\inc\stm32f0xx_usart.h
 .\output\timer.o: .\stm32_lib\inc\stm32f0xx_misc.h
 .\output\timer.o: .\stm32_lib\inc\stm32f0xx_dma.h
+.\output\timer.o: .\app\main.h
 .\output\timer.o: .\driver\uart.h
 .\output\timer.o: .\app\modbus.h
 .\output\timer.o: .\app\util.h
