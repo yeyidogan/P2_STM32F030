@@ -26,7 +26,7 @@ I (.\app\modbus.h)(0x586024CA)
 I (.\app\util.h)(0x56CB7A4D)
 I (.\app\modbus_func.h)(0x5860245B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
-I (.\driver\i2c.h)(0x586AAFD1)
+I (.\driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x585EEDEF)
@@ -39,7 +39,7 @@ F (.\app\util.c)(0x56E70F6A)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --
 I (app\util.h)(0x56CB7A4D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (app\pub_s.h)(0x5860221F)
-F (.\app\hdc1080.c)(0x586128E5)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\hdc1080.o --omf_browse .\output\hdc1080.crf --depend .\output\hdc1080.d)
+F (.\app\hdc1080.c)(0x587A6737)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\hdc1080.o --omf_browse .\output\hdc1080.crf --depend .\output\hdc1080.d)
 I (app\hdc1080.h)(0x585EEDEF)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x58258030)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
@@ -67,7 +67,7 @@ I (.\app\main.h)(0x586D4CC5)
 I (.\app\modbus.h)(0x586024CA)
 I (.\app\util.h)(0x56CB7A4D)
 I (.\app\modbus_func.h)(0x5860245B)
-I (.\driver\i2c.h)(0x586AAFD1)
+I (.\driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x585EEDEF)
@@ -94,7 +94,7 @@ I (.\app\pub_s.h)(0x5860221F)
 I (.\app\par_enums.h)(0x54AAD97B)
 I (.\driver\gpio.h)(0x5852EEC3)
 I (.\stm32_lib\inc\stm32f0xx_gpio.h)(0x54808D11)
-I (.\driver\i2c.h)(0x586AAFD1)
+I (.\driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (.\driver\timer.h)(0x58683694)
@@ -126,7 +126,7 @@ I (.\app\pub_s.h)(0x5860221F)
 I (.\app\par_enums.h)(0x54AAD97B)
 I (.\driver\gpio.h)(0x5852EEC3)
 I (.\stm32_lib\inc\stm32f0xx_gpio.h)(0x54808D11)
-I (.\driver\i2c.h)(0x586AAFD1)
+I (.\driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x585EEDEF)
@@ -191,7 +191,7 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_armcc.h)(0x5825802E)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\system_stm32f0xx.h)(0x56EA3C8A)
 I (.\stm32_lib\inc\stm32f0xx_conf.h)(0x586957DC)
 I (.\stm32_lib\inc\stm32f0xx_gpio.h)(0x54808D11)
-F (.\driver\uart.c)(0x586D4E0D)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\uart.o --omf_browse .\output\uart.crf --depend .\output\uart.d)
+F (.\driver\uart.c)(0x587009FC)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\uart.o --omf_browse .\output\uart.crf --depend .\output\uart.d)
 I (driver\uart.h)(0x586D4507)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (.\stm32_lib\inc\stm32f0xx.h)(0x58615707)
@@ -214,7 +214,7 @@ I (.\app\par_enums.h)(0x54AAD97B)
 I (.\driver\gpio.h)(0x5852EEC3)
 I (.\stm32_lib\inc\stm32f0xx_gpio.h)(0x54808D11)
 I (.\driver\uart.h)(0x586D4507)
-I (.\driver\i2c.h)(0x586AAFD1)
+I (.\driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (.\driver\timer.h)(0x58683694)
@@ -223,7 +223,7 @@ I (.\app\modbus.h)(0x586024CA)
 I (.\app\util.h)(0x56CB7A4D)
 I (.\app\modbus_func.h)(0x5860245B)
 F (.\driver\i2c.c)(0x58684824)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\i2c.o --omf_browse .\output\i2c.crf --depend .\output\i2c.d)
-I (driver\i2c.h)(0x586AAFD1)
+I (driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx.h)(0x58615707)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\core_cm0.h)(0x5825802E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
@@ -242,7 +242,7 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_compiler.h)(0x5825802
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_armcc.h)(0x5825802E)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\system_stm32f0xx.h)(0x56EA3C8A)
 I (.\stm32_lib\inc\stm32f0xx_conf.h)(0x586957DC)
-I (driver\i2c.h)(0x586AAFD1)
+I (driver\i2c.h)(0x587A5B85)
 I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (.\app\hdc1080.h)(0x585EEDEF)

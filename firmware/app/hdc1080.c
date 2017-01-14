@@ -105,7 +105,7 @@ void trig_HDC1080(void){
 		CoEnterMutexSection(mutex_I2C);
 #endif
 		ucI2CMasterSendStartStop = I2C_MASTER_SEND_START;
-		stI2cMsgTx.length = sizeof(ST_HDC1080_WR_CONF_FRAME_TYPE);
+		stI2cMsgTx.length = 0x01;
 		stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 		PTR_HDC1080_CONF_FRAME_WR->ucRegister = TEMP_REG;
 		PTR_HDC1080_CONF_FRAME_WR->uiData = (uint16_t)0x0102;
@@ -183,7 +183,7 @@ __NO_RETURN void task_HDC1080(void *argument){
 		#elif defined(__GNUC__)
 				CoEnterMutexSection(mutex_I2C);
 		#endif
-				ucI2CMasterSendStartStop = I2C_MASTER_SEND_RESTART;
+				ucI2CMasterSendStartStop = I2C_MASTER_SEND_START;
 				stI2cMsgTx.length = sizeof(ST_HDC1080_RD_TEMP_HUM_TYPE);
 				stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 				i2c_master_process(I2C_MASTER_READ);
@@ -203,8 +203,8 @@ __NO_RETURN void task_HDC1080(void *argument){
 		#endif		
 
 			if (stHDC1080Status.ok == true){
-				stTempHum.uiTemperature = PTR_HDC1080_TEMP_HUM_RD->uiTemperature;
-				stTempHum.uiHumidity = PTR_HDC1080_TEMP_HUM_RD->uiHumidity;
+				stTempHum.uiTemperature = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiTemperature);
+				stTempHum.uiHumidity = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiHumidity);
 
 				ulTemp = ((uint32_t)(stTempHum.uiTemperature * (uint32_t)165) / 0x10000) - 40;
 				stTempHum.uiTemperature = (uint16_t)ulTemp;
