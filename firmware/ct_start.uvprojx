@@ -51,7 +51,7 @@
           <OutputName>ct_start</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\</ListingPath>
@@ -408,6 +408,11 @@
               <FileName>modbus_func.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\modbus_func.c</FilePath>
+            </File>
+            <File>
+              <FileName>stepper_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\stepper_motor.c</FilePath>
             </File>
           </Files>
         </Group>

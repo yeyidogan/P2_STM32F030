@@ -108,7 +108,7 @@ void trig_HDC1080(void){
 		stI2cMsgTx.length = 0x01;
 		stI2cMsgTx.slaveAddress = HDC1080_I2C_SLAVE_ADD;
 		PTR_HDC1080_CONF_FRAME_WR->ucRegister = TEMP_REG;
-		PTR_HDC1080_CONF_FRAME_WR->uiData = (uint16_t)0x0102;
+		//PTR_HDC1080_CONF_FRAME_WR->uiData = (uint16_t)0x0102;
 		i2c_master_process(I2C_MASTER_WRITE);
 		
 		START_HDC1080_TIMER;
@@ -171,11 +171,10 @@ __NO_RETURN void task_HDC1080(void *argument){
 	while (1){
 		if (stHDC1080Status.ok == true){
 			trig_HDC1080();
+			PLT_FREE_OS_DELAY(100); //delay 0.1 sec
 			if (stHDC1080Status.ok == false){
-				PLT_FREE_OS_DELAY(200); //delay 0.2 sec
 				continue;
 			}
-			PLT_FREE_OS_DELAY(200); //delay 0.2 sec
 
 		#if defined(__CC_ARM)
 			statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second

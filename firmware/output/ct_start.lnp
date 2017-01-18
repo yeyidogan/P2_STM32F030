@@ -5,6 +5,7 @@
 ".\output\hdc1080.o"
 ".\output\modbus.o"
 ".\output\modbus_func.o"
+".\output\stepper_motor.o"
 ".\output\stm32f0xx_dma.o"
 ".\output\stm32f0xx_gpio.o"
 ".\output\stm32f0xx_misc.o"
