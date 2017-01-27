@@ -103,7 +103,7 @@ If disable(0),CoOS use Binary-Scheduling Algorithm.
 /*! 
 Enable(1) or disable(0) Round-Robin Task switching. 
 */
-#define CFG_ROBIN_EN            (1)         
+#define CFG_ROBIN_EN            (1)
 
 /*! 
 Default slice of task.   	                          
@@ -149,7 +149,7 @@ Enable(1) or disable(0) CoSetPriority() API.
 /*! 
 Enable(1) or disable(0) CoAwakeTask() and CoSuspendTask() API.		      
 */
-#define CFG_TASK_SUSPEND_EN       (1)
+#define CFG_TASK_SUSPEND_EN       (0)
 //! @}
 
 //! \addtogroup CooCox_CoOS_Config3 Debug Management Configurtion    
@@ -252,17 +252,17 @@ Event = semaphore + mailbox + queue;
 /*! 
 Enable(1) or disable(0) semaphore management.	      
 */
-#define CFG_SEM_EN              (1)	
+#define CFG_SEM_EN              (0)
 
 /*! 
 Enable(1) or disable(0) mailbox management.	      
 */		
-#define CFG_MAILBOX_EN          (1)	
+#define CFG_MAILBOX_EN          (0)
 
 /*! 
 Enable(1) or disable(0) queue management.		      
 */		
-#define CFG_QUEUE_EN            (1)	
+#define CFG_QUEUE_EN            (0)
 
 /*! 
 Max number of queue.(less than CFG_MAX_EVENT).       
@@ -315,18 +315,18 @@ Max number of mutex.(must be less than 255).
 /*! 
 Enable(1) or disable(0) utility management.    	  
 */
-#define CFG_UTILITY_EN          (1)      
+#define CFG_UTILITY_EN          (0)
    
 #if CFG_UTILITY_EN >0
 
 /*! 
 Enable(1) or disable(0) TickToTime() utility	
 */
-#define	CFG_TICK_TO_TIME_EN     (1)		
+#define	CFG_TICK_TO_TIME_EN     (0)
 /*! 
 Enable(1) or disable(0) TimeToTick() utility	
 */	
-#define	CFG_TIME_TO_TICK_EN     (1)		
+#define	CFG_TIME_TO_TICK_EN     (0)
 #endif
 
 //

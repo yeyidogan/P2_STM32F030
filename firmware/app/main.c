@@ -134,7 +134,7 @@ int main(void){
  */
 void assert_failed(uint8_t* file, uint32_t line){
 	char msg[32] = "";
-	sprintf(msg, "line %d", line);
+	sprintf(msg, "line %ld", line);
 	uart1TxCmd((uint8_t *)file, 6);
 	uart1TxCmd((uint8_t *)msg, 8);
 	while (1);

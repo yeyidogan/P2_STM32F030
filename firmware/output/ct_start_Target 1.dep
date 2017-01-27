@@ -1,5 +1,5 @@
 Dependencies for Project 'ct_start', Target 'Target 1': (DO NOT MODIFY !)
-F (.\app\main.c)(0x587B8CF2)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (.\app\main.c)(0x5880E0E0)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (app\main.h)(0x586D4CC5)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x58258030)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
@@ -39,7 +39,7 @@ F (.\app\util.c)(0x56E70F6A)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --
 I (app\util.h)(0x56CB7A4D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (app\pub_s.h)(0x5860221F)
-F (.\app\hdc1080.c)(0x587E7598)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\hdc1080.o --omf_browse .\output\hdc1080.crf --depend .\output\hdc1080.d)
+F (.\app\hdc1080.c)(0x588107F9)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\hdc1080.o --omf_browse .\output\hdc1080.crf --depend .\output\hdc1080.d)
 I (app\hdc1080.h)(0x585EEDEF)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x58258030)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
