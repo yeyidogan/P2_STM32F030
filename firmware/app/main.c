@@ -102,6 +102,9 @@ int main(void){
 	initTimers();
 	initI2C();
 
+	if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
+		change_device_name("CatFx_Toilet");
+	
 #if defined(__CC_ARM)
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
@@ -132,11 +135,13 @@ int main(void){
  * @brief       Check parameters of STM32 Std drivers
  *******************************************************************************
  */
+#ifdef USE_FULL_ASSERT
 void assert_failed(uint8_t* file, uint32_t line){
 	char msg[32] = "";
-	sprintf(msg, "line %ld", line);
+	sprintf(msg, "line %uld", line);
 	uart1TxCmd((uint8_t *)file, 6);
 	uart1TxCmd((uint8_t *)msg, 8);
 	while (1);
 }
+#endif
 /* * * END OF FILE * * */

@@ -202,14 +202,11 @@ __NO_RETURN void task_HDC1080(void *argument){
 		#endif		
 
 			if (stHDC1080Status.ok == true){
-				stTempHum.uiTemperature = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiTemperature);
-				stTempHum.uiHumidity = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiHumidity);
-
-				ulTemp = ((uint32_t)(stTempHum.uiTemperature * (uint32_t)165) / 0x10000) - 40;
-				stTempHum.uiTemperature = (uint16_t)ulTemp;
-
-				ulTemp = (uint32_t)(stTempHum.uiHumidity * (uint32_t)100) / 0x10000;
-				stTempHum.uiHumidity = (uint16_t)ulTemp;
+				ulTemp = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiTemperature);
+				stTempHum.uiTemperature = ((uint32_t)(ulTemp * (uint32_t)165) / 0x10000) - 40;
+				
+				ulTemp = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiHumidity);
+				stTempHum.uiHumidity = (uint32_t)(ulTemp * (uint32_t)100) / 0x10000;
 			}
 		}
 		else{

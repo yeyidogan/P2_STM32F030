@@ -414,6 +414,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\stepper_motor.c</FilePath>
             </File>
+            <File>
+              <FileName>hc0x_bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\hc0x_bluetooth.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

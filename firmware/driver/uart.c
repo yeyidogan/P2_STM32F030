@@ -84,6 +84,28 @@ void USART1_IRQHandler(void){
 }
 
 /**
+  * @brief  This function handles DMA Transfer Complete interrupt request.
+  * @param  None
+  * @retval None
+  */
+void DMA1_Channel2_3_IRQHandler(void) {
+#if defined(__GNUC__)
+	CoEnterISR();
+#endif
+	DMA_Cmd(DMA1_Channel2, DISABLE); //uart1 tx dma
+	DMA_ClearFlag(DMA1_FLAG_GL2);
+	//DMA_ClearFlag(DMA1_FLAG_GL3);
+	DMA_ClearITPendingBit(DMA1_FLAG_GL2);
+	//DMA_ClearITPendingBit(DMA1_FLAG_GL3);
+	uart1Flags.txBusy = UART_TX_READY;
+
+	DMA_Cmd(DMA1_Channel2, ENABLE); //uart1 tx dma
+#if defined(__GNUC__)
+	CoExitISR();
+#endif
+}
+
+/**
   * @brief Configure the USART1 Device
   * @param  baudRate
   * @retval None
@@ -119,27 +141,6 @@ void initUart1(uint32_t baudRate) {
 	USART1->CR1 |= USART_CR1_UE; /* Enable USART */
 }
 
-/**
-  * @brief  This function handles DMA Transfer Complete interrupt request.
-  * @param  None
-  * @retval None
-  */
-void DMA1_Channel2_3_IRQHandler(void) {
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
-	DMA_Cmd(DMA1_Channel2, DISABLE); //uart1 tx dma
-	DMA_ClearFlag(DMA1_FLAG_GL2);
-	//DMA_ClearFlag(DMA1_FLAG_GL3);
-	DMA_ClearITPendingBit(DMA1_FLAG_GL2);
-	//DMA_ClearITPendingBit(DMA1_FLAG_GL3);
-	uart1Flags.txBusy = UART_TX_READY;
-
-	DMA_Cmd(DMA1_Channel2, ENABLE); //uart1 tx dma
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
-}
 /**
   * @brief  Configures the nested vectored interrupt controller.
   * @param  None
@@ -219,16 +220,11 @@ void initUartDma(void) {
 *******************************************************************************
 */
 void uart1TxCmd(uint8_t *ptr, uint8_t length) {
+	//wait while bus is not free
 	START_UART1_TIMER;
 	while (uart1Flags.txBusy == UART_TX_BUSY){
 		if (CHECK_UART1_TIMER_REACH_TO(1000))
 			break;
-	}
-	//wait while bus is not free
-	START_UART1_TIMER;
-	while (I2C1->ISR & I2C_ISR_BUSY){
-		if (CHECK_UART1_TIMER_REACH_TO(1000))
-			return;
 	}
 
 	uart1Flags.txBusy = UART_TX_BUSY;
@@ -242,6 +238,30 @@ void uart1TxCmd(uint8_t *ptr, uint8_t length) {
 	DMA1_Channel2->CNDTR = length;
 
 	DMA_Cmd(DMA1_Channel2, ENABLE);
+}
+
+/**
+*******************************************************************************
+* @brief       uart1 check rx buffers
+* @param[in]   
+* @param[out]   
+* @details    none.
+*******************************************************************************
+*/
+uint8_t uart1CheckRxBuf(void){
+	uint8_t ucLength = UART_RX_BUFFER_IS_EMPTY;
+	
+	if (uart1Rx.length1){
+		ucLength = uart1Rx.length1;
+		uart1Rx.length1 = 0x00;
+		uart1Rx.ptrBuffer = uart1Rx.buffer1;
+	}
+	else if (uart1Rx.length2){
+		ucLength = uart1Rx.length2;
+		uart1Rx.length2 = 0x00;
+		uart1Rx.ptrBuffer = uart1Rx.buffer2;
+	}
+	return ucLength;
 }
 
 /**
@@ -292,6 +312,8 @@ void task_Uart1(void* pdata) {
 				break;
 			case PROTOCOL_DSI:
 				break;
+			case PROTOCOL_MOBILE_APP:
+				break;
 			default:
 				break;
 		}
@@ -299,3 +321,4 @@ void task_Uart1(void* pdata) {
 		//PLT_FREE_OS_DELAY(5);
 	}
 }
+/* * * END OF FILE * * */

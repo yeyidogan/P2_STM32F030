@@ -7,6 +7,7 @@
 #define __UTIL_H
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "pub_s.h"
 
 /* Public typedef */
@@ -19,5 +20,9 @@
 
 /* Public functions */
 extern uint16_t wordEndianer(uint16_t wordIn);
+extern uint8_t copy_string(uint8_t * ptrSource, uint8_t * ptrTarget, uint8_t ucMaxByte);
+extern uint8_t compare_string(uint8_t * ptrSource, uint8_t * ptrTarget, uint8_t ucMaxByte);
+extern uint8_t count_string(uint8_t * ptrData, uint8_t ucMaxByte);
 
 #endif
+/* * * END OF FILE * * */

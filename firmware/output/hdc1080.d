@@ -32,3 +32,5 @@
 .\output\hdc1080.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\hdc1080.o: .\driver\timer.h
 .\output\hdc1080.o: .\app\hdc1080.h
+.\output\hdc1080.o: app\hc0x_bluetooth.h
+.\output\hdc1080.o: app\stepper_motor.h

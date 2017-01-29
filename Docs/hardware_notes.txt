@@ -10,4 +10,27 @@ I2C:
 
 INPUTS: PA0 to PA7
 
+PA0: Zero point switch of Stepper A, active low
+PA1: Zero point switch of Stepper B, active low
+
 OUTPUTS: PC0 to PC7
+
+PC0: Enable of Stepper A
+PC1, PC2: Coil driver of Stepper A
+
+PC3: Enable of Stepper B
+PC4, PC5: Coil driver of Stepper B
+
+SAMPLES:
+1. TI: SN754410
+2. TI: HDC1080DMB
+3. Allegro: A3909GLY
+4. Onsemi: LB1848MC
+
+Mechanical Notes:
+10mm Metal Linear Motion Ball Bearing SC10UU SCS10UU
+Chrome plated linear shaft
+
+Date: 26.12.2016
+Author: Yilmaz Eyidogan
+Description: This project is under development for automatic cat toliet.

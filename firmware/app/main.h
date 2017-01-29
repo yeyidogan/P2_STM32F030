@@ -19,6 +19,7 @@
 #include "i2c.h"
 #include "timer.h"
 #include "hdc1080.h"
+#include "hc0x_bluetooth.h"
 
 /* define ------------------------------------------------------------*/
 /* macro -------------------------------------------------------------*/
@@ -40,3 +41,4 @@ extern PLT_FREE_OS_MUTEX_ID mutex_I2C;
 #endif
 
 #endif
+/* * * END OF FILE * * */

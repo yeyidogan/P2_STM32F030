@@ -6,6 +6,7 @@
 ".\output\modbus.o"
 ".\output\modbus_func.o"
 ".\output\stepper_motor.o"
+".\output\hc0x_bluetooth.o"
 ".\output\stm32f0xx_dma.o"
 ".\output\stm32f0xx_gpio.o"
 ".\output\stm32f0xx_misc.o"

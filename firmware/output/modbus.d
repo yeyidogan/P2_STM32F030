@@ -28,6 +28,8 @@
 .\output\modbus.o: .\driver\timer.h
 .\output\modbus.o: .\app\hdc1080.h
 .\output\modbus.o: .\app\main.h
-.\output\modbus.o: .\app\modbus.h
+.\output\modbus.o: .\app\hc0x_bluetooth.h
 .\output\modbus.o: .\app\util.h
+.\output\modbus.o: .\app\stepper_motor.h
+.\output\modbus.o: .\app\modbus.h
 .\output\modbus.o: app\modbus_func.h

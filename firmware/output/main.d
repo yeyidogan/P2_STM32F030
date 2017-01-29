@@ -24,10 +24,12 @@
 .\output\main.o: .\driver\uart.h
 .\output\main.o: .\app\modbus.h
 .\output\main.o: .\app\util.h
-.\output\main.o: .\app\modbus_func.h
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\main.o: .\app\modbus_func.h
 .\output\main.o: .\app\modbus.h
 .\output\main.o: .\driver\i2c.h
 .\output\main.o: .\stm32_lib\inc\stm32f0xx_i2c.h
 .\output\main.o: .\driver\timer.h
 .\output\main.o: .\app\hdc1080.h
+.\output\main.o: app\hc0x_bluetooth.h
+.\output\main.o: app\stepper_motor.h

@@ -75,6 +75,7 @@ extern __NO_RETURN void task_HDC1080(void *argument);
 /* variables ---------------------------------------------------------*/
 extern uint16_t uiTimerHDC1080;
 extern ST_HDC1080_STATUS_TYPE stHDC1080Status;
+extern ST_HDC1080_RD_TEMP_HUM_TYPE stTempHum;
 
 #endif
 /* * * END OF FILE * * */

@@ -25,8 +25,8 @@
 #include "pub_var.h"
 
 /* Private define */
-#define UART_RX_BUFFER_SIZE 0x20 //use power of 2
-#define UART_TX_BUFFER_SIZE 0x20
+#define UART_RX_BUFFER_SIZE 0x40 //use power of 2
+#define UART_TX_BUFFER_SIZE 0x40
 #define UART1_RX_TIMEOUT 0x23 //38 bit = 3.5 character
 
 enum {
@@ -36,17 +36,19 @@ enum {
 
 #define UART_RX_BUFFER1_WAITING TRUE
 #define UART_RX_BUFFER2_WAITING FALSE
+#define UART_RX_BUFFER_IS_EMPTY 0x00
 
 /* Private macro */
 #define START_UART1_TIMER uiTimerUart1=(uint16_t)0x00
 #define CHECK_UART1_TIMER_REACH_TO(x) uiTimerUart1>(uint16_t)x
 
 /* Private function declarations */
-void initUart1(uint32_t baudRate);
-void uart1NvicConfig(void);
-void initUartDma(void);
-void uart1TxCmd(uint8_t *ptr, uint8_t length);
-void task_Uart1 (void *pdata);
+extern void initUart1(uint32_t baudRate);
+extern void uart1NvicConfig(void);
+extern void initUartDma(void);
+extern void uart1TxCmd(uint8_t *ptr, uint8_t length);
+extern uint8_t uart1CheckRxBuf(void);
+extern void task_Uart1 (void *pdata);
 
 /* Private typedef */
 typedef struct {
@@ -54,6 +56,7 @@ typedef struct {
 	uint8_t length2; //length of data to be read of buffer1
 	uint8_t buffer1[UART_RX_BUFFER_SIZE];
 	uint8_t buffer2[UART_RX_BUFFER_SIZE];
+	uint8_t * ptrBuffer; //will be used for active buffer
 }UART_RX_BUFFER_TYPE;
 
 typedef struct {
@@ -80,3 +83,4 @@ extern UART_STATUS_TYPE uart1Flags;
 extern uint16_t uiTimerUart1;
 
 #endif
+/* * * END OF FILE * * */

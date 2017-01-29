@@ -12,10 +12,12 @@ c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-exit.o) (_global_impure_ptr)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-init.o)
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+                              ..\obj\hc0x_bluetooth.o (memcpy)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
-                              ..\obj\main.o (sprintf)
+                              ..\obj\hc0x_bluetooth.o (sprintf)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o) (_svfprintf_r)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
@@ -32,8 +34,6 @@ c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o) (_malloc_r)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o) (memchr)
-c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
-                              c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o) (memcpy)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
                               c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o) (__malloc_lock)
 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
@@ -153,21 +153,10 @@ Discarded input sections
  .data          0x00000000        0x0 ..\obj\syscalls.o
  .data          0x00000000        0x0 ..\obj\core.o
  .data          0x00000000        0x0 ..\obj\arch.o
- .data          0x00000000        0x0 ..\obj\serviceReq.o
  .text          0x00000000       0x1c ..\obj\stepper_motor.o
  .data          0x00000000        0x0 ..\obj\stepper_motor.o
- .bss           0x00000000        0x4 ..\obj\stepper_motor.o
  .rodata        0x00000000        0x4 ..\obj\stepper_motor.o
- .debug_info    0x00000000      0x14d ..\obj\stepper_motor.o
- .debug_abbrev  0x00000000       0xa4 ..\obj\stepper_motor.o
- .debug_aranges
-                0x00000000       0x20 ..\obj\stepper_motor.o
- .debug_line    0x00000000      0x15b ..\obj\stepper_motor.o
- .debug_str     0x00000000      0x201 ..\obj\stepper_motor.o
- .comment       0x00000000       0x6f ..\obj\stepper_motor.o
- .debug_frame   0x00000000       0x30 ..\obj\stepper_motor.o
- .ARM.attributes
-                0x00000000       0x31 ..\obj\stepper_motor.o
+ .data          0x00000000        0x0 ..\obj\serviceReq.o
  .data          0x00000000        0x0 ..\obj\timer.o
  .bss           0x00000000        0x0 ..\obj\timer.o
  .bss           0x00000000        0x0 ..\obj\stm32f0xx_rcc.o
@@ -188,6 +177,8 @@ Discarded input sections
  .data          0x00000000        0x0 ..\obj\startup_stm32f0xx.o
  .bss           0x00000000        0x0 ..\obj\startup_stm32f0xx.o
  .data          0x00000000        0x0 ..\obj\task.o
+ .data          0x00000000        0x0 ..\obj\hc0x_bluetooth.o
+ .bss           0x00000000        0x0 ..\obj\hc0x_bluetooth.o
  .text          0x00000000        0x0 ..\obj\sem.o
  .data          0x00000000        0x0 ..\obj\sem.o
  .bss           0x00000000        0x0 ..\obj\sem.o
@@ -242,8 +233,8 @@ Discarded input sections
  .data          0x00000000        0x0 ..\obj\Ostimer.o
  .data          0x00000000        0x0 ..\obj\stm32f0xx_usart.o
  .bss           0x00000000        0x0 ..\obj\stm32f0xx_usart.o
- .bss           0x00000000        0x0 ..\obj\system_stm32f0xx.o
  .bss           0x00000000        0x0 ..\obj\port.o
+ .bss           0x00000000        0x0 ..\obj\system_stm32f0xx.o
  .text          0x00000000        0x0 ..\obj\utility.o
  .data          0x00000000        0x0 ..\obj\utility.o
  .bss           0x00000000        0x0 ..\obj\utility.o
@@ -287,6 +278,9 @@ Discarded input sections
  .debug_frame   0x00000000       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-init.o)
  .ARM.attributes
                 0x00000000       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
  .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
@@ -325,9 +319,6 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
- .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
  .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
@@ -478,7 +469,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
                 0x20002000                _eram = 0x20002000
 
-.text           0x08000000     0xdb1c
+.text           0x08000000     0xdfcc
  *(.isr_vector)
  .isr_vector    0x08000000       0xc4 ..\obj\startup_stm32f0xx.o
                 0x08000000                g_pfnVectors
@@ -488,456 +479,462 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
                 0x0800022c                I2C1_IRQHandler
                 0x080003fc                initI2C
                 0x0800049c                i2c_master_process
- .text          0x0800058c       0x50 ..\obj\util.o
+ .text          0x0800058c      0x15c ..\obj\util.o
                 0x0800058c                wordEndianer
- .text          0x080005dc      0x4ac ..\obj\uart.o
-                0x080005dc                USART1_IRQHandler
-                0x0800069c                initUart1
-                0x08000750                DMA1_Channel2_3_IRQHandler
-                0x08000794                uart1NvicConfig
-                0x080007d8                initUartDma
-                0x080008fc                uart1TxCmd
-                0x080009b4                task_Uart1
- .text          0x08000a88      0x994 ..\obj\flag.o
-                0x08000a88                CoCreateFlag
-                0x08000b48                CoDelFlag
-                0x08000c78                CoAcceptSingleFlag
-                0x08000d00                CoAcceptMultipleFlags
-                0x08000dc8                CoWaitForSingleFlag
-                0x08000f50                CoWaitForMultipleFlags
-                0x08001124                CoClearFlag
-                0x0800117c                CoSetFlag
-                0x08001280                isr_SetFlag
-                0x08001398                RemoveLinkNode
- .text          0x0800141c       0xe8 ..\obj\syscalls.o
-                0x0800141c                _sbrk
-                0x08001458                link
-                0x08001470                _close
-                0x08001484                _fstat
-                0x080014a0                _isatty
-                0x080014b4                _lseek
-                0x080014cc                _read
-                0x080014e4                _write
-                0x080014fc                abort
- .text          0x08001504      0x1bc ..\obj\core.o
-                0x08001504                CoEnterISR
-                0x0800151c                CoExitISR
-                0x08001570                OsSchedUnlock
-                0x080015c0                CoSchedLock
-                0x080015dc                CoSchedUnlock
-                0x080015ec                CoInitOS
-                0x08001674                CoStartOS
-                0x080016b0                CoGetOSVersion
- .text          0x080016c0       0xec ..\obj\arch.o
-                0x080016c0                InitTaskContext
-                0x0800170c                SysTick_Handler
- .text          0x080017ac      0x150 ..\obj\serviceReq.o
-                0x080017ac                InsertInSRQ
-                0x08001844                RespondSRQ
- .text          0x080018fc      0x1e8 ..\obj\timer.o
-                0x08001a04                TIM6_DAC_IRQHandler
-                0x08001a74                initTimers
- .text          0x08001ae4      0xc9c ..\obj\stm32f0xx_rcc.o
-                0x08001ae4                RCC_DeInit
-                0x08001b6c                RCC_HSEConfig
-                0x08001b94                RCC_WaitForHSEStartUp
-                0x08001bf4                RCC_AdjustHSICalibrationValue
-                0x08001c30                RCC_HSICmd
-                0x08001c6c                RCC_AdjustHSI14CalibrationValue
-                0x08001ca8                RCC_HSI14Cmd
-                0x08001ce4                RCC_HSI14ADCRequestCmd
-                0x08001d20                RCC_LSEConfig
-                0x08001d58                RCC_LSEDriveConfig
-                0x08001d84                RCC_LSICmd
-                0x08001dc0                RCC_PLLConfig
-                0x08001df8                RCC_PLLCmd
-                0x08001e38                RCC_HSI48Cmd
-                0x08001e78                RCC_PREDIV1Config
-                0x08001eac                RCC_ClockSecuritySystemCmd
-                0x08001eec                RCC_MCOConfig
-                0x08001f30                RCC_SYSCLKConfig
-                0x08001f64                RCC_GetSYSCLKSource
-                0x08001f80                RCC_HCLKConfig
-                0x08001fb4                RCC_PCLKConfig
-                0x08001fec                RCC_ADCCLKConfig
-                0x08002040                RCC_CECCLKConfig
-                0x0800206c                RCC_I2CCLKConfig
-                0x08002098                RCC_USARTCLKConfig
-                0x08002100                RCC_USBCLKConfig
-                0x0800212c                RCC_GetClocksFreq
-                0x080023fc                RCC_RTCCLKConfig
-                0x0800241c                RCC_RTCCLKCmd
-                0x0800245c                RCC_BackupResetCmd
-                0x0800249c                RCC_AHBPeriphClockCmd
-                0x080024dc                RCC_APB2PeriphClockCmd
-                0x0800251c                RCC_APB1PeriphClockCmd
-                0x0800255c                RCC_AHBPeriphResetCmd
-                0x0800259c                RCC_APB2PeriphResetCmd
-                0x080025dc                RCC_APB1PeriphResetCmd
-                0x0800261c                RCC_ITConfig
-                0x0800266c                RCC_GetFlagStatus
-                0x08002700                RCC_ClearFlag
-                0x0800271c                RCC_GetITStatus
-                0x08002760                RCC_ClearITPendingBit
+                0x080005dc                copy_string
+                0x08000644                compare_string
+                0x08000694                count_string
+ .text          0x080006e8      0x4f4 ..\obj\uart.o
+                0x080006e8                USART1_IRQHandler
+                0x080007a8                DMA1_Channel2_3_IRQHandler
+                0x080007ec                initUart1
+                0x080008a0                uart1NvicConfig
+                0x080008e4                initUartDma
+                0x08000a08                uart1TxCmd
+                0x08000a9c                uart1CheckRxBuf
+                0x08000b00                task_Uart1
+ .text          0x08000bdc      0x994 ..\obj\flag.o
+                0x08000bdc                CoCreateFlag
+                0x08000c9c                CoDelFlag
+                0x08000dcc                CoAcceptSingleFlag
+                0x08000e54                CoAcceptMultipleFlags
+                0x08000f1c                CoWaitForSingleFlag
+                0x080010a4                CoWaitForMultipleFlags
+                0x08001278                CoClearFlag
+                0x080012d0                CoSetFlag
+                0x080013d4                isr_SetFlag
+                0x080014ec                RemoveLinkNode
+ .text          0x08001570       0xe8 ..\obj\syscalls.o
+                0x08001570                _sbrk
+                0x080015ac                link
+                0x080015c4                _close
+                0x080015d8                _fstat
+                0x080015f4                _isatty
+                0x08001608                _lseek
+                0x08001620                _read
+                0x08001638                _write
+                0x08001650                abort
+ .text          0x08001658      0x1bc ..\obj\core.o
+                0x08001658                CoEnterISR
+                0x08001670                CoExitISR
+                0x080016c4                OsSchedUnlock
+                0x08001714                CoSchedLock
+                0x08001730                CoSchedUnlock
+                0x08001740                CoInitOS
+                0x080017c8                CoStartOS
+                0x08001804                CoGetOSVersion
+ .text          0x08001814       0xec ..\obj\arch.o
+                0x08001814                InitTaskContext
+                0x08001860                SysTick_Handler
+ .text          0x08001900      0x150 ..\obj\serviceReq.o
+                0x08001900                InsertInSRQ
+                0x08001998                RespondSRQ
+ .text          0x08001a50      0x1e8 ..\obj\timer.o
+                0x08001b58                TIM6_DAC_IRQHandler
+                0x08001bc8                initTimers
+ .text          0x08001c38      0xc9c ..\obj\stm32f0xx_rcc.o
+                0x08001c38                RCC_DeInit
+                0x08001cc0                RCC_HSEConfig
+                0x08001ce8                RCC_WaitForHSEStartUp
+                0x08001d48                RCC_AdjustHSICalibrationValue
+                0x08001d84                RCC_HSICmd
+                0x08001dc0                RCC_AdjustHSI14CalibrationValue
+                0x08001dfc                RCC_HSI14Cmd
+                0x08001e38                RCC_HSI14ADCRequestCmd
+                0x08001e74                RCC_LSEConfig
+                0x08001eac                RCC_LSEDriveConfig
+                0x08001ed8                RCC_LSICmd
+                0x08001f14                RCC_PLLConfig
+                0x08001f4c                RCC_PLLCmd
+                0x08001f8c                RCC_HSI48Cmd
+                0x08001fcc                RCC_PREDIV1Config
+                0x08002000                RCC_ClockSecuritySystemCmd
+                0x08002040                RCC_MCOConfig
+                0x08002084                RCC_SYSCLKConfig
+                0x080020b8                RCC_GetSYSCLKSource
+                0x080020d4                RCC_HCLKConfig
+                0x08002108                RCC_PCLKConfig
+                0x08002140                RCC_ADCCLKConfig
+                0x08002194                RCC_CECCLKConfig
+                0x080021c0                RCC_I2CCLKConfig
+                0x080021ec                RCC_USARTCLKConfig
+                0x08002254                RCC_USBCLKConfig
+                0x08002280                RCC_GetClocksFreq
+                0x08002550                RCC_RTCCLKConfig
+                0x08002570                RCC_RTCCLKCmd
+                0x080025b0                RCC_BackupResetCmd
+                0x080025f0                RCC_AHBPeriphClockCmd
+                0x08002630                RCC_APB2PeriphClockCmd
+                0x08002670                RCC_APB1PeriphClockCmd
+                0x080026b0                RCC_AHBPeriphResetCmd
+                0x080026f0                RCC_APB2PeriphResetCmd
+                0x08002730                RCC_APB1PeriphResetCmd
+                0x08002770                RCC_ITConfig
+                0x080027c0                RCC_GetFlagStatus
+                0x08002854                RCC_ClearFlag
+                0x08002870                RCC_GetITStatus
+                0x080028b4                RCC_ClearITPendingBit
  .text.Reset_Handler
-                0x08002780       0x4c ..\obj\startup_stm32f0xx.o
-                0x08002780                Reset_Handler
+                0x080028d4       0x4c ..\obj\startup_stm32f0xx.o
+                0x080028d4                Reset_Handler
  .text.Default_Handler
-                0x080027cc        0x2 ..\obj\startup_stm32f0xx.o
-                0x080027cc                TIM1_CC_IRQHandler
-                0x080027cc                HardFault_Handler
-                0x080027cc                ADC1_COMP_IRQHandler
-                0x080027cc                PVD_IRQHandler
-                0x080027cc                NMI_Handler
-                0x080027cc                SPI1_IRQHandler
-                0x080027cc                EXTI2_3_IRQHandler
-                0x080027cc                I2C2_IRQHandler
-                0x080027cc                TIM17_IRQHandler
-                0x080027cc                RTC_IRQHandler
-                0x080027cc                TIM16_IRQHandler
-                0x080027cc                TIM3_IRQHandler
-                0x080027cc                EXTI4_15_IRQHandler
-                0x080027cc                RCC_IRQHandler
-                0x080027cc                DMA1_Channel1_IRQHandler
-                0x080027cc                Default_Handler
-                0x080027cc                CEC_IRQHandler
-                0x080027cc                TIM14_IRQHandler
-                0x080027cc                DMA1_Channel4_5_IRQHandler
-                0x080027cc                TIM15_IRQHandler
-                0x080027cc                EXTI0_1_IRQHandler
-                0x080027cc                SPI2_IRQHandler
-                0x080027cc                SVC_Handler
-                0x080027cc                TS_IRQHandler
-                0x080027cc                WWDG_IRQHandler
-                0x080027cc                TIM2_IRQHandler
-                0x080027cc                USART2_IRQHandler
-                0x080027cc                FLASH_IRQHandler
-                0x080027cc                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x080027ce        0x2 
- .text          0x080027d0      0x844 ..\obj\task.o
-                0x080027d0                CreateTCBList
-                0x0800284c                InsertToTCBRdyList
-                0x0800295c                RemoveFromTCBRdyList
-                0x080029e0                CoSetPriority
-                0x08002bd0                Schedule
-                0x08002d78                CreateTask
-                0x08002ec0                CoDelTask
-                0x08002fe4                CoExitTask
-                0x08003000                CoGetCurTaskID
- .text          0x08003014      0x1e0 ..\obj\gpio.o
-                0x08003014                initGpio
-                0x0800315c                setGpioOutputs
-                0x080031b0                readGpioOutputs
-                0x080031d4                readGpioInputs
- .text          0x080031f4      0x4c4 ..\obj\kernelHeap.o
-                0x080031f4                CoCreateKheap
-                0x08003238                CoKmalloc
-                0x080033a4                CoKfree
- .text          0x080036b8      0x424 ..\obj\time.o
-                0x080036b8                InsertDelayList
-                0x080037a4                RemoveDelayList
-                0x08003854                CoGetOSTime
-                0x0800386c                CoTickDelay
-                0x080038dc                CoResetTaskDelayTick
-                0x08003964                CoTimeDelay
-                0x08003a2c                TimeDispose
-                0x08003aa8                isr_TimeDispose
- .text          0x08003adc      0x494 ..\obj\stm32f0xx_gpio.o
-                0x08003adc                GPIO_DeInit
-                0x08003bcc                GPIO_Init
-                0x08003cf4                GPIO_StructInit
-                0x08003d28                GPIO_PinLockConfig
-                0x08003d70                GPIO_ReadInputDataBit
-                0x08003db8                GPIO_ReadInputData
-                0x08003dd0                GPIO_ReadOutputDataBit
-                0x08003e18                GPIO_ReadOutputData
-                0x08003e30                GPIO_SetBits
-                0x08003e50                GPIO_ResetBits
-                0x08003e70                GPIO_WriteBit
-                0x08003eac                GPIO_Write
-                0x08003ecc                GPIO_PinAFConfig
- .text          0x08003f70      0x32c ..\obj\hdc1080.o
-                0x08003f70                write_HDC1080_configuration
-                0x08004000                read_HDC1080_configuration
-                0x0800409c                trig_HDC1080
-                0x08004134                init_HDC1080
-                0x0800417c                task_HDC1080
- .text          0x0800429c      0x470 ..\obj\mutex.o
-                0x0800429c                CoCreateMutex
-                0x08004318                CoEnterMutexSection
-                0x080044a0                CoLeaveMutexSection
-                0x080045fc                RemoveMutexList
- .text          0x0800470c      0x464 ..\obj\stm32f0xx_dma.o
-                0x0800470c                DMA_DeInit
-                0x08004894                DMA_Init
-                0x08004910                DMA_StructInit
-                0x08004964                DMA_Cmd
-                0x080049a0                DMA_RemapConfig
-                0x080049e4                DMA_SetCurrDataCounter
-                0x08004a04                DMA_GetCurrDataCounter
-                0x08004a1c                DMA_ITConfig
-                0x08004a58                DMA_GetFlagStatus
-                0x08004ab4                DMA_ClearFlag
-                0x08004ae4                DMA_GetITStatus
-                0x08004b40                DMA_ClearITPendingBit
- .text          0x08004b70      0x364 ..\obj\modbus_func.o
-                0x08004b70                readCoils
-                0x08004bdc                readInputs
-                0x08004c48                readHoldingRegister
-                0x08004d84                writeSingleCoil
-                0x08004ec8                rwDummyFunc
- .text          0x08004ed4      0x3b4 ..\obj\modbus.o
-                0x08004ed4                crc16
-                0x08004f68                checkCrc16
-                0x0800500c                mbReturnException
-                0x0800505c                modbusRTU
- .text          0x08005288       0x24 ..\obj\pub_var.o
-                0x08005288                setParameters
- .text          0x080052ac      0x79c ..\obj\Ostimer.o
-                0x08005588                CoCreateTmr
-                0x08005708                CoStartTmr
-                0x08005788                CoStopTmr
-                0x08005808                CoDelTmr
-                0x08005884                CoGetCurTmrCnt
-                0x080058ec                CoSetTmrCnt
-                0x0800599c                TmrDispose
-                0x08005a14                isr_TmrDispose
- .text          0x08005a48      0xd88 ..\obj\stm32f0xx_usart.o
-                0x08005a48                USART_DeInit
-                0x08005b70                USART_Init
-                0x08005cfc                USART_StructInit
-                0x08005d34                USART_ClockInit
-                0x08005d80                USART_ClockStructInit
-                0x08005da8                USART_Cmd
-                0x08005de4                USART_DirectionModeCmd
-                0x08005e20                USART_OverSampling8Cmd
-                0x08005e60                USART_OneBitMethodCmd
-                0x08005ea0                USART_MSBFirstCmd
-                0x08005ee0                USART_DataInvCmd
-                0x08005f20                USART_InvPinCmd
-                0x08005f5c                USART_SWAPPinCmd
-                0x08005f9c                USART_ReceiverTimeOutCmd
-                0x08005fdc                USART_SetReceiverTimeOut
-                0x08006008                USART_SetPrescaler
-                0x08006044                USART_STOPModeCmd
-                0x08006080                USART_StopModeWakeUpSourceConfig
-                0x080060b0                USART_AutoBaudRateCmd
-                0x080060f0                USART_AutoBaudRateConfig
-                0x08006120                USART_SendData
-                0x08006144                USART_ReceiveData
-                0x08006160                USART_SetAddress
-                0x08006194                USART_MuteModeCmd
-                0x080061d4                USART_MuteModeWakeUpConfig
-                0x08006204                USART_AddressDetectionConfig
-                0x08006230                USART_LINBreakDetectLengthConfig
-                0x0800625c                USART_LINCmd
-                0x0800629c                USART_HalfDuplexCmd
-                0x080062d8                USART_SetGuardTime
-                0x08006318                USART_SmartCardCmd
-                0x08006354                USART_SmartCardNACKCmd
-                0x08006390                USART_SetAutoRetryCount
-                0x080063c8                USART_SetBlockLength
-                0x080063fc                USART_IrDAConfig
-                0x08006428                USART_IrDACmd
-                0x08006464                USART_DECmd
-                0x080064a4                USART_DEPolarityConfig
-                0x080064d4                USART_SetDEAssertionTime
-                0x08006504                USART_SetDEDeassertionTime
-                0x08006534                USART_DMACmd
-                0x08006570                USART_DMAReceptionErrorConfig
-                0x080065a0                USART_ITConfig
-                0x08006624                USART_RequestCmd
-                0x0800666c                USART_OverrunDetectionConfig
-                0x0800669c                USART_GetFlagStatus
-                0x080066d8                USART_ClearFlag
-                0x080066f0                USART_GetITStatus
-                0x080067a0                USART_ClearITPendingBit
- .text          0x080067d0      0x240 ..\obj\system_stm32f0xx.o
-                0x080067d0                SystemInit1
-                0x080067d0                SystemInit
-                0x0800685c                SystemCoreClockUpdate
-                0x0800685c                SystemCoreClockUpdate1
-                0x08006930                SetSysClock
- .text          0x08006a10       0xe4 ..\obj\port.o
-                0x08006a10                Inc8
-                0x08006a38                Dec8
-                0x08006a60                IRQ_ENABLE_RESTORE
-                0x08006a6c                IRQ_DISABLE_SAVE
-                0x08006a78                SetEnvironment
-                0x08006a84                SwitchContext
-                0x08006a94                PendSV_Handler
- .text          0x08006af4      0x130 ..\obj\main.o
-                0x08006af4                rccConfig
-                0x08006b00                task_Led
-                0x08006b30                main
-                0x08006bdc                assert_failed
- .text          0x08006c24      0x420 ..\obj\event.o
-                0x08006c24                CreateEventList
-                0x08006d04                CreatEvent
-                0x08006da4                DeleteEvent
-                0x08006e3c                EventTaskToWait
-                0x08006f3c                EventTaskToRdy
-                0x08006fac                RemoveEventWaittingList
- .text          0x08007044      0x128 ..\obj\stm32f0xx_misc.o
-                0x08007044                NVIC_Init
-                0x080070f0                NVIC_SystemLPConfig
-                0x08007138                SysTick_CLKSourceConfig
- .text          0x0800716c       0x1c ..\obj\hook.o
-                0x0800716c                CoIdleTask
-                0x08007178                CoStkOverflowHook
- .text          0x08007188      0x114 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
-                0x08007188                __aeabi_uidiv
-                0x08007188                __udivsi3
-                0x08007294                __aeabi_uidivmod
- .text          0x0800729c      0x1d4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
-                0x0800729c                __divsi3
-                0x0800729c                __aeabi_idiv
-                0x08007468                __aeabi_idivmod
- .text          0x08007470        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x08007470                __aeabi_idiv0
-                0x08007470                __aeabi_ldiv0
- .text.memset   0x08007474       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
-                0x08007474                memset
- .text.sprintf  0x08007500       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
-                0x08007500                sprintf
+                0x08002920        0x2 ..\obj\startup_stm32f0xx.o
+                0x08002920                TIM1_CC_IRQHandler
+                0x08002920                HardFault_Handler
+                0x08002920                ADC1_COMP_IRQHandler
+                0x08002920                PVD_IRQHandler
+                0x08002920                NMI_Handler
+                0x08002920                SPI1_IRQHandler
+                0x08002920                EXTI2_3_IRQHandler
+                0x08002920                I2C2_IRQHandler
+                0x08002920                TIM17_IRQHandler
+                0x08002920                RTC_IRQHandler
+                0x08002920                TIM16_IRQHandler
+                0x08002920                TIM3_IRQHandler
+                0x08002920                EXTI4_15_IRQHandler
+                0x08002920                RCC_IRQHandler
+                0x08002920                DMA1_Channel1_IRQHandler
+                0x08002920                Default_Handler
+                0x08002920                CEC_IRQHandler
+                0x08002920                TIM14_IRQHandler
+                0x08002920                DMA1_Channel4_5_IRQHandler
+                0x08002920                TIM15_IRQHandler
+                0x08002920                EXTI0_1_IRQHandler
+                0x08002920                SPI2_IRQHandler
+                0x08002920                SVC_Handler
+                0x08002920                TS_IRQHandler
+                0x08002920                WWDG_IRQHandler
+                0x08002920                TIM2_IRQHandler
+                0x08002920                USART2_IRQHandler
+                0x08002920                FLASH_IRQHandler
+                0x08002920                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x08002922        0x2 
+ .text          0x08002924      0x844 ..\obj\task.o
+                0x08002924                CreateTCBList
+                0x080029a0                InsertToTCBRdyList
+                0x08002ab0                RemoveFromTCBRdyList
+                0x08002b34                CoSetPriority
+                0x08002d24                Schedule
+                0x08002ecc                CreateTask
+                0x08003014                CoDelTask
+                0x08003138                CoExitTask
+                0x08003154                CoGetCurTaskID
+ .text          0x08003168      0x2fc ..\obj\hc0x_bluetooth.o
+                0x08003168                change_device_name
+                0x080031d0                mobile_app_interface
+ .text          0x08003464      0x1e0 ..\obj\gpio.o
+                0x08003464                initGpio
+                0x080035ac                setGpioOutputs
+                0x08003600                readGpioOutputs
+                0x08003624                readGpioInputs
+ .text          0x08003644      0x4c4 ..\obj\kernelHeap.o
+                0x08003644                CoCreateKheap
+                0x08003688                CoKmalloc
+                0x080037f4                CoKfree
+ .text          0x08003b08      0x424 ..\obj\time.o
+                0x08003b08                InsertDelayList
+                0x08003bf4                RemoveDelayList
+                0x08003ca4                CoGetOSTime
+                0x08003cbc                CoTickDelay
+                0x08003d2c                CoResetTaskDelayTick
+                0x08003db4                CoTimeDelay
+                0x08003e7c                TimeDispose
+                0x08003ef8                isr_TimeDispose
+ .text          0x08003f2c      0x494 ..\obj\stm32f0xx_gpio.o
+                0x08003f2c                GPIO_DeInit
+                0x0800401c                GPIO_Init
+                0x08004144                GPIO_StructInit
+                0x08004178                GPIO_PinLockConfig
+                0x080041c0                GPIO_ReadInputDataBit
+                0x08004208                GPIO_ReadInputData
+                0x08004220                GPIO_ReadOutputDataBit
+                0x08004268                GPIO_ReadOutputData
+                0x08004280                GPIO_SetBits
+                0x080042a0                GPIO_ResetBits
+                0x080042c0                GPIO_WriteBit
+                0x080042fc                GPIO_Write
+                0x0800431c                GPIO_PinAFConfig
+ .text          0x080043c0      0x314 ..\obj\hdc1080.o
+                0x080043c0                write_HDC1080_configuration
+                0x08004450                read_HDC1080_configuration
+                0x080044ec                trig_HDC1080
+                0x08004584                init_HDC1080
+                0x080045cc                task_HDC1080
+ .text          0x080046d4      0x470 ..\obj\mutex.o
+                0x080046d4                CoCreateMutex
+                0x08004750                CoEnterMutexSection
+                0x080048d8                CoLeaveMutexSection
+                0x08004a34                RemoveMutexList
+ .text          0x08004b44      0x464 ..\obj\stm32f0xx_dma.o
+                0x08004b44                DMA_DeInit
+                0x08004ccc                DMA_Init
+                0x08004d48                DMA_StructInit
+                0x08004d9c                DMA_Cmd
+                0x08004dd8                DMA_RemapConfig
+                0x08004e1c                DMA_SetCurrDataCounter
+                0x08004e3c                DMA_GetCurrDataCounter
+                0x08004e54                DMA_ITConfig
+                0x08004e90                DMA_GetFlagStatus
+                0x08004eec                DMA_ClearFlag
+                0x08004f1c                DMA_GetITStatus
+                0x08004f78                DMA_ClearITPendingBit
+ .text          0x08004fa8      0x364 ..\obj\modbus_func.o
+                0x08004fa8                readCoils
+                0x08005014                readInputs
+                0x08005080                readHoldingRegister
+                0x080051bc                writeSingleCoil
+                0x08005300                rwDummyFunc
+ .text          0x0800530c      0x3b4 ..\obj\modbus.o
+                0x0800530c                crc16
+                0x080053a0                checkCrc16
+                0x08005444                mbReturnException
+                0x08005494                modbusRTU
+ .text          0x080056c0       0x24 ..\obj\pub_var.o
+                0x080056c0                setParameters
+ .text          0x080056e4      0x79c ..\obj\Ostimer.o
+                0x080059c0                CoCreateTmr
+                0x08005b40                CoStartTmr
+                0x08005bc0                CoStopTmr
+                0x08005c40                CoDelTmr
+                0x08005cbc                CoGetCurTmrCnt
+                0x08005d24                CoSetTmrCnt
+                0x08005dd4                TmrDispose
+                0x08005e4c                isr_TmrDispose
+ .text          0x08005e80      0xd88 ..\obj\stm32f0xx_usart.o
+                0x08005e80                USART_DeInit
+                0x08005fa8                USART_Init
+                0x08006134                USART_StructInit
+                0x0800616c                USART_ClockInit
+                0x080061b8                USART_ClockStructInit
+                0x080061e0                USART_Cmd
+                0x0800621c                USART_DirectionModeCmd
+                0x08006258                USART_OverSampling8Cmd
+                0x08006298                USART_OneBitMethodCmd
+                0x080062d8                USART_MSBFirstCmd
+                0x08006318                USART_DataInvCmd
+                0x08006358                USART_InvPinCmd
+                0x08006394                USART_SWAPPinCmd
+                0x080063d4                USART_ReceiverTimeOutCmd
+                0x08006414                USART_SetReceiverTimeOut
+                0x08006440                USART_SetPrescaler
+                0x0800647c                USART_STOPModeCmd
+                0x080064b8                USART_StopModeWakeUpSourceConfig
+                0x080064e8                USART_AutoBaudRateCmd
+                0x08006528                USART_AutoBaudRateConfig
+                0x08006558                USART_SendData
+                0x0800657c                USART_ReceiveData
+                0x08006598                USART_SetAddress
+                0x080065cc                USART_MuteModeCmd
+                0x0800660c                USART_MuteModeWakeUpConfig
+                0x0800663c                USART_AddressDetectionConfig
+                0x08006668                USART_LINBreakDetectLengthConfig
+                0x08006694                USART_LINCmd
+                0x080066d4                USART_HalfDuplexCmd
+                0x08006710                USART_SetGuardTime
+                0x08006750                USART_SmartCardCmd
+                0x0800678c                USART_SmartCardNACKCmd
+                0x080067c8                USART_SetAutoRetryCount
+                0x08006800                USART_SetBlockLength
+                0x08006834                USART_IrDAConfig
+                0x08006860                USART_IrDACmd
+                0x0800689c                USART_DECmd
+                0x080068dc                USART_DEPolarityConfig
+                0x0800690c                USART_SetDEAssertionTime
+                0x0800693c                USART_SetDEDeassertionTime
+                0x0800696c                USART_DMACmd
+                0x080069a8                USART_DMAReceptionErrorConfig
+                0x080069d8                USART_ITConfig
+                0x08006a5c                USART_RequestCmd
+                0x08006aa4                USART_OverrunDetectionConfig
+                0x08006ad4                USART_GetFlagStatus
+                0x08006b10                USART_ClearFlag
+                0x08006b28                USART_GetITStatus
+                0x08006bd8                USART_ClearITPendingBit
+ .text          0x08006c08       0xe4 ..\obj\port.o
+                0x08006c08                Inc8
+                0x08006c30                Dec8
+                0x08006c58                IRQ_ENABLE_RESTORE
+                0x08006c64                IRQ_DISABLE_SAVE
+                0x08006c70                SetEnvironment
+                0x08006c7c                SwitchContext
+                0x08006c8c                PendSV_Handler
+ .text          0x08006cec      0x240 ..\obj\system_stm32f0xx.o
+                0x08006cec                SystemInit1
+                0x08006cec                SystemInit
+                0x08006d78                SystemCoreClockUpdate
+                0x08006d78                SystemCoreClockUpdate1
+                0x08006e4c                SetSysClock
+ .text          0x08006f2c       0xfc ..\obj\main.o
+                0x08006f2c                rccConfig
+                0x08006f38                task_Led
+                0x08006f68                main
+ .text          0x08007028      0x420 ..\obj\event.o
+                0x08007028                CreateEventList
+                0x08007108                CreatEvent
+                0x080071a8                DeleteEvent
+                0x08007240                EventTaskToWait
+                0x08007340                EventTaskToRdy
+                0x080073b0                RemoveEventWaittingList
+ .text          0x08007448      0x128 ..\obj\stm32f0xx_misc.o
+                0x08007448                NVIC_Init
+                0x080074f4                NVIC_SystemLPConfig
+                0x0800753c                SysTick_CLKSourceConfig
+ .text          0x08007570       0x1c ..\obj\hook.o
+                0x08007570                CoIdleTask
+                0x0800757c                CoStkOverflowHook
+ .text          0x0800758c      0x114 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                0x0800758c                __aeabi_uidiv
+                0x0800758c                __udivsi3
+                0x08007698                __aeabi_uidivmod
+ .text          0x080076a0      0x1d4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+                0x080076a0                __divsi3
+                0x080076a0                __aeabi_idiv
+                0x0800786c                __aeabi_idivmod
+ .text          0x08007874        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x08007874                __aeabi_idiv0
+                0x08007874                __aeabi_ldiv0
+ .text.memcpy   0x08007878       0x7c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+                0x08007878                memcpy
+ .text.memset   0x080078f4       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
+                0x080078f4                memset
+ .text.sprintf  0x08007980       0x44 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
+                0x08007980                sprintf
  .text._svfprintf_r
-                0x08007544     0x1820 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
-                0x08007544                _svfprintf_r
+                0x080079c4     0x1820 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+                0x080079c4                _svfprintf_r
  .text.startup.register_fini
-                0x08008d64       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x08008d7c       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
-                0x08008d7c                atexit
- .text.quorem   0x08008d8c      0x150 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
- .text._dtoa_r  0x08008edc      0xf54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
-                0x08008edc                _dtoa_r
+                0x080091e4       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x080091fc       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
+                0x080091fc                atexit
+ .text.quorem   0x0800920c      0x150 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x0800935c      0xf54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
+                0x0800935c                _dtoa_r
  .text.__libc_fini_array
-                0x08009e30       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
-                0x08009e30                __libc_fini_array
+                0x0800a2b0       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
+                0x0800a2b0                __libc_fini_array
  .text._localeconv_r
-                0x08009e64       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
-                0x08009e64                _localeconv_r
+                0x0800a2e4       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
+                0x0800a2e4                _localeconv_r
  .text._malloc_r
-                0x08009e80      0x554 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x08009e80                _malloc_r
- .text.memchr   0x0800a3d4       0x90 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
-                0x0800a3d4                memchr
- .text.memcpy   0x0800a464       0x7c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
-                0x0800a464                memcpy
+                0x0800a300      0x554 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x0800a300                _malloc_r
+ .text.memchr   0x0800a854       0x90 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
+                0x0800a854                memchr
  .text.__malloc_lock
-                0x0800a4e0        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
-                0x0800a4e0                __malloc_lock
+                0x0800a8e4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
+                0x0800a8e4                __malloc_lock
  .text.__malloc_unlock
-                0x0800a4e4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
-                0x0800a4e4                __malloc_unlock
- .text._Balloc  0x0800a4e8       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a4e8                _Balloc
- .text._Bfree   0x0800a538       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a538                _Bfree
+                0x0800a8e8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
+                0x0800a8e8                __malloc_unlock
+ .text._Balloc  0x0800a8ec       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800a8ec                _Balloc
+ .text._Bfree   0x0800a93c       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800a93c                _Bfree
  .text.__multadd
-                0x0800a54c       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a54c                __multadd
+                0x0800a950       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800a950                __multadd
  .text.__hi0bits
-                0x0800a5d8       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a5d8                __hi0bits
+                0x0800a9dc       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800a9dc                __hi0bits
  .text.__lo0bits
-                0x0800a614       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a614                __lo0bits
- .text.__i2b    0x0800a670       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a670                __i2b
+                0x0800aa18       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800aa18                __lo0bits
+ .text.__i2b    0x0800aa74       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800aa74                __i2b
  .text.__multiply
-                0x0800a684      0x15c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a684                __multiply
+                0x0800aa88      0x15c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800aa88                __multiply
  .text.__pow5mult
-                0x0800a7e0       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a7e0                __pow5mult
+                0x0800abe4       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800abe4                __pow5mult
  .text.__lshift
-                0x0800a89c       0xc0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a89c                __lshift
- .text.__mcmp   0x0800a95c       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a95c                __mcmp
- .text.__mdiff  0x0800a998      0x11c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800a998                __mdiff
- .text.__d2b    0x0800aab4       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800aab4                __d2b
- .text._sbrk_r  0x0800ab70       0x24 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
-                0x0800ab70                _sbrk_r
- .text.strlen   0x0800ab94       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
-                0x0800ab94                strlen
+                0x0800aca0       0xc0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800aca0                __lshift
+ .text.__mcmp   0x0800ad60       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800ad60                __mcmp
+ .text.__mdiff  0x0800ad9c      0x11c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800ad9c                __mdiff
+ .text.__d2b    0x0800aeb8       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800aeb8                __d2b
+ .text._sbrk_r  0x0800af74       0x24 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
+                0x0800af74                _sbrk_r
+ .text.strlen   0x0800af98       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
+                0x0800af98                strlen
  .text.__ssprint_r
-                0x0800abfc      0x130 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
-                0x0800abfc                __ssprint_r
+                0x0800b000      0x130 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
+                0x0800b000                __ssprint_r
  .text.__register_exitproc
-                0x0800ad2c       0xd4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
-                0x0800ad2c                __register_exitproc
+                0x0800b130       0xd4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
+                0x0800b130                __register_exitproc
  .text._calloc_r
-                0x0800ae00       0x60 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
-                0x0800ae00                _calloc_r
+                0x0800b204       0x60 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
+                0x0800b204                _calloc_r
  .text._malloc_trim_r
-                0x0800ae60       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
-                0x0800ae60                _malloc_trim_r
- .text._free_r  0x0800af00      0x1c4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
-                0x0800af00                _free_r
+                0x0800b264       0xa0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
+                0x0800b264                _malloc_trim_r
+ .text._free_r  0x0800b304      0x1c4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
+                0x0800b304                _free_r
  .text.__ascii_mbtowc
-                0x0800b0c4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
-                0x0800b0c4                __ascii_mbtowc
- .text.memmove  0x0800b0f0       0x98 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
-                0x0800b0f0                memmove
+                0x0800b4c8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
+                0x0800b4c8                __ascii_mbtowc
+ .text.memmove  0x0800b4f4       0x98 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
+                0x0800b4f4                memmove
  .text._realloc_r
-                0x0800b188      0x3dc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
-                0x0800b188                _realloc_r
+                0x0800b58c      0x3dc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
+                0x0800b58c                _realloc_r
  .text.__ascii_wctomb
-                0x0800b564       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
-                0x0800b564                __ascii_wctomb
- .text          0x0800b580       0x7c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_arm_cmpdf2.o)
-                0x0800b580                __aeabi_cdrcmple
-                0x0800b590                __aeabi_cdcmple
-                0x0800b590                __aeabi_cdcmpeq
-                0x0800b5a0                __aeabi_dcmpeq
-                0x0800b5ac                __aeabi_dcmplt
-                0x0800b5c0                __aeabi_dcmple
-                0x0800b5d4                __aeabi_dcmpgt
-                0x0800b5e8                __aeabi_dcmpge
- .text          0x0800b5fc       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_aeabi_uldivmod.o)
-                0x0800b5fc                __aeabi_uldivmod
- .text          0x0800b63c      0x180 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
-                0x0800b63c                __udivmoddi4
- .text          0x0800b7bc      0x658 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
-                0x0800b7bc                __aeabi_dadd
- .text          0x0800be14      0x62c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
-                0x0800be14                __aeabi_ddiv
- .text          0x0800c440       0x80 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
-                0x0800c440                __nedf2
-                0x0800c440                __eqdf2
- .text          0x0800c4c0       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
-                0x0800c4c0                __gedf2
-                0x0800c4c0                __gtdf2
- .text          0x0800c588       0xd4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
-                0x0800c588                __ledf2
-                0x0800c588                __ltdf2
- .text          0x0800c65c      0x4f4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
-                0x0800c65c                __aeabi_dmul
- .text          0x0800cb50      0x6a8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
-                0x0800cb50                __aeabi_dsub
- .text          0x0800d1f8       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
-                0x0800d1f8                __aeabi_dcmpun
- .text          0x0800d238       0x6c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
-                0x0800d238                __aeabi_d2iz
- .text          0x0800d2a4       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
-                0x0800d2a4                __aeabi_i2d
- .text          0x0800d328       0x70 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
-                0x0800d328                __aeabi_ui2d
- .text          0x0800d398       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzsi2.o)
-                0x0800d398                __clzsi2
- .text          0x0800d3d4       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzdi2.o)
-                0x0800d3d4                __clzdi2
+                0x0800b968       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
+                0x0800b968                __ascii_wctomb
+ .text          0x0800b984       0x7c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_arm_cmpdf2.o)
+                0x0800b984                __aeabi_cdrcmple
+                0x0800b994                __aeabi_cdcmple
+                0x0800b994                __aeabi_cdcmpeq
+                0x0800b9a4                __aeabi_dcmpeq
+                0x0800b9b0                __aeabi_dcmplt
+                0x0800b9c4                __aeabi_dcmple
+                0x0800b9d8                __aeabi_dcmpgt
+                0x0800b9ec                __aeabi_dcmpge
+ .text          0x0800ba00       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_aeabi_uldivmod.o)
+                0x0800ba00                __aeabi_uldivmod
+ .text          0x0800ba40      0x180 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
+                0x0800ba40                __udivmoddi4
+ .text          0x0800bbc0      0x658 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
+                0x0800bbc0                __aeabi_dadd
+ .text          0x0800c218      0x62c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
+                0x0800c218                __aeabi_ddiv
+ .text          0x0800c844       0x80 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
+                0x0800c844                __nedf2
+                0x0800c844                __eqdf2
+ .text          0x0800c8c4       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
+                0x0800c8c4                __gedf2
+                0x0800c8c4                __gtdf2
+ .text          0x0800c98c       0xd4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
+                0x0800c98c                __ledf2
+                0x0800c98c                __ltdf2
+ .text          0x0800ca60      0x4f4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
+                0x0800ca60                __aeabi_dmul
+ .text          0x0800cf54      0x6a8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
+                0x0800cf54                __aeabi_dsub
+ .text          0x0800d5fc       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
+                0x0800d5fc                __aeabi_dcmpun
+ .text          0x0800d63c       0x6c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
+                0x0800d63c                __aeabi_d2iz
+ .text          0x0800d6a8       0x84 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
+                0x0800d6a8                __aeabi_i2d
+ .text          0x0800d72c       0x70 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
+                0x0800d72c                __aeabi_ui2d
+ .text          0x0800d79c       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzsi2.o)
+                0x0800d79c                __clzsi2
+ .text          0x0800d7d8       0x18 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzdi2.o)
+                0x0800d7d8                __clzdi2
  *(.init)
- .init          0x0800d3ec        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
-                0x0800d3ec                _init
- .init          0x0800d3f0        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+ .init          0x0800d7f0        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x0800d7f0                _init
+ .init          0x0800d7f4        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
  *(.fini)
- .fini          0x0800d3f8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
-                0x0800d3f8                _fini
- .fini          0x0800d3fc        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+ .fini          0x0800d7fc        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x0800d7fc                _fini
+ .fini          0x0800d800        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -949,265 +946,268 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x0800d404       0x52 ..\obj\modbus_func.o
-                0x0800d418                stHoldingRegArray
-                0x0800d454                sizeOfHoldingRegister
- *fill*         0x0800d456        0x2 
- .rodata        0x0800d458      0x244 ..\obj\modbus.o
-                0x0800d458                stCrcTable
- .rodata        0x0800d69c        0x9 ..\obj\main.o
- *fill*         0x0800d6a5        0x3 
+ .rodata        0x0800d808       0xaa ..\obj\hc0x_bluetooth.o
+ *fill*         0x0800d8b2        0x2 
+ .rodata        0x0800d8b4       0x52 ..\obj\modbus_func.o
+                0x0800d8c8                stHoldingRegArray
+                0x0800d904                sizeOfHoldingRegister
+ *fill*         0x0800d906        0x2 
+ .rodata        0x0800d908      0x244 ..\obj\modbus.o
+                0x0800d908                stCrcTable
+ .rodata        0x0800db4c        0xd ..\obj\main.o
+ *fill*         0x0800db59        0x3 
  .rodata._global_impure_ptr
-                0x0800d6a8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
-                0x0800d6a8                _global_impure_ptr
+                0x0800db5c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
+                0x0800db5c                _global_impure_ptr
  .rodata._svfprintf_r
-                0x0800d6ac      0x164 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+                0x0800db60      0x164 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
  .rodata.zeroes.7256
-                0x0800d810       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+                0x0800dcc4       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800d820       0x42 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
- *fill*         0x0800d862        0x2 
+                0x0800dcd4       0x42 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+ *fill*         0x0800dd16        0x2 
  .rodata.blanks.7255
-                0x0800d864       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+                0x0800dd18       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800d874       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
+                0x0800dd28       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
- *fill*         0x0800d884        0x4 
  .rodata.__mprec_tens
-                0x0800d888       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800d888                __mprec_tens
+                0x0800dd38       0xc8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800dd38                __mprec_tens
  .rodata.p05.6085
-                0x0800d950        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
- *fill*         0x0800d95c        0x4 
+                0x0800de00        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+ *fill*         0x0800de0c        0x4 
  .rodata.__mprec_bigtens
-                0x0800d960       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
-                0x0800d960                __mprec_bigtens
+                0x0800de10       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x0800de10                __mprec_bigtens
  .rodata.str1.4
-                0x0800d988       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
+                0x0800de38       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
  .rodata._ctype_
-                0x0800d998      0x101 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-ctype_.o)
-                0x0800d998                _ctype_
- *fill*         0x0800da99        0x3 
- .rodata        0x0800da9c       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
- .rodata        0x0800dadc       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
+                0x0800de48      0x101 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-ctype_.o)
+                0x0800de48                _ctype_
+ *fill*         0x0800df49        0x3 
+ .rodata        0x0800df4c       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
+ .rodata        0x0800df8c       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
  *(.eh_fram e*)
 
-.eh_frame       0x0800db1c        0x0
- .eh_frame      0x0800db1c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.eh_frame       0x0800dfcc        0x0
+ .eh_frame      0x0800dfcc        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
-.glue_7         0x0800db1c        0x0
- .glue_7        0x0800db1c        0x0 linker stubs
+.glue_7         0x0800dfcc        0x0
+ .glue_7        0x0800dfcc        0x0 linker stubs
 
-.glue_7t        0x0800db1c        0x0
- .glue_7t       0x0800db1c        0x0 linker stubs
+.glue_7t        0x0800dfcc        0x0
+ .glue_7t       0x0800dfcc        0x0 linker stubs
 
-.vfp11_veneer   0x0800db1c        0x0
- .vfp11_veneer  0x0800db1c        0x0 linker stubs
+.vfp11_veneer   0x0800dfcc        0x0
+ .vfp11_veneer  0x0800dfcc        0x0 linker stubs
 
-.v4_bx          0x0800db1c        0x0
- .v4_bx         0x0800db1c        0x0 linker stubs
+.v4_bx          0x0800dfcc        0x0
+ .v4_bx         0x0800dfcc        0x0 linker stubs
 
-.iplt           0x0800db1c        0x0
- .iplt          0x0800db1c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.iplt           0x0800dfcc        0x0
+ .iplt          0x0800dfcc        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800db1c                __exidx_start = .
+                0x0800dfcc                __exidx_start = .
 
-.ARM.exidx      0x0800db1c        0x8
+.ARM.exidx      0x0800dfcc        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0800db1c        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
-                0x0800db24                __exidx_end = .
-                0x0800db24                __etext = .
-                0x0800db24                _sidata = __etext
+ .ARM.exidx     0x0800dfcc        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
+                0x0800dfd4                __exidx_end = .
+                0x0800dfd4                __etext = .
+                0x0800dfd4                _sidata = __etext
 
-.rel.dyn        0x0800db24        0x0
- .rel.iplt      0x0800db24        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.rel.dyn        0x0800dfd4        0x0
+ .rel.iplt      0x0800dfd4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
-.data           0x20000000      0xa10 load address 0x0800db24
+.data           0x20000000      0xa30 load address 0x0800dfd4
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
  *(.data*)
- .data          0x20000000       0x22 ..\obj\uart.o
+ .data          0x20000000       0x42 ..\obj\uart.o
                 0x20000000                uart1Tx
- *fill*         0x20000022        0x2 
- .data          0x20000024       0x10 ..\obj\stm32f0xx_rcc.o
- .data          0x20000034        0x4 ..\obj\modbus_func.o
-                0x20000034                ulPar1
- .data          0x20000038       0x14 ..\obj\system_stm32f0xx.o
-                0x20000038                SystemCoreClock
-                0x2000003c                AHBPrescTable
- .data          0x2000004c        0xc ..\obj\port.o
-                0x2000004c                NVIC_INT_CTRL
-                0x20000050                NVIC_PENDSVSET
-                0x20000054                INT_EXIT
+ *fill*         0x20000042        0x2 
+ .data          0x20000044       0x10 ..\obj\stm32f0xx_rcc.o
+ .data          0x20000054        0x4 ..\obj\modbus_func.o
+                0x20000054                ulPar1
+ .data          0x20000058        0xc ..\obj\port.o
+                0x20000058                NVIC_INT_CTRL
+                0x2000005c                NVIC_PENDSVSET
+                0x20000060                INT_EXIT
+ .data          0x20000064       0x14 ..\obj\system_stm32f0xx.o
+                0x20000064                SystemCoreClock
+                0x20000068                AHBPrescTable
  .data.impure_data
-                0x20000058      0x428 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
+                0x20000078      0x428 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
  .data._impure_ptr
-                0x20000480        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
-                0x20000480                _impure_ptr
+                0x200004a0        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
+                0x200004a0                _impure_ptr
  .data.__malloc_av_
-                0x20000484      0x408 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000484                __malloc_av_
+                0x200004a4      0x408 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x200004a4                __malloc_av_
  .data.__malloc_trim_threshold
-                0x2000088c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x2000088c                __malloc_trim_threshold
+                0x200008ac        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x200008ac                __malloc_trim_threshold
  .data.__malloc_sbrk_base
-                0x20000890        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000890                __malloc_sbrk_base
+                0x200008b0        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x200008b0                __malloc_sbrk_base
  .data.__global_locale
-                0x20000894      0x16c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
-                0x20000894                __global_locale
-                0x20000a00                . = ALIGN (0x4)
-                0x20000a00                PROVIDE (__preinit_array_start, .)
+                0x200008b4      0x16c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
+                0x200008b4                __global_locale
+                0x20000a20                . = ALIGN (0x4)
+                0x20000a20                PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
-                0x20000a00                PROVIDE (__preinit_array_end, .)
-                0x20000a00                . = ALIGN (0x4)
-                0x20000a00                PROVIDE (__init_array_start, .)
+                0x20000a20                PROVIDE (__preinit_array_end, .)
+                0x20000a20                . = ALIGN (0x4)
+                0x20000a20                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  .init_array.00000
-                0x20000a00        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
+                0x20000a20        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
  *(.init_array)
- .init_array    0x20000a04        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
-                0x20000a08                PROVIDE (__init_array_end, .)
-                0x20000a08                . = ALIGN (0x4)
-                0x20000a08                PROVIDE (__fini_array_start, .)
+ .init_array    0x20000a24        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+                0x20000a28                PROVIDE (__init_array_end, .)
+                0x20000a28                . = ALIGN (0x4)
+                0x20000a28                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array)
- .fini_array    0x20000a08        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
-                0x20000a0c                PROVIDE (__fini_array_end, .)
+ .fini_array    0x20000a28        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+                0x20000a2c                PROVIDE (__fini_array_end, .)
  *(.jcr*)
- .jcr           0x20000a0c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
- .jcr           0x20000a0c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
-                0x20000a10                . = ALIGN (0x4)
-                0x20000a10                __data_end__ = .
-                0x20000a10                _edata = __data_end__
+ .jcr           0x20000a2c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .jcr           0x20000a2c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+                0x20000a30                . = ALIGN (0x4)
+                0x20000a30                __data_end__ = .
+                0x20000a30                _edata = __data_end__
 
-.igot.plt       0x20000a10        0x0 load address 0x0800e534
- .igot.plt      0x20000a10        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.igot.plt       0x20000a30        0x0 load address 0x0800ea04
+ .igot.plt      0x20000a30        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
-.bss            0x20000a10      0xbcc load address 0x0800e538
-                0x20000a10                . = ALIGN (0x4)
-                0x20000a10                __bss_start__ = .
-                0x20000a10                _sbss = __bss_start__
+.bss            0x20000a30      0xc14 load address 0x0800ea08
+                0x20000a30                . = ALIGN (0x4)
+                0x20000a30                __bss_start__ = .
+                0x20000a30                _sbss = __bss_start__
  *(.bss*)
- .bss           0x20000a10       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
- .bss           0x20000a2c       0x4e ..\obj\i2c.o
-                0x20000a2c                ucI2CTxBuf
-                0x20000a4c                ucI2CRxBuf
-                0x20000a6c                stI2cMsgTx
-                0x20000a70                stI2cStatus
-                0x20000a71                ucI2CMasterSendStartStop
-                0x20000a74                ulTempI2C
-                0x20000a78                uiTimerI2C
- *fill*         0x20000a7a        0x2 
- .bss           0x20000a7c       0x4c ..\obj\uart.o
-                0x20000a7c                uart1Rx
-                0x20000ac0                uart1Flags
-                0x20000ac5                uiTmp
-                0x20000ac6                uiTimerUart1
- .bss           0x20000ac8       0x14 ..\obj\flag.o
-                0x20000ac8                FlagCrl
- .bss           0x20000adc        0x4 ..\obj\syscalls.o
- .bss           0x20000ae0        0x3 ..\obj\core.o
-                0x20000ae0                OSIntNesting
-                0x20000ae1                OSSchedLock
-                0x20000ae2                TaskSchedReq
- *fill*         0x20000ae3        0x5 
- .bss           0x20000ae8        0x8 ..\obj\arch.o
-                0x20000ae8                OSTickCnt
- .bss           0x20000af0       0x2f ..\obj\serviceReq.o
-                0x20000af0                ServiceReq
-                0x20000b1c                IsrReq
-                0x20000b1d                TimeReq
-                0x20000b1e                TimerReq
- *fill*         0x20000b1f        0x1 
- .bss           0x20000b20      0x188 ..\obj\task.o
-                0x20000b20                TCBTbl
-                0x20000c28                idle_stk
-                0x20000c8c                FreeTCB
-                0x20000c90                TCBRdy
-                0x20000c94                TCBNext
-                0x20000c98                TCBRunning
-                0x20000ca0                OSCheckTime
- .bss           0x20000ca8       0xd4 ..\obj\kernelHeap.o
-                0x20000ca8                KernelHeap
-                0x20000d70                FMBlist
-                0x20000d74                Kheap
- .bss           0x20000d7c        0x4 ..\obj\time.o
-                0x20000d7c                DlyList
- .bss           0x20000d80        0x8 ..\obj\hdc1080.o
-                0x20000d80                stTempHum
-                0x20000d84                stHDC1080Status
-                0x20000d86                uiTimerHDC1080
- .bss           0x20000d88       0x54 ..\obj\mutex.o
-                0x20000d88                MutexFreeID
-                0x20000d8c                MutexTbl
- .bss           0x20000ddc        0x2 ..\obj\modbus.o
-                0x20000ddc                uiWordQty
- *fill*         0x20000dde        0x2 
- .bss           0x20000de0       0x38 ..\obj\Ostimer.o
-                0x20000de0                TmrTbl
-                0x20000e10                TmrList
-                0x20000e14                TmrIDVessel
- .bss           0x20000e18      0x144 ..\obj\event.o
-                0x20000e18                EventTbl
-                0x20000f58                FreeEventList
+ .bss           0x20000a30       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .bss           0x20000a4c       0x4e ..\obj\i2c.o
+                0x20000a4c                ucI2CTxBuf
+                0x20000a6c                ucI2CRxBuf
+                0x20000a8c                stI2cMsgTx
+                0x20000a90                stI2cStatus
+                0x20000a91                ucI2CMasterSendStartStop
+                0x20000a94                ulTempI2C
+                0x20000a98                uiTimerI2C
+ *fill*         0x20000a9a        0x2 
+ .bss           0x20000a9c       0x90 ..\obj\uart.o
+                0x20000a9c                uart1Rx
+                0x20000b24                uart1Flags
+                0x20000b29                uiTmp
+                0x20000b2a                uiTimerUart1
+ .bss           0x20000b2c       0x14 ..\obj\flag.o
+                0x20000b2c                FlagCrl
+ .bss           0x20000b40        0x4 ..\obj\syscalls.o
+ .bss           0x20000b44        0x3 ..\obj\core.o
+                0x20000b44                OSIntNesting
+                0x20000b45                OSSchedLock
+                0x20000b46                TaskSchedReq
+ *fill*         0x20000b47        0x1 
+ .bss           0x20000b48        0x8 ..\obj\arch.o
+                0x20000b48                OSTickCnt
+ .bss           0x20000b50        0x4 ..\obj\stepper_motor.o
+                0x20000b50                stStepperMotorControl
+ .bss           0x20000b54       0x2f ..\obj\serviceReq.o
+                0x20000b54                ServiceReq
+                0x20000b80                IsrReq
+                0x20000b81                TimeReq
+                0x20000b82                TimerReq
+ *fill*         0x20000b83        0x5 
+ .bss           0x20000b88      0x188 ..\obj\task.o
+                0x20000b88                TCBTbl
+                0x20000c90                idle_stk
+                0x20000cf4                FreeTCB
+                0x20000cf8                TCBRdy
+                0x20000cfc                TCBNext
+                0x20000d00                TCBRunning
+                0x20000d08                OSCheckTime
+ .bss           0x20000d10       0xd4 ..\obj\kernelHeap.o
+                0x20000d10                KernelHeap
+                0x20000dd8                FMBlist
+                0x20000ddc                Kheap
+ .bss           0x20000de4        0x4 ..\obj\time.o
+                0x20000de4                DlyList
+ .bss           0x20000de8        0x8 ..\obj\hdc1080.o
+                0x20000de8                stTempHum
+                0x20000dec                stHDC1080Status
+                0x20000dee                uiTimerHDC1080
+ .bss           0x20000df0       0x54 ..\obj\mutex.o
+                0x20000df0                MutexFreeID
+                0x20000df4                MutexTbl
+ .bss           0x20000e44        0x2 ..\obj\modbus.o
+                0x20000e44                uiWordQty
+ *fill*         0x20000e46        0x2 
+ .bss           0x20000e48       0x38 ..\obj\Ostimer.o
+                0x20000e48                TmrTbl
+                0x20000e78                TmrList
+                0x20000e7c                TmrIDVessel
+ .bss           0x20000e80      0x144 ..\obj\event.o
+                0x20000e80                EventTbl
+                0x20000fc0                FreeEventList
  .bss.__malloc_max_total_mem
-                0x20000f5c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000f5c                __malloc_max_total_mem
+                0x20000fc4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x20000fc4                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x20000f60        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000f60                __malloc_max_sbrked_mem
+                0x20000fc8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x20000fc8                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x20000f64        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000f64                __malloc_top_pad
+                0x20000fcc        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x20000fcc                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x20000f68       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
-                0x20000f68                __malloc_current_mallinfo
+                0x20000fd0       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x20000fd0                __malloc_current_mallinfo
  *(COMMON)
- COMMON         0x20000f90        0x8 ..\obj\i2c.o
-                0x20000f90                i2cRxBufPtr
-                0x20000f94                i2cTxBufPtr
- COMMON         0x20000f98        0xc ..\obj\gpio.o
-                0x20000f98                ulOutputs
-                0x20000f9c                ulTmp
-                0x20000fa0                ulInputs
- COMMON         0x20000fa4       0x14 ..\obj\modbus_func.o
-                0x20000fa4                ulMfTmp
-                0x20000fa8                ptruChar
-                0x20000fac                uiMfTmp
-                0x20000fb0                uistMfTmp
-                0x20000fb4                ptruInt
- COMMON         0x20000fb8       0x10 ..\obj\modbus.o
-                0x20000fb8                mbTxRxData
- COMMON         0x20000fc8        0xa ..\obj\pub_var.o
-                0x20000fc8                sys_par
- *fill*         0x20000fd2        0x2 
- COMMON         0x20000fd4      0x604 ..\obj\main.o
-                0x20000fd4                flag_UartTimeout
-                0x20000fd5                mutex_I2C
-                0x20000fd8                taskHDC1080_stk
-                0x200011d8                taskLed_stk
-                0x200013d8                taskUart_stk
- COMMON         0x200015d8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
-                0x200015d8                errno
-                0x200015dc                . = ALIGN (0x4)
-                0x200015dc                __bss_end__ = .
-                0x200015dc                _ebss = __bss_end__
+ COMMON         0x20000ff8        0x8 ..\obj\i2c.o
+                0x20000ff8                i2cRxBufPtr
+                0x20000ffc                i2cTxBufPtr
+ COMMON         0x20001000        0xc ..\obj\gpio.o
+                0x20001000                ulOutputs
+                0x20001004                ulTmp
+                0x20001008                ulInputs
+ COMMON         0x2000100c       0x14 ..\obj\modbus_func.o
+                0x2000100c                ulMfTmp
+                0x20001010                ptruChar
+                0x20001014                uiMfTmp
+                0x20001018                uistMfTmp
+                0x2000101c                ptruInt
+ COMMON         0x20001020       0x10 ..\obj\modbus.o
+                0x20001020                mbTxRxData
+ COMMON         0x20001030        0xa ..\obj\pub_var.o
+                0x20001030                sys_par
+ *fill*         0x2000103a        0x2 
+ COMMON         0x2000103c      0x604 ..\obj\main.o
+                0x2000103c                flag_UartTimeout
+                0x2000103d                mutex_I2C
+                0x20001040                taskHDC1080_stk
+                0x20001240                taskLed_stk
+                0x20001440                taskUart_stk
+ COMMON         0x20001640        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
+                0x20001640                errno
+                0x20001644                . = ALIGN (0x4)
+                0x20001644                __bss_end__ = .
+                0x20001644                _ebss = __bss_end__
 
-.heap           0x200015dc        0x0
-                0x200015dc                __end__ = .
-                0x200015dc                _end = __end__
-                0x200015dc                end = __end__
+.heap           0x20001644        0x0
+                0x20001644                __end__ = .
+                0x20001644                _end = __end__
+                0x20001644                end = __end__
  *(.heap*)
-                0x200015dc                __HeapLimit = .
+                0x20001644                __HeapLimit = .
 
-.co_stack       0x200015dc        0x4 load address 0x0800f104
-                0x200015e0                . = ALIGN (0x8)
- *fill*         0x200015dc        0x4 
+.co_stack       0x20001644        0x4 load address 0x0800f61c
+                0x20001648                . = ALIGN (0x8)
+ *fill*         0x20001644        0x4 
  *(.co_stack .co_stack.*)
                 0x20002000                __StackTop = (ORIGIN (ram) + LENGTH (ram))
                 0x20001ffc                __StackLimit = (__StackTop - SIZEOF (.co_stack))
@@ -1221,13 +1221,14 @@ LOAD ..\obj\flag.o
 LOAD ..\obj\syscalls.o
 LOAD ..\obj\core.o
 LOAD ..\obj\arch.o
-LOAD ..\obj\serviceReq.o
 LOAD ..\obj\stepper_motor.o
+LOAD ..\obj\serviceReq.o
 LOAD ..\obj\timer.o
 LOAD ..\obj\stm32f0xx_rcc.o
 LOAD ..\obj\stm32f0xx_i2c.o
 LOAD ..\obj\startup_stm32f0xx.o
 LOAD ..\obj\task.o
+LOAD ..\obj\hc0x_bluetooth.o
 LOAD ..\obj\sem.o
 LOAD ..\obj\gpio.o
 LOAD ..\obj\kernelHeap.o
@@ -1243,8 +1244,8 @@ LOAD ..\obj\modbus.o
 LOAD ..\obj\pub_var.o
 LOAD ..\obj\Ostimer.o
 LOAD ..\obj\stm32f0xx_usart.o
-LOAD ..\obj\system_stm32f0xx.o
 LOAD ..\obj\port.o
+LOAD ..\obj\system_stm32f0xx.o
 LOAD ..\obj\utility.o
 LOAD ..\obj\main.o
 LOAD ..\obj\event.o
@@ -1280,147 +1281,151 @@ OUTPUT(STM32F030_V2.elf elf32-littlearm)
  .ARM.attributes
                 0x00000170       0x31 ..\obj\arch.o
  .ARM.attributes
-                0x000001a1       0x31 ..\obj\serviceReq.o
+                0x000001a1       0x31 ..\obj\stepper_motor.o
  .ARM.attributes
-                0x000001d2       0x31 ..\obj\timer.o
+                0x000001d2       0x31 ..\obj\serviceReq.o
  .ARM.attributes
-                0x00000203       0x31 ..\obj\stm32f0xx_rcc.o
+                0x00000203       0x31 ..\obj\timer.o
  .ARM.attributes
-                0x00000234       0x21 ..\obj\startup_stm32f0xx.o
+                0x00000234       0x31 ..\obj\stm32f0xx_rcc.o
  .ARM.attributes
-                0x00000255       0x31 ..\obj\task.o
+                0x00000265       0x21 ..\obj\startup_stm32f0xx.o
  .ARM.attributes
-                0x00000286       0x31 ..\obj\gpio.o
+                0x00000286       0x31 ..\obj\task.o
  .ARM.attributes
-                0x000002b7       0x31 ..\obj\kernelHeap.o
+                0x000002b7       0x31 ..\obj\hc0x_bluetooth.o
  .ARM.attributes
-                0x000002e8       0x31 ..\obj\time.o
+                0x000002e8       0x31 ..\obj\gpio.o
  .ARM.attributes
-                0x00000319       0x31 ..\obj\stm32f0xx_gpio.o
+                0x00000319       0x31 ..\obj\kernelHeap.o
  .ARM.attributes
-                0x0000034a       0x31 ..\obj\hdc1080.o
+                0x0000034a       0x31 ..\obj\time.o
  .ARM.attributes
-                0x0000037b       0x31 ..\obj\mutex.o
+                0x0000037b       0x31 ..\obj\stm32f0xx_gpio.o
  .ARM.attributes
-                0x000003ac       0x31 ..\obj\stm32f0xx_dma.o
+                0x000003ac       0x31 ..\obj\hdc1080.o
  .ARM.attributes
-                0x000003dd       0x31 ..\obj\modbus_func.o
+                0x000003dd       0x31 ..\obj\mutex.o
  .ARM.attributes
-                0x0000040e       0x31 ..\obj\modbus.o
+                0x0000040e       0x31 ..\obj\stm32f0xx_dma.o
  .ARM.attributes
-                0x0000043f       0x31 ..\obj\pub_var.o
+                0x0000043f       0x31 ..\obj\modbus_func.o
  .ARM.attributes
-                0x00000470       0x31 ..\obj\Ostimer.o
+                0x00000470       0x31 ..\obj\modbus.o
  .ARM.attributes
-                0x000004a1       0x31 ..\obj\stm32f0xx_usart.o
+                0x000004a1       0x31 ..\obj\pub_var.o
  .ARM.attributes
-                0x000004d2       0x31 ..\obj\system_stm32f0xx.o
+                0x000004d2       0x31 ..\obj\Ostimer.o
  .ARM.attributes
-                0x00000503       0x31 ..\obj\port.o
+                0x00000503       0x31 ..\obj\stm32f0xx_usart.o
  .ARM.attributes
-                0x00000534       0x31 ..\obj\main.o
+                0x00000534       0x31 ..\obj\port.o
  .ARM.attributes
-                0x00000565       0x31 ..\obj\event.o
+                0x00000565       0x31 ..\obj\system_stm32f0xx.o
  .ARM.attributes
-                0x00000596       0x31 ..\obj\stm32f0xx_misc.o
+                0x00000596       0x31 ..\obj\main.o
  .ARM.attributes
-                0x000005c7       0x31 ..\obj\hook.o
+                0x000005c7       0x31 ..\obj\event.o
  .ARM.attributes
-                0x000005f8       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                0x000005f8       0x31 ..\obj\stm32f0xx_misc.o
  .ARM.attributes
-                0x00000616       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+                0x00000629       0x31 ..\obj\hook.o
  .ARM.attributes
-                0x00000634       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x0000065a       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x00000652       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
+                0x00000678       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
  .ARM.attributes
-                0x0000067e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
+                0x00000696       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000006aa       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
+                0x000006b4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-impure.o)
  .ARM.attributes
-                0x000006d6       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+                0x000006e0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x00000702       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
+                0x0000070c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000072e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
+                0x00000738       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
  .ARM.attributes
-                0x0000075a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
+                0x00000764       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
  .ARM.attributes
-                0x00000786       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
+                0x00000790       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x000007b2       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
+                0x000007bc       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
  .ARM.attributes
-                0x000007de       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+                0x000007e8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
  .ARM.attributes
-                0x0000080a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
+                0x00000814       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
  .ARM.attributes
-                0x00000836       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+                0x00000840       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
  .ARM.attributes
-                0x00000862       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
+                0x0000086c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x0000088e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+                0x00000898       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x000008ba       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
+                0x000008c4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000008e6       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
+                0x000008f0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
  .ARM.attributes
-                0x00000912       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
+                0x0000091c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x0000093e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
+                0x00000948       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
  .ARM.attributes
-                0x0000096a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
+                0x00000974       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
  .ARM.attributes
-                0x00000996       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
+                0x000009a0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x000009c2       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
+                0x000009cc       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
  .ARM.attributes
-                0x000009ee       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
+                0x000009f8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
  .ARM.attributes
-                0x00000a1a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
+                0x00000a24       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
  .ARM.attributes
-                0x00000a46       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
+                0x00000a50       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
  .ARM.attributes
-                0x00000a72       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
+                0x00000a7c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000a9e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
+                0x00000aa8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x00000aca       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-ctype_.o)
+                0x00000ad4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000af6       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_arm_cmpdf2.o)
+                0x00000b00       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
  .ARM.attributes
-                0x00000b14       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_aeabi_uldivmod.o)
+                0x00000b2c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-ctype_.o)
  .ARM.attributes
-                0x00000b32       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
+                0x00000b58       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000b5e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
+                0x00000b76       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x00000b8a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
+                0x00000b94       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000bb6       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
+                0x00000bc0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
  .ARM.attributes
-                0x00000be2       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
+                0x00000bec       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
  .ARM.attributes
-                0x00000c0e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
+                0x00000c18       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
  .ARM.attributes
-                0x00000c3a       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
+                0x00000c44       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
  .ARM.attributes
-                0x00000c66       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
+                0x00000c70       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
  .ARM.attributes
-                0x00000c92       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
+                0x00000c9c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
  .ARM.attributes
-                0x00000cbe       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
+                0x00000cc8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
  .ARM.attributes
-                0x00000cea       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
+                0x00000cf4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
  .ARM.attributes
-                0x00000d16       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
+                0x00000d20       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
  .ARM.attributes
-                0x00000d42       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzsi2.o)
+                0x00000d4c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
  .ARM.attributes
-                0x00000d60       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzdi2.o)
+                0x00000d78       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
  .ARM.attributes
-                0x00000d7e       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+                0x00000da4       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzsi2.o)
  .ARM.attributes
-                0x00000daa       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00000dc2       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_clzdi2.o)
+ .ARM.attributes
+                0x00000de0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .ARM.attributes
+                0x00000e0c       0x1e c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e ..\obj\i2c.o
@@ -1431,10 +1436,12 @@ OUTPUT(STM32F030_V2.elf elf32-littlearm)
  .comment       0x0000006e       0x6f ..\obj\syscalls.o
  .comment       0x0000006e       0x6f ..\obj\core.o
  .comment       0x0000006e       0x6f ..\obj\arch.o
+ .comment       0x0000006e       0x6f ..\obj\stepper_motor.o
  .comment       0x0000006e       0x6f ..\obj\serviceReq.o
  .comment       0x0000006e       0x6f ..\obj\timer.o
  .comment       0x0000006e       0x6f ..\obj\stm32f0xx_rcc.o
  .comment       0x0000006e       0x6f ..\obj\task.o
+ .comment       0x0000006e       0x6f ..\obj\hc0x_bluetooth.o
  .comment       0x0000006e       0x6f ..\obj\gpio.o
  .comment       0x0000006e       0x6f ..\obj\kernelHeap.o
  .comment       0x0000006e       0x6f ..\obj\time.o
@@ -1447,78 +1454,82 @@ OUTPUT(STM32F030_V2.elf elf32-littlearm)
  .comment       0x0000006e       0x6f ..\obj\pub_var.o
  .comment       0x0000006e       0x6f ..\obj\Ostimer.o
  .comment       0x0000006e       0x6f ..\obj\stm32f0xx_usart.o
- .comment       0x0000006e       0x6f ..\obj\system_stm32f0xx.o
  .comment       0x0000006e       0x6f ..\obj\port.o
+ .comment       0x0000006e       0x6f ..\obj\system_stm32f0xx.o
  .comment       0x0000006e       0x6f ..\obj\main.o
  .comment       0x0000006e       0x6f ..\obj\event.o
  .comment       0x0000006e       0x6f ..\obj\stm32f0xx_misc.o
  .comment       0x0000006e       0x6f ..\obj\hook.o
 
-.debug_info     0x00000000     0x8514
+.debug_info     0x00000000     0x8997
  .debug_info    0x00000000      0x6dd ..\obj\i2c.o
- .debug_info    0x000006dd       0xb0 ..\obj\util.o
- .debug_info    0x0000078d      0x909 ..\obj\uart.o
- .debug_info    0x00001096      0x639 ..\obj\flag.o
- .debug_info    0x000016cf      0x458 ..\obj\syscalls.o
- .debug_info    0x00001b27      0x2c9 ..\obj\core.o
- .debug_info    0x00001df0      0x2fe ..\obj\arch.o
- .debug_info    0x000020ee      0x1e5 ..\obj\serviceReq.o
- .debug_info    0x000022d3      0x675 ..\obj\timer.o
- .debug_info    0x00002948      0xa5c ..\obj\stm32f0xx_rcc.o
- .debug_info    0x000033a4       0xd0 ..\obj\startup_stm32f0xx.o
- .debug_info    0x00003474      0x665 ..\obj\task.o
- .debug_info    0x00003ad9      0x3e9 ..\obj\gpio.o
- .debug_info    0x00003ec2      0x2d3 ..\obj\kernelHeap.o
- .debug_info    0x00004195      0x3d2 ..\obj\time.o
- .debug_info    0x00004567      0x5e7 ..\obj\stm32f0xx_gpio.o
- .debug_info    0x00004b4e      0x35f ..\obj\hdc1080.o
- .debug_info    0x00004ead      0x475 ..\obj\mutex.o
- .debug_info    0x00005322      0x4b5 ..\obj\stm32f0xx_dma.o
- .debug_info    0x000057d7      0x4f0 ..\obj\modbus_func.o
- .debug_info    0x00005cc7      0x3ea ..\obj\modbus.o
- .debug_info    0x000060b1      0x131 ..\obj\pub_var.o
- .debug_info    0x000061e2      0x3bf ..\obj\Ostimer.o
- .debug_info    0x000065a1      0xe5c ..\obj\stm32f0xx_usart.o
- .debug_info    0x000073fd      0x2fd ..\obj\system_stm32f0xx.o
- .debug_info    0x000076fa      0x196 ..\obj\port.o
- .debug_info    0x00007890      0x42e ..\obj\main.o
- .debug_info    0x00007cbe      0x42c ..\obj\event.o
- .debug_info    0x000080ea      0x36e ..\obj\stm32f0xx_misc.o
- .debug_info    0x00008458       0xbc ..\obj\hook.o
+ .debug_info    0x000006dd      0x1a6 ..\obj\util.o
+ .debug_info    0x00000883      0x89e ..\obj\uart.o
+ .debug_info    0x00001121      0x639 ..\obj\flag.o
+ .debug_info    0x0000175a      0x458 ..\obj\syscalls.o
+ .debug_info    0x00001bb2      0x2c9 ..\obj\core.o
+ .debug_info    0x00001e7b      0x2fe ..\obj\arch.o
+ .debug_info    0x00002179      0x14d ..\obj\stepper_motor.o
+ .debug_info    0x000022c6      0x1e5 ..\obj\serviceReq.o
+ .debug_info    0x000024ab      0x675 ..\obj\timer.o
+ .debug_info    0x00002b20      0xa5c ..\obj\stm32f0xx_rcc.o
+ .debug_info    0x0000357c       0xd0 ..\obj\startup_stm32f0xx.o
+ .debug_info    0x0000364c      0x665 ..\obj\task.o
+ .debug_info    0x00003cb1      0x2d6 ..\obj\hc0x_bluetooth.o
+ .debug_info    0x00003f87      0x3e9 ..\obj\gpio.o
+ .debug_info    0x00004370      0x2d3 ..\obj\kernelHeap.o
+ .debug_info    0x00004643      0x3d2 ..\obj\time.o
+ .debug_info    0x00004a15      0x5e7 ..\obj\stm32f0xx_gpio.o
+ .debug_info    0x00004ffc      0x35f ..\obj\hdc1080.o
+ .debug_info    0x0000535b      0x475 ..\obj\mutex.o
+ .debug_info    0x000057d0      0x4b5 ..\obj\stm32f0xx_dma.o
+ .debug_info    0x00005c85      0x4f0 ..\obj\modbus_func.o
+ .debug_info    0x00006175      0x3ea ..\obj\modbus.o
+ .debug_info    0x0000655f      0x137 ..\obj\pub_var.o
+ .debug_info    0x00006696      0x3bf ..\obj\Ostimer.o
+ .debug_info    0x00006a55      0xe5c ..\obj\stm32f0xx_usart.o
+ .debug_info    0x000078b1      0x196 ..\obj\port.o
+ .debug_info    0x00007a47      0x2fd ..\obj\system_stm32f0xx.o
+ .debug_info    0x00007d44      0x3fd ..\obj\main.o
+ .debug_info    0x00008141      0x42c ..\obj\event.o
+ .debug_info    0x0000856d      0x36e ..\obj\stm32f0xx_misc.o
+ .debug_info    0x000088db       0xbc ..\obj\hook.o
 
-.debug_abbrev   0x00000000     0x25ab
+.debug_abbrev   0x00000000     0x27a3
  .debug_abbrev  0x00000000      0x1b9 ..\obj\i2c.o
- .debug_abbrev  0x000001b9       0x6d ..\obj\util.o
- .debug_abbrev  0x00000226      0x1ca ..\obj\uart.o
- .debug_abbrev  0x000003f0      0x1b1 ..\obj\flag.o
- .debug_abbrev  0x000005a1       0xe5 ..\obj\syscalls.o
- .debug_abbrev  0x00000686       0xf5 ..\obj\core.o
- .debug_abbrev  0x0000077b      0x111 ..\obj\arch.o
- .debug_abbrev  0x0000088c      0x114 ..\obj\serviceReq.o
- .debug_abbrev  0x000009a0      0x12d ..\obj\timer.o
- .debug_abbrev  0x00000acd      0x1ee ..\obj\stm32f0xx_rcc.o
- .debug_abbrev  0x00000cbb       0x12 ..\obj\startup_stm32f0xx.o
- .debug_abbrev  0x00000ccd      0x1ef ..\obj\task.o
- .debug_abbrev  0x00000ebc      0x10c ..\obj\gpio.o
- .debug_abbrev  0x00000fc8      0x14f ..\obj\kernelHeap.o
- .debug_abbrev  0x00001117      0x194 ..\obj\time.o
- .debug_abbrev  0x000012ab      0x19f ..\obj\stm32f0xx_gpio.o
- .debug_abbrev  0x0000144a      0x146 ..\obj\hdc1080.o
- .debug_abbrev  0x00001590      0x15f ..\obj\mutex.o
- .debug_abbrev  0x000016ef      0x170 ..\obj\stm32f0xx_dma.o
- .debug_abbrev  0x0000185f      0x151 ..\obj\modbus_func.o
- .debug_abbrev  0x000019b0      0x155 ..\obj\modbus.o
- .debug_abbrev  0x00001b05       0x92 ..\obj\pub_var.o
- .debug_abbrev  0x00001b97      0x194 ..\obj\Ostimer.o
- .debug_abbrev  0x00001d2b      0x15e ..\obj\stm32f0xx_usart.o
- .debug_abbrev  0x00001e89      0x136 ..\obj\system_stm32f0xx.o
- .debug_abbrev  0x00001fbf       0xcf ..\obj\port.o
- .debug_abbrev  0x0000208e      0x17a ..\obj\main.o
- .debug_abbrev  0x00002208      0x1d4 ..\obj\event.o
- .debug_abbrev  0x000023dc      0x145 ..\obj\stm32f0xx_misc.o
- .debug_abbrev  0x00002521       0x8a ..\obj\hook.o
+ .debug_abbrev  0x000001b9       0xa1 ..\obj\util.o
+ .debug_abbrev  0x0000025a      0x1e6 ..\obj\uart.o
+ .debug_abbrev  0x00000440      0x1b1 ..\obj\flag.o
+ .debug_abbrev  0x000005f1       0xe5 ..\obj\syscalls.o
+ .debug_abbrev  0x000006d6       0xf5 ..\obj\core.o
+ .debug_abbrev  0x000007cb      0x111 ..\obj\arch.o
+ .debug_abbrev  0x000008dc       0xa4 ..\obj\stepper_motor.o
+ .debug_abbrev  0x00000980      0x114 ..\obj\serviceReq.o
+ .debug_abbrev  0x00000a94      0x12d ..\obj\timer.o
+ .debug_abbrev  0x00000bc1      0x1ee ..\obj\stm32f0xx_rcc.o
+ .debug_abbrev  0x00000daf       0x12 ..\obj\startup_stm32f0xx.o
+ .debug_abbrev  0x00000dc1      0x1ef ..\obj\task.o
+ .debug_abbrev  0x00000fb0      0x115 ..\obj\hc0x_bluetooth.o
+ .debug_abbrev  0x000010c5      0x10c ..\obj\gpio.o
+ .debug_abbrev  0x000011d1      0x14f ..\obj\kernelHeap.o
+ .debug_abbrev  0x00001320      0x194 ..\obj\time.o
+ .debug_abbrev  0x000014b4      0x19f ..\obj\stm32f0xx_gpio.o
+ .debug_abbrev  0x00001653      0x146 ..\obj\hdc1080.o
+ .debug_abbrev  0x00001799      0x15f ..\obj\mutex.o
+ .debug_abbrev  0x000018f8      0x170 ..\obj\stm32f0xx_dma.o
+ .debug_abbrev  0x00001a68      0x151 ..\obj\modbus_func.o
+ .debug_abbrev  0x00001bb9      0x155 ..\obj\modbus.o
+ .debug_abbrev  0x00001d0e       0x92 ..\obj\pub_var.o
+ .debug_abbrev  0x00001da0      0x194 ..\obj\Ostimer.o
+ .debug_abbrev  0x00001f34      0x15e ..\obj\stm32f0xx_usart.o
+ .debug_abbrev  0x00002092       0xcf ..\obj\port.o
+ .debug_abbrev  0x00002161      0x136 ..\obj\system_stm32f0xx.o
+ .debug_abbrev  0x00002297      0x169 ..\obj\main.o
+ .debug_abbrev  0x00002400      0x1d4 ..\obj\event.o
+ .debug_abbrev  0x000025d4      0x145 ..\obj\stm32f0xx_misc.o
+ .debug_abbrev  0x00002719       0x8a ..\obj\hook.o
 
-.debug_aranges  0x00000000      0x3c8
+.debug_aranges  0x00000000      0x408
  .debug_aranges
                 0x00000000       0x20 ..\obj\i2c.o
  .debug_aranges
@@ -1534,213 +1545,225 @@ OUTPUT(STM32F030_V2.elf elf32-littlearm)
  .debug_aranges
                 0x000000c0       0x20 ..\obj\arch.o
  .debug_aranges
-                0x000000e0       0x20 ..\obj\serviceReq.o
+                0x000000e0       0x20 ..\obj\stepper_motor.o
  .debug_aranges
-                0x00000100       0x20 ..\obj\timer.o
+                0x00000100       0x20 ..\obj\serviceReq.o
  .debug_aranges
-                0x00000120       0x20 ..\obj\stm32f0xx_rcc.o
+                0x00000120       0x20 ..\obj\timer.o
  .debug_aranges
-                0x00000140       0x28 ..\obj\startup_stm32f0xx.o
+                0x00000140       0x20 ..\obj\stm32f0xx_rcc.o
  .debug_aranges
-                0x00000168       0x20 ..\obj\task.o
+                0x00000160       0x28 ..\obj\startup_stm32f0xx.o
  .debug_aranges
-                0x00000188       0x20 ..\obj\gpio.o
+                0x00000188       0x20 ..\obj\task.o
  .debug_aranges
-                0x000001a8       0x20 ..\obj\kernelHeap.o
+                0x000001a8       0x20 ..\obj\hc0x_bluetooth.o
  .debug_aranges
-                0x000001c8       0x20 ..\obj\time.o
+                0x000001c8       0x20 ..\obj\gpio.o
  .debug_aranges
-                0x000001e8       0x20 ..\obj\stm32f0xx_gpio.o
+                0x000001e8       0x20 ..\obj\kernelHeap.o
  .debug_aranges
-                0x00000208       0x20 ..\obj\hdc1080.o
+                0x00000208       0x20 ..\obj\time.o
  .debug_aranges
-                0x00000228       0x20 ..\obj\mutex.o
+                0x00000228       0x20 ..\obj\stm32f0xx_gpio.o
  .debug_aranges
-                0x00000248       0x20 ..\obj\stm32f0xx_dma.o
+                0x00000248       0x20 ..\obj\hdc1080.o
  .debug_aranges
-                0x00000268       0x20 ..\obj\modbus_func.o
+                0x00000268       0x20 ..\obj\mutex.o
  .debug_aranges
-                0x00000288       0x20 ..\obj\modbus.o
+                0x00000288       0x20 ..\obj\stm32f0xx_dma.o
  .debug_aranges
-                0x000002a8       0x20 ..\obj\pub_var.o
+                0x000002a8       0x20 ..\obj\modbus_func.o
  .debug_aranges
-                0x000002c8       0x20 ..\obj\Ostimer.o
+                0x000002c8       0x20 ..\obj\modbus.o
  .debug_aranges
-                0x000002e8       0x20 ..\obj\stm32f0xx_usart.o
+                0x000002e8       0x20 ..\obj\pub_var.o
  .debug_aranges
-                0x00000308       0x20 ..\obj\system_stm32f0xx.o
+                0x00000308       0x20 ..\obj\Ostimer.o
  .debug_aranges
-                0x00000328       0x20 ..\obj\port.o
+                0x00000328       0x20 ..\obj\stm32f0xx_usart.o
  .debug_aranges
-                0x00000348       0x20 ..\obj\main.o
+                0x00000348       0x20 ..\obj\port.o
  .debug_aranges
-                0x00000368       0x20 ..\obj\event.o
+                0x00000368       0x20 ..\obj\system_stm32f0xx.o
  .debug_aranges
-                0x00000388       0x20 ..\obj\stm32f0xx_misc.o
+                0x00000388       0x20 ..\obj\main.o
  .debug_aranges
-                0x000003a8       0x20 ..\obj\hook.o
+                0x000003a8       0x20 ..\obj\event.o
+ .debug_aranges
+                0x000003c8       0x20 ..\obj\stm32f0xx_misc.o
+ .debug_aranges
+                0x000003e8       0x20 ..\obj\hook.o
 
-.debug_line     0x00000000     0x3a96
+.debug_line     0x00000000     0x3e2f
  .debug_line    0x00000000      0x27a ..\obj\i2c.o
- .debug_line    0x0000027a      0x142 ..\obj\util.o
- .debug_line    0x000003bc      0x3a1 ..\obj\uart.o
- .debug_line    0x0000075d      0x211 ..\obj\flag.o
- .debug_line    0x0000096e      0x18d ..\obj\syscalls.o
- .debug_line    0x00000afb      0x105 ..\obj\core.o
- .debug_line    0x00000c00      0x156 ..\obj\arch.o
- .debug_line    0x00000d56       0xf1 ..\obj\serviceReq.o
- .debug_line    0x00000e47      0x28c ..\obj\timer.o
- .debug_line    0x000010d3      0x35a ..\obj\stm32f0xx_rcc.o
- .debug_line    0x0000142d       0xbf ..\obj\startup_stm32f0xx.o
- .debug_line    0x000014ec      0x2bd ..\obj\task.o
- .debug_line    0x000017a9      0x218 ..\obj\gpio.o
- .debug_line    0x000019c1      0x1ac ..\obj\kernelHeap.o
- .debug_line    0x00001b6d      0x1f3 ..\obj\time.o
- .debug_line    0x00001d60      0x262 ..\obj\stm32f0xx_gpio.o
- .debug_line    0x00001fc2      0x26f ..\obj\hdc1080.o
- .debug_line    0x00002231      0x167 ..\obj\mutex.o
- .debug_line    0x00002398      0x284 ..\obj\stm32f0xx_dma.o
- .debug_line    0x0000261c      0x204 ..\obj\modbus_func.o
- .debug_line    0x00002820      0x1db ..\obj\modbus.o
- .debug_line    0x000029fb      0x15d ..\obj\pub_var.o
- .debug_line    0x00002b58      0x1ba ..\obj\Ostimer.o
- .debug_line    0x00002d12      0x3aa ..\obj\stm32f0xx_usart.o
- .debug_line    0x000030bc      0x1ba ..\obj\system_stm32f0xx.o
- .debug_line    0x00003276      0x14b ..\obj\port.o
- .debug_line    0x000033c1      0x25d ..\obj\main.o
- .debug_line    0x0000361e      0x17e ..\obj\event.o
- .debug_line    0x0000379c      0x243 ..\obj\stm32f0xx_misc.o
- .debug_line    0x000039df       0xb7 ..\obj\hook.o
+ .debug_line    0x0000027a      0x172 ..\obj\util.o
+ .debug_line    0x000003ec      0x3a9 ..\obj\uart.o
+ .debug_line    0x00000795      0x211 ..\obj\flag.o
+ .debug_line    0x000009a6      0x18d ..\obj\syscalls.o
+ .debug_line    0x00000b33      0x105 ..\obj\core.o
+ .debug_line    0x00000c38      0x156 ..\obj\arch.o
+ .debug_line    0x00000d8e      0x15b ..\obj\stepper_motor.o
+ .debug_line    0x00000ee9       0xf1 ..\obj\serviceReq.o
+ .debug_line    0x00000fda      0x28c ..\obj\timer.o
+ .debug_line    0x00001266      0x35a ..\obj\stm32f0xx_rcc.o
+ .debug_line    0x000015c0       0xbf ..\obj\startup_stm32f0xx.o
+ .debug_line    0x0000167f      0x2bd ..\obj\task.o
+ .debug_line    0x0000193c      0x203 ..\obj\hc0x_bluetooth.o
+ .debug_line    0x00001b3f      0x218 ..\obj\gpio.o
+ .debug_line    0x00001d57      0x1ac ..\obj\kernelHeap.o
+ .debug_line    0x00001f03      0x1f3 ..\obj\time.o
+ .debug_line    0x000020f6      0x262 ..\obj\stm32f0xx_gpio.o
+ .debug_line    0x00002358      0x26c ..\obj\hdc1080.o
+ .debug_line    0x000025c4      0x167 ..\obj\mutex.o
+ .debug_line    0x0000272b      0x284 ..\obj\stm32f0xx_dma.o
+ .debug_line    0x000029af      0x204 ..\obj\modbus_func.o
+ .debug_line    0x00002bb3      0x1db ..\obj\modbus.o
+ .debug_line    0x00002d8e      0x15d ..\obj\pub_var.o
+ .debug_line    0x00002eeb      0x1ba ..\obj\Ostimer.o
+ .debug_line    0x000030a5      0x3aa ..\obj\stm32f0xx_usart.o
+ .debug_line    0x0000344f      0x14b ..\obj\port.o
+ .debug_line    0x0000359a      0x1ba ..\obj\system_stm32f0xx.o
+ .debug_line    0x00003754      0x263 ..\obj\main.o
+ .debug_line    0x000039b7      0x17e ..\obj\event.o
+ .debug_line    0x00003b35      0x243 ..\obj\stm32f0xx_misc.o
+ .debug_line    0x00003d78       0xb7 ..\obj\hook.o
 
-.debug_str      0x00000000     0x369b
+.debug_str      0x00000000     0x390c
  .debug_str     0x00000000      0x582 ..\obj\i2c.o
                                 0x5e3 (size before relaxing)
- .debug_str     0x00000582       0x56 ..\obj\util.o
-                                0x162 (size before relaxing)
- .debug_str     0x000005d8      0x533 ..\obj\uart.o
-                                0x8bb (size before relaxing)
- .debug_str     0x00000b0b      0x2d4 ..\obj\flag.o
+ .debug_str     0x00000582       0xb2 ..\obj\util.o
+                                0x1d0 (size before relaxing)
+ .debug_str     0x00000634      0x56a ..\obj\uart.o
+                                0x8bc (size before relaxing)
+ .debug_str     0x00000b9e      0x2d4 ..\obj\flag.o
                                 0x3d3 (size before relaxing)
- .debug_str     0x00000ddf      0x190 ..\obj\syscalls.o
+ .debug_str     0x00000e72      0x190 ..\obj\syscalls.o
                                 0x351 (size before relaxing)
- .debug_str     0x00000f6f       0xf6 ..\obj\core.o
+ .debug_str     0x00001002       0xf6 ..\obj\core.o
                                 0x2b5 (size before relaxing)
- .debug_str     0x00001065      0x124 ..\obj\arch.o
+ .debug_str     0x000010f8      0x124 ..\obj\arch.o
                                 0x2d5 (size before relaxing)
- .debug_str     0x00001189       0xdf ..\obj\serviceReq.o
+ .debug_str     0x0000121c       0xda ..\obj\stepper_motor.o
+                                0x201 (size before relaxing)
+ .debug_str     0x000012f6       0xdf ..\obj\serviceReq.o
                                 0x1db (size before relaxing)
- .debug_str     0x00001268      0x119 ..\obj\timer.o
+ .debug_str     0x000013d5      0x119 ..\obj\timer.o
                                 0x54c (size before relaxing)
- .debug_str     0x00001381      0x5a3 ..\obj\stm32f0xx_rcc.o
+ .debug_str     0x000014ee      0x5a3 ..\obj\stm32f0xx_rcc.o
                                 0x7a1 (size before relaxing)
- .debug_str     0x00001924      0x227 ..\obj\task.o
+ .debug_str     0x00001a91      0x227 ..\obj\task.o
                                 0x43a (size before relaxing)
- .debug_str     0x00001b4b      0x21b ..\obj\gpio.o
+ .debug_str     0x00001cb8      0x197 ..\obj\hc0x_bluetooth.o
+                                0x3fe (size before relaxing)
+ .debug_str     0x00001e4f      0x21b ..\obj\gpio.o
                                 0x3d1 (size before relaxing)
- .debug_str     0x00001d66      0x169 ..\obj\kernelHeap.o
+ .debug_str     0x0000206a      0x169 ..\obj\kernelHeap.o
                                 0x266 (size before relaxing)
- .debug_str     0x00001ecf      0x10f ..\obj\time.o
+ .debug_str     0x000021d3      0x10f ..\obj\time.o
                                 0x312 (size before relaxing)
- .debug_str     0x00001fde      0x19f ..\obj\stm32f0xx_gpio.o
+ .debug_str     0x000022e2      0x19f ..\obj\stm32f0xx_gpio.o
                                 0x48e (size before relaxing)
- .debug_str     0x0000217d      0x16d ..\obj\hdc1080.o
+ .debug_str     0x00002481       0xed ..\obj\hdc1080.o
                                 0x46e (size before relaxing)
- .debug_str     0x000022ea       0xc4 ..\obj\mutex.o
+ .debug_str     0x0000256e       0xc4 ..\obj\mutex.o
                                 0x365 (size before relaxing)
- .debug_str     0x000023ae      0x184 ..\obj\stm32f0xx_dma.o
+ .debug_str     0x00002632      0x184 ..\obj\stm32f0xx_dma.o
                                 0x3e7 (size before relaxing)
- .debug_str     0x00002532      0x3de ..\obj\modbus_func.o
+ .debug_str     0x000027b6      0x3de ..\obj\modbus_func.o
                                 0x5ed (size before relaxing)
- .debug_str     0x00002910      0x117 ..\obj\modbus.o
+ .debug_str     0x00002b94      0x117 ..\obj\modbus.o
                                 0x482 (size before relaxing)
- .debug_str     0x00002a27       0x53 ..\obj\pub_var.o
-                                0x20a (size before relaxing)
- .debug_str     0x00002a7a       0xfc ..\obj\Ostimer.o
+ .debug_str     0x00002cab       0x53 ..\obj\pub_var.o
+                                0x21e (size before relaxing)
+ .debug_str     0x00002cfe       0xfc ..\obj\Ostimer.o
                                 0x2a5 (size before relaxing)
- .debug_str     0x00002b76      0x676 ..\obj\stm32f0xx_usart.o
+ .debug_str     0x00002dfa      0x676 ..\obj\stm32f0xx_usart.o
                                 0x98e (size before relaxing)
- .debug_str     0x000031ec       0xb9 ..\obj\system_stm32f0xx.o
-                                0x299 (size before relaxing)
- .debug_str     0x000032a5       0xfe ..\obj\port.o
+ .debug_str     0x00003470       0xfe ..\obj\port.o
                                 0x1f5 (size before relaxing)
- .debug_str     0x000033a3       0x96 ..\obj\main.o
-                                0x399 (size before relaxing)
- .debug_str     0x00003439       0xf5 ..\obj\event.o
+ .debug_str     0x0000356e       0xb9 ..\obj\system_stm32f0xx.o
+                                0x299 (size before relaxing)
+ .debug_str     0x00003627       0x83 ..\obj\main.o
+                                0x3bf (size before relaxing)
+ .debug_str     0x000036aa       0xf5 ..\obj\event.o
                                 0x32c (size before relaxing)
- .debug_str     0x0000352e       0xdf ..\obj\stm32f0xx_misc.o
+ .debug_str     0x0000379f       0xdf ..\obj\stm32f0xx_misc.o
                                 0x2f8 (size before relaxing)
- .debug_str     0x0000360d       0x8e ..\obj\hook.o
+ .debug_str     0x0000387e       0x8e ..\obj\hook.o
                                 0x188 (size before relaxing)
 
-.debug_frame    0x00000000     0x2ae4
+.debug_frame    0x00000000     0x2bc4
  .debug_frame   0x00000000       0xac ..\obj\i2c.o
- .debug_frame   0x000000ac       0x30 ..\obj\util.o
- .debug_frame   0x000000dc       0xe8 ..\obj\uart.o
- .debug_frame   0x000001c4      0x190 ..\obj\flag.o
- .debug_frame   0x00000354      0x12c ..\obj\syscalls.o
- .debug_frame   0x00000480       0xf0 ..\obj\core.o
- .debug_frame   0x00000570       0x50 ..\obj\arch.o
- .debug_frame   0x000005c0       0x50 ..\obj\serviceReq.o
- .debug_frame   0x00000610       0x8c ..\obj\timer.o
- .debug_frame   0x0000069c      0x524 ..\obj\stm32f0xx_rcc.o
- .debug_frame   0x00000bc0      0x150 ..\obj\task.o
- .debug_frame   0x00000d10       0x84 ..\obj\gpio.o
- .debug_frame   0x00000d94       0x8c ..\obj\kernelHeap.o
- .debug_frame   0x00000e20      0x10c ..\obj\time.o
- .debug_frame   0x00000f2c      0x1b0 ..\obj\stm32f0xx_gpio.o
- .debug_frame   0x000010dc       0xa0 ..\obj\hdc1080.o
- .debug_frame   0x0000117c       0x90 ..\obj\mutex.o
- .debug_frame   0x0000120c      0x190 ..\obj\stm32f0xx_dma.o
- .debug_frame   0x0000139c       0xa4 ..\obj\modbus_func.o
- .debug_frame   0x00001440       0x90 ..\obj\modbus.o
- .debug_frame   0x000014d0       0x2c ..\obj\pub_var.o
- .debug_frame   0x000014fc      0x14c ..\obj\Ostimer.o
- .debug_frame   0x00001648      0x630 ..\obj\stm32f0xx_usart.o
- .debug_frame   0x00001c78       0x6c ..\obj\system_stm32f0xx.o
- .debug_frame   0x00001ce4       0xb8 ..\obj\port.o
- .debug_frame   0x00001d9c       0x88 ..\obj\main.o
- .debug_frame   0x00001e24       0xf0 ..\obj\event.o
- .debug_frame   0x00001f14       0x70 ..\obj\stm32f0xx_misc.o
- .debug_frame   0x00001f84       0x50 ..\obj\hook.o
- .debug_frame   0x00001fd4       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001ff4       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
- .debug_frame   0x00002014       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
- .debug_frame   0x00002040       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
- .debug_frame   0x00002090       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
- .debug_frame   0x000020cc       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x00002120       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
- .debug_frame   0x00002148       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
- .debug_frame   0x000021b0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
- .debug_frame   0x000021dc       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
- .debug_frame   0x0000221c       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
- .debug_frame   0x00002258       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
- .debug_frame   0x00002284       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000022b0       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
- .debug_frame   0x000022e0      0x258 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
- .debug_frame   0x00002538       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00002564       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
- .debug_frame   0x0000258c       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x000025f4       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
- .debug_frame   0x00002630       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
- .debug_frame   0x00002658       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
- .debug_frame   0x000026ac       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
- .debug_frame   0x00002738       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00002778       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
- .debug_frame   0x000027a4       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
- .debug_frame   0x000027e0       0x48 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
- .debug_frame   0x00002828       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
- .debug_frame   0x00002864       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000028a0       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
- .debug_frame   0x000028dc       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
- .debug_frame   0x00002918       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
- .debug_frame   0x00002950       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
- .debug_frame   0x00002988       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
- .debug_frame   0x000029c0       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
- .debug_frame   0x000029fc       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
- .debug_frame   0x00002a34       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
- .debug_frame   0x00002a60       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
- .debug_frame   0x00002a8c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
- .debug_frame   0x00002ab8       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
+ .debug_frame   0x000000ac       0x90 ..\obj\util.o
+ .debug_frame   0x0000013c      0x108 ..\obj\uart.o
+ .debug_frame   0x00000244      0x190 ..\obj\flag.o
+ .debug_frame   0x000003d4      0x12c ..\obj\syscalls.o
+ .debug_frame   0x00000500       0xf0 ..\obj\core.o
+ .debug_frame   0x000005f0       0x50 ..\obj\arch.o
+ .debug_frame   0x00000640       0x30 ..\obj\stepper_motor.o
+ .debug_frame   0x00000670       0x50 ..\obj\serviceReq.o
+ .debug_frame   0x000006c0       0x8c ..\obj\timer.o
+ .debug_frame   0x0000074c      0x524 ..\obj\stm32f0xx_rcc.o
+ .debug_frame   0x00000c70      0x150 ..\obj\task.o
+ .debug_frame   0x00000dc0       0x50 ..\obj\hc0x_bluetooth.o
+ .debug_frame   0x00000e10       0x84 ..\obj\gpio.o
+ .debug_frame   0x00000e94       0x8c ..\obj\kernelHeap.o
+ .debug_frame   0x00000f20      0x10c ..\obj\time.o
+ .debug_frame   0x0000102c      0x1b0 ..\obj\stm32f0xx_gpio.o
+ .debug_frame   0x000011dc       0xa0 ..\obj\hdc1080.o
+ .debug_frame   0x0000127c       0x90 ..\obj\mutex.o
+ .debug_frame   0x0000130c      0x190 ..\obj\stm32f0xx_dma.o
+ .debug_frame   0x0000149c       0xa4 ..\obj\modbus_func.o
+ .debug_frame   0x00001540       0x90 ..\obj\modbus.o
+ .debug_frame   0x000015d0       0x2c ..\obj\pub_var.o
+ .debug_frame   0x000015fc      0x14c ..\obj\Ostimer.o
+ .debug_frame   0x00001748      0x630 ..\obj\stm32f0xx_usart.o
+ .debug_frame   0x00001d78       0xb8 ..\obj\port.o
+ .debug_frame   0x00001e30       0x6c ..\obj\system_stm32f0xx.o
+ .debug_frame   0x00001e9c       0x68 ..\obj\main.o
+ .debug_frame   0x00001f04       0xf0 ..\obj\event.o
+ .debug_frame   0x00001ff4       0x70 ..\obj\stm32f0xx_misc.o
+ .debug_frame   0x00002064       0x50 ..\obj\hook.o
+ .debug_frame   0x000020b4       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x000020d4       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x000020f4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00002120       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memset.o)
+ .debug_frame   0x0000214c       0x50 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sprintf.o)
+ .debug_frame   0x0000219c       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x000021d8       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000222c       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-atexit.o)
+ .debug_frame   0x00002254       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-dtoa.o)
+ .debug_frame   0x000022bc       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-fini.o)
+ .debug_frame   0x000022e8       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-localeconv.o)
+ .debug_frame   0x00002328       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mallocr.o)
+ .debug_frame   0x00002364       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00002390       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mlock.o)
+ .debug_frame   0x000023c0      0x258 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mprec.o)
+ .debug_frame   0x00002618       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x00002644       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-strlen-stub.o)
+ .debug_frame   0x0000266c       0x68 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x000026d4       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-__atexit.o)
+ .debug_frame   0x00002710       0x28 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-callocr.o)
+ .debug_frame   0x00002738       0x54 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-freer.o)
+ .debug_frame   0x0000278c       0x8c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-locale.o)
+ .debug_frame   0x00002818       0x40 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x00002858       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-memmove.o)
+ .debug_frame   0x00002884       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reallocr.o)
+ .debug_frame   0x000028c0       0x48 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-reent.o)
+ .debug_frame   0x00002908       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00002944       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00002980       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(adddf3.o)
+ .debug_frame   0x000029bc       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(divdf3.o)
+ .debug_frame   0x000029f8       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(eqdf2.o)
+ .debug_frame   0x00002a30       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(gedf2.o)
+ .debug_frame   0x00002a68       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(ledf2.o)
+ .debug_frame   0x00002aa0       0x3c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(muldf3.o)
+ .debug_frame   0x00002adc       0x38 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(subdf3.o)
+ .debug_frame   0x00002b14       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(unorddf2.o)
+ .debug_frame   0x00002b40       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(fixdfsi.o)
+ .debug_frame   0x00002b6c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatsidf.o)
+ .debug_frame   0x00002b98       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(floatunsidf.o)
 
 .debug_ranges   0x00000000       0x20
  .debug_ranges  0x00000000       0x20 ..\obj\startup_stm32f0xx.o
