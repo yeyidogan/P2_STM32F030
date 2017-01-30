@@ -19,9 +19,9 @@ OS_STK taskHDC1080_stk[STACK_SIZE_TASK_HDC1080];	/*!< Define "uart" task stack  
 PLT_FREE_OS_MUTEX_ID mutex_I2C;
 /* flags -----------------------------------------------------------*/
 #if defined(__CC_ARM)
-osEventFlagsId_t event_Uart; 
+osEventFlagsId_t event_Uart, event_General; 
 #elif defined(__GNUC__)
-OS_FlagID flag_UartTimeout;
+OS_FlagID flag_UartTimeout, flag_StepperA, flag_StepperB;
 #endif
 
 /*
@@ -103,7 +103,7 @@ int main(void){
 	initI2C();
 
 	if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
-		change_device_name("CatFx_Toilet");
+		change_device_name((uint8_t *)"CatFx_Toilet");
 	
 #if defined(__CC_ARM)
 	if(osKernelGetState() == osKernelInactive)
@@ -115,6 +115,8 @@ int main(void){
 	osThreadNew(task_Led, NULL, NULL);
 	osThreadNew(task_HDC1080, NULL, NULL);
 	osThreadNew(task_Uart1, NULL, NULL);
+	osThreadNew(task_StepperA, NULL, NULL);
+	osThreadNew(task_StepperB, NULL, NULL);
 	
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution

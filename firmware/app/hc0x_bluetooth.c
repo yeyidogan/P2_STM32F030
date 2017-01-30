@@ -79,32 +79,52 @@ void mobile_app_interface(void){
 	//open gate 1 (cat litter hopper)
 	if (compare_string((uint8_t *)"COG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stStepperMotorControl.ucCmdForA = STEPPER_TO_END_POINT;
+			stMotorA.ucCmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
+			#if defined(__CC_ARM)
+				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_A_RUN);
+			#elif defined(__GNUC__)
+				isr_SetFlag(flag_StepperA);
+			#endif
 		}
 	}
 
 	//close gate 1 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stStepperMotorControl.ucCmdForA = STEPPER_TO_ZERO_POINT;
+			stMotorA.ucCmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
+			#if defined(__CC_ARM)
+				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_A_RUN);
+			#elif defined(__GNUC__)
+				isr_SetFlag(flag_StepperA);
+			#endif
 		}
 	}
 
 	//open gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"COG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stStepperMotorControl.ucCmdForB = STEPPER_TO_END_POINT;
+			stMotorB.ucCmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
+			#if defined(__CC_ARM)
+				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_B_RUN);
+			#elif defined(__GNUC__)
+				isr_SetFlag(flag_StepperB);
+			#endif
 		}
 	}
 
 	//close gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stStepperMotorControl.ucCmdForB = STEPPER_TO_ZERO_POINT;
+			stMotorB.ucCmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
+			#if defined(__CC_ARM)
+				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_B_RUN);
+			#elif defined(__GNUC__)
+				isr_SetFlag(flag_StepperB);
+			#endif
 		}
 	}
 	

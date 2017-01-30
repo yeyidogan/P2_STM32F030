@@ -29,8 +29,8 @@
 .\output\hc0x_bluetooth.o: .\app\hdc1080.h
 .\output\hc0x_bluetooth.o: .\app\main.h
 .\output\hc0x_bluetooth.o: .\app\hc0x_bluetooth.h
+.\output\hc0x_bluetooth.o: .\app\stepper_motor.h
 .\output\hc0x_bluetooth.o: .\app\modbus.h
 .\output\hc0x_bluetooth.o: .\app\util.h
 .\output\hc0x_bluetooth.o: .\app\modbus_func.h
 .\output\hc0x_bluetooth.o: .\app\modbus.h
-.\output\hc0x_bluetooth.o: app\stepper_motor.h

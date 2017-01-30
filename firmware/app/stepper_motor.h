@@ -15,21 +15,17 @@
 #include <stdint.h>
 #include "stm32f0xx.h"
 #include "stm32f0xx_gpio.h"
+#include "main.h"
 #include "gpio.h"
 #include "plt_free_os_def.h"
 
 /* typedef -----------------------------------------------------------*/
 typedef struct{
-	uint8_t ucIndexA;
-	uint8_t ucIndexB;
-	uint8_t ucCmdForA;
-	uint8_t ucCmdForB;
-	uint8_t ucSwitchACase;
-	uint8_t ucSwitchBCase;
-	uint8_t ucStepASize;
-	uint8_t ucStepBSize;
-	uint16_t ucStepAPoint; //position of step. max = MAX_STEPPER_PULSE
-	uint16_t ucStepBPoint; //position of step. max = MAX_STEPPER_PULSE
+	uint8_t ucIndex;
+	uint8_t ucCmd;
+	uint8_t ucSwitchCase; //switch data on zero point
+	uint16_t uiStepSize; //how many steps will be moved
+	uint16_t uiStepPoint; //position of step. max = MAX_STEPPER_PULSE
 }STEPPER_MOTOR_CONTROL_TYPE;
 
 /* define ------------------------------------------------------------*/
@@ -42,6 +38,7 @@ typedef struct{
 #define SWITCH_A_MASK 0x0001ul
 #define SWITCH_B_MASK 0x0002ul
 #define SWITCH_DETECT_CNT 0x04
+#define STEPPER_ZERO_OFFSET 200
 
 enum{
 	STEPPER_STOP = (uint8_t)0x00,
@@ -54,7 +51,10 @@ enum{
 /* macro -------------------------------------------------------------*/
 /* variables ---------------------------------------------------------*/
 extern const uint8_t stepperMotorFullStepArray[];
-extern STEPPER_MOTOR_CONTROL_TYPE stStepperMotorControl;
+extern STEPPER_MOTOR_CONTROL_TYPE stMotorA;
+extern STEPPER_MOTOR_CONTROL_TYPE stMotorB;
+extern __NO_RETURN void task_StepperA(void *argument);
+extern __NO_RETURN void task_StepperB(void *argument);
 
 #endif
 /* * * END OF FILE * * */
