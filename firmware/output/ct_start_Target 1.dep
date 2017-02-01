@@ -1,5 +1,5 @@
 Dependencies for Project 'ct_start', Target 'Target 1': (DO NOT MODIFY !)
-F (.\app\main.c)(0x588F9948)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (.\app\main.c)(0x58922B3F)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (app\main.h)(0x588F9DF2)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x58258030)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
@@ -31,7 +31,7 @@ I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (app\hc0x_bluetooth.h)(0x588DB1BC)
-I (app\stepper_motor.h)(0x588FA65E)
+I (app\stepper_motor.h)(0x58922B2F)
 F (.\app\pub_var.c)(0x588D9B23)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\pub_var.o --omf_browse .\output\pub_var.crf --depend .\output\pub_var.d)
 I (app\pub_var.h)(0x584478C0)
 I (app\pub_s.h)(0x5860221F)
@@ -75,7 +75,7 @@ I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (app\hc0x_bluetooth.h)(0x588DB1BC)
-I (app\stepper_motor.h)(0x588FA65E)
+I (app\stepper_motor.h)(0x58922B2F)
 F (.\app\modbus.c)(0x5860247A)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\modbus.o --omf_browse .\output\modbus.crf --depend .\output\modbus.d)
 I (app\modbus.h)(0x586024CA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
@@ -106,7 +106,7 @@ I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (.\app\hc0x_bluetooth.h)(0x588DB1BC)
 I (.\app\util.h)(0x588DAD17)
-I (.\app\stepper_motor.h)(0x588FA65E)
+I (.\app\stepper_motor.h)(0x58922B2F)
 I (.\app\modbus.h)(0x586024CA)
 I (app\modbus_func.h)(0x5860245B)
 F (.\app\modbus_func.c)(0x586D4783)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\modbus_func.o --omf_browse .\output\modbus_func.crf --depend .\output\modbus_func.d)
@@ -139,11 +139,11 @@ I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (.\app\hc0x_bluetooth.h)(0x588DB1BC)
 I (.\app\util.h)(0x588DAD17)
-I (.\app\stepper_motor.h)(0x588FA65E)
+I (.\app\stepper_motor.h)(0x58922B2F)
 I (.\app\modbus.h)(0x586024CA)
 I (.\app\modbus_func.h)(0x5860245B)
-F (.\app\stepper_motor.c)(0x588FA81E)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\stepper_motor.o --omf_browse .\output\stepper_motor.crf --depend .\output\stepper_motor.d)
-I (app\stepper_motor.h)(0x588FA65E)
+F (.\app\stepper_motor.c)(0x58922B26)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\stepper_motor.o --omf_browse .\output\stepper_motor.crf --depend .\output\stepper_motor.d)
+I (app\stepper_motor.h)(0x58922B2F)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x58258030)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F64D08)
@@ -204,7 +204,7 @@ I (.\stm32_lib\inc\stm32f0xx_i2c.h)(0x54808D10)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (.\app\hc0x_bluetooth.h)(0x588DB1BC)
-I (.\app\stepper_motor.h)(0x588FA65E)
+I (.\app\stepper_motor.h)(0x58922B2F)
 I (.\app\modbus.h)(0x586024CA)
 I (.\app\util.h)(0x588DAD17)
 I (.\app\modbus_func.h)(0x5860245B)
@@ -296,7 +296,7 @@ I (.\driver\timer.h)(0x58683694)
 I (.\app\hdc1080.h)(0x588DAABF)
 I (.\app\hc0x_bluetooth.h)(0x588DB1BC)
 I (.\app\util.h)(0x588DAD17)
-I (.\app\stepper_motor.h)(0x588FA65E)
+I (.\app\stepper_motor.h)(0x58922B2F)
 I (.\app\modbus.h)(0x586024CA)
 I (.\app\modbus_func.h)(0x5860245B)
 F (.\driver\i2c.c)(0x58684824)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\i2c.o --omf_browse .\output\i2c.crf --depend .\output\i2c.d)
@@ -342,7 +342,7 @@ I (.\app\util.h)(0x588DAD17)
 I (.\app\modbus_func.h)(0x5860245B)
 I (.\driver\timer.h)(0x58683694)
 I (.\app\hc0x_bluetooth.h)(0x588DB1BC)
-I (.\app\stepper_motor.h)(0x588FA65E)
+I (.\app\stepper_motor.h)(0x58922B2F)
 F (.\stm32_lib\src\stm32f0xx_tim.c)(0x54808D13)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\stm32_lib\inc -I .\driver -I .\app-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8 -DSTM32F030 -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_tim.o --omf_browse .\output\stm32f0xx_tim.crf --depend .\output\stm32f0xx_tim.d)
 I (.\stm32_lib\inc\stm32f0xx_tim.h)(0x54808D10)
 I (.\stm32_lib\inc\stm32f0xx.h)(0x58615707)

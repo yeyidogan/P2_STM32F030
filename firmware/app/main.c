@@ -115,8 +115,7 @@ int main(void){
 	osThreadNew(task_Led, NULL, NULL);
 	osThreadNew(task_HDC1080, NULL, NULL);
 	osThreadNew(task_Uart1, NULL, NULL);
-	osThreadNew(task_StepperA, NULL, NULL);
-	osThreadNew(task_StepperB, NULL, NULL);
+	osThreadNew(task_StepperMotor, NULL, NULL);
 	
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution

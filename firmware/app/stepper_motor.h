@@ -53,8 +53,7 @@ enum{
 extern const uint8_t stepperMotorFullStepArray[];
 extern STEPPER_MOTOR_CONTROL_TYPE stMotorA;
 extern STEPPER_MOTOR_CONTROL_TYPE stMotorB;
-extern __NO_RETURN void task_StepperA(void *argument);
-extern __NO_RETURN void task_StepperB(void *argument);
+extern __NO_RETURN void task_StepperMotor(void *argument);
 
 #endif
 /* * * END OF FILE * * */

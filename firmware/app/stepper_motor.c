@@ -17,124 +17,78 @@ STEPPER_MOTOR_CONTROL_TYPE stMotorA = {0x00}, stMotorB = {0x00};
 #endif
 /* functions ---------------------------------------------------------*/
 /**
-  * @brief drive stepper motor A
-  * @param  None
-  * @retval None
-  */
-__NO_RETURN void task_StepperA(void *argument){
-#if defined(__CC_ARM)
-	osThreadId_t threadId;
-
-	threadId = osThreadGetId();
-	if (threadId != NULL) {
-		statusT2 = osThreadSetPriority (threadId, osPriorityBelowNormal);
-		//if (statusT == osOK) {
-		//}
-	}
-#endif
-	
-	while (1){
-		switch (stMotorA.ucCmd){
-			case STEPPER_FORWARD:
-				ulOutputs |= STEPPER_A_EN;
-				ulOutputs &= ~STEPPER_A_MASK;
-				ulOutputs |= stepperMotorFullStepArray[stMotorA.ucIndex++] << 1;
-				stMotorB.ucIndex &= 0x03; //limit to max index
-				setGpioOutputs();
-				PLT_FREE_OS_DELAY(20);
-				++stMotorA.uiStepPoint;
-				--stMotorA.uiStepSize;
-				if (stMotorA.uiStepSize == 0x00 || \
-						stMotorA.uiStepPoint >= MAX_STEPPER_PULSE){
-					stMotorA.ucCmd = STEPPER_STOP;
-					ulOutputs &= ~STEPPER_A_EN;
-					setGpioOutputs();
-				}
-				break;
-			case STEPPER_BACKWARD:
-				readGpioInputs();
-				if (ulInputs && SWITCH_A_MASK == 0x00) //switch detected
-					++stMotorA.ucSwitchCase;
-				else //switch not detected
-					stMotorA.ucSwitchCase = 0x00;
-				
-				if (stMotorA.ucSwitchCase > SWITCH_DETECT_CNT){
-					stMotorA.ucCmd = STEPPER_STOP;
-					break;
-				}
-				break;
-			case STEPPER_STOP:
-				ulOutputs &= ~STEPPER_A_EN;
-				setGpioOutputs();
-				#if defined(__CC_ARM)
-				osEventFlagsWait(event_General, EVENT_MASK_STEPPER_A_RUN, osFlagsWaitAny, osWaitForever);
-				#elif defined(__GNUC__)
-				CoWaitForSingleFlag(flag_StepperA, 0); //no time-out
-				#endif
-				break;
-			default:
-				break;
-		}
-	}
-}
-
-/**
   * @brief drive stepper motor B
   * @param  None
   * @retval None
   */
-__NO_RETURN void task_StepperB(void *argument){
+enum {
+	MOTOR_A_IS_ACTIVE,
+	MOTOR_B_IS_ACTIVE
+};
+
+__NO_RETURN void task_StepperMotor(void *argument){
+	STEPPER_MOTOR_CONTROL_TYPE * stMotor[2];
+	const uint8_t ucShift[2] = {0x01, 0x04};
+	const uint32_t ulStepperEn[2] = {STEPPER_A_EN, STEPPER_B_EN};
+	const uint32_t ulStepperMask[2] = {STEPPER_A_MASK, STEPPER_B_MASK};
+	const uint32_t ulSwitchMask[2] = {SWITCH_A_MASK, SWITCH_B_MASK};
+	uint8_t ucActiveMotor = MOTOR_B_IS_ACTIVE;
+	
 	while (1){
-		switch (stMotorB.ucCmd){
+		++ucActiveMotor;
+		ucActiveMotor &= 0x01; //max val is 1
+		
+		switch (stMotor[ucActiveMotor]->ucCmd){
 			case STEPPER_FORWARD:
-				ulOutputs |= STEPPER_B_EN;
-				ulOutputs &= ~STEPPER_B_MASK;
-				ulOutputs |= stepperMotorFullStepArray[stMotorB.ucIndex++] << 4;
-				stMotorB.ucIndex &= 0x03; //limit to max index
+				if (stMotor[ucActiveMotor]->uiStepSize == 0x00 || \
+						stMotor[ucActiveMotor]->uiStepPoint >= MAX_STEPPER_PULSE){
+					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+					break;
+				ulOutputs |= ulStepperEn[ucActiveMotor];
+				ulOutputs &= ~ulStepperMask[ucActiveMotor];
+				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex++] << ucShift[ucActiveMotor];
+				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
+				++stMotor[ucActiveMotor]->uiStepPoint;
+				--stMotor[ucActiveMotor]->uiStepSize;
 				setGpioOutputs();
-				PLT_FREE_OS_DELAY(20);
-				++stMotorB.uiStepPoint;
-				--stMotorB.uiStepSize;
-				if (stMotorB.uiStepSize == 0x00 || \
-						stMotorB.uiStepPoint >= MAX_STEPPER_PULSE){
-					stMotorB.ucCmd = STEPPER_STOP;
-					ulOutputs &= ~STEPPER_B_EN;
-					setGpioOutputs();
-				}
 				break;
 			case STEPPER_BACKWARD:
 			case STEPPER_TO_ZERO_POINT:
-				ulOutputs |= STEPPER_B_EN;
-				ulOutputs &= ~STEPPER_B_MASK;
-				ulOutputs |= stepperMotorFullStepArray[stMotorB.ucIndex--] << 4;
-				stMotorB.ucIndex &= 0x03; //limit to max index
+				if (stMotor[ucActiveMotor]->ucCmd == STEPPER_BACKWARD){
+					if (stMotor[ucActiveMotor]->uiStepSize == 0x00){
+						stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+						break;
+					}
+				}
+				if (stMotor[ucActiveMotor]->uiStepPoint < 10){
+					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+					//error msg must be defined here: couldnt detect zero point switch
+					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+					break;
+				}
+				ulOutputs |= ulStepperEn[ucActiveMotor];
+				ulOutputs &= ~ulStepperMask[ucActiveMotor];
+				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex--] << ucShift[ucActiveMotor];
+				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
+				--stMotor[ucActiveMotor]->uiStepPoint;
+				if (stMotor[ucActiveMotor]->ucCmd == STEPPER_BACKWARD)
+					--stMotor[ucActiveMotor]->uiStepSize;
 				setGpioOutputs();
-				PLT_FREE_OS_DELAY(20);
-				--stMotorB.uiStepPoint;
-				if (stMotorB.ucCmd == STEPPER_BACKWARD)
-					--stMotorB.uiStepSize;
 				
 				readGpioInputs();
-				if (ulInputs && SWITCH_B_MASK == 0x00) //switch detected
-					++stMotorB.ucSwitchCase;
+				if (ulInputs && ulSwitchMask[ucActiveMotor] == 0x00) //switch detected
+					++stMotor[ucActiveMotor]->ucSwitchCase;
 				else //switch not detected
-					stMotorB.ucSwitchCase = 0x00;
-				if (stMotorB.ucSwitchCase > SWITCH_DETECT_CNT){
-					stMotorB.ucCmd = STEPPER_STOP;
-					stMotorB.uiStepPoint = STEPPER_ZERO_OFFSET;
+					stMotor[ucActiveMotor]->ucSwitchCase = 0x00;
+				if (stMotor[ucActiveMotor]->ucSwitchCase > SWITCH_DETECT_CNT){
+					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+					stMotor[ucActiveMotor]->uiStepPoint = STEPPER_ZERO_OFFSET;
 					break;
 				}
 				
-				if (stMotorB.ucCmd == STEPPER_BACKWARD)
-					if (stMotorB.uiStepSize == 0x00)
-						stMotorB.ucCmd = STEPPER_STOP;
-				if (stMotorB.uiStepPoint < 10){
-					stMotorB.ucCmd = STEPPER_STOP;
-					//error msg must be defined here: couldnt detect zero point switch
-				}
 				break;
 			case STEPPER_STOP:
-				ulOutputs &= ~STEPPER_B_EN;
+				ulOutputs &= ~ulStepperEn[ucActiveMotor];
 				setGpioOutputs();
 				#if defined(__CC_ARM)
 				osEventFlagsWait(event_General, EVENT_MASK_STEPPER_B_RUN, osFlagsWaitAny, osWaitForever);
@@ -144,9 +98,14 @@ __NO_RETURN void task_StepperB(void *argument){
 				break;
 			default:
 				stMotorB.ucCmd = STEPPER_STOP;
-				PLT_FREE_OS_DELAY(10);
 				break;
 		}
+		
+		PLT_FREE_OS_DELAY(10);
+		if (stMotorBits.activeMotor == MOTOR_A_IS_ACTIVE)
+			stMotorBits.activeMotor = MOTOR_B_IS_ACTIVE;
+		else
+			stMotorBits.activeMotor = MOTOR_A_IS_ACTIVE;
 	}
 }
 
