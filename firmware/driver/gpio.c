@@ -29,9 +29,13 @@ void initGpio(void) {
 	/* Connect pin to Peripherals */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_1);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_1);
+	/* USART2 Pins configuration */
+	/* Connect pin to Peripherals */
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource14, GPIO_AF_1);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource15, GPIO_AF_1);
 
 	/* Configure pins as AF push-pull */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_14 | GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_Level_3;

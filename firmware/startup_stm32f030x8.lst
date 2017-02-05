@@ -296,7 +296,7 @@ ARM Macro Assembler    Page 5
   180 00000012                 EXPORT           TIM3_IRQHandler                
 [WEAK]
   181 00000012                 EXPORT           TIM6_DAC_IRQHandler            
-    [WEAK]
+[WEAK]
   182 00000012                 EXPORT           TIM14_IRQHandler               
 [WEAK]
   183 00000012                 EXPORT           TIM15_IRQHandler               

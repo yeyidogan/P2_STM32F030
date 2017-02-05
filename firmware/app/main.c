@@ -19,7 +19,7 @@ OS_STK taskHDC1080_stk[STACK_SIZE_TASK_HDC1080];	/*!< Define "uart" task stack  
 PLT_FREE_OS_MUTEX_ID mutex_I2C;
 /* flags -----------------------------------------------------------*/
 #if defined(__CC_ARM)
-osEventFlagsId_t event_Uart, event_General; 
+osEventFlagsId_t event_General; 
 #elif defined(__GNUC__)
 OS_FlagID flag_UartTimeout, flag_StepperA, flag_StepperB;
 #endif
@@ -96,9 +96,10 @@ int main(void){
 	initGpio();
 	setParameters();
 	initUart1(sys_par.uart1_baudrate);
+	initUart2(sys_par.uart1_baudrate);
 	RCC->AHBENR |= RCC_AHBENR_DMAEN; /* Enable DMA1 clock */
 	initUartDma();
-	uart1NvicConfig();
+	uartNvicConfig();
 	initTimers();
 	initI2C();
 
@@ -110,7 +111,7 @@ int main(void){
     osKernelInitialize();
 	
 	mutex_I2C = osMutexNew(NULL);
-	event_Uart = osEventFlagsNew(NULL);
+	event_General = osEventFlagsNew(NULL);
 	
 	osThreadNew(task_Led, NULL, NULL);
 	osThreadNew(task_HDC1080, NULL, NULL);

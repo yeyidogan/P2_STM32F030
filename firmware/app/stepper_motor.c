@@ -44,10 +44,11 @@ __NO_RETURN void task_StepperMotor(void *argument){
 						stMotor[ucActiveMotor]->uiStepPoint >= MAX_STEPPER_PULSE){
 					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
 					break;
-				ulOutputs |= ulStepperEn[ucActiveMotor];
-				ulOutputs &= ~ulStepperMask[ucActiveMotor];
-				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex++] << ucShift[ucActiveMotor];
+				}
+				ulOutputs |= ulStepperEn[ucActiveMotor]; //enable stepper coils
+				ulOutputs &= ~ulStepperMask[ucActiveMotor]; //reset 2 bit step info
 				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
+				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex++] << ucShift[ucActiveMotor];
 				++stMotor[ucActiveMotor]->uiStepPoint;
 				--stMotor[ucActiveMotor]->uiStepSize;
 				setGpioOutputs();
@@ -63,52 +64,48 @@ __NO_RETURN void task_StepperMotor(void *argument){
 				if (stMotor[ucActiveMotor]->uiStepPoint < 10){
 					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
 					//error msg must be defined here: couldnt detect zero point switch
-					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
 					break;
 				}
-				ulOutputs |= ulStepperEn[ucActiveMotor];
-				ulOutputs &= ~ulStepperMask[ucActiveMotor];
-				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex--] << ucShift[ucActiveMotor];
+				ulOutputs |= ulStepperEn[ucActiveMotor]; //enable stepper coils
+				ulOutputs &= ~ulStepperMask[ucActiveMotor]; //reset 2 bit step info
 				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
+				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex--] << ucShift[ucActiveMotor];
 				--stMotor[ucActiveMotor]->uiStepPoint;
 				if (stMotor[ucActiveMotor]->ucCmd == STEPPER_BACKWARD)
 					--stMotor[ucActiveMotor]->uiStepSize;
 				setGpioOutputs();
 				
 				readGpioInputs();
-				if (ulInputs && ulSwitchMask[ucActiveMotor] == 0x00) //switch detected
-					++stMotor[ucActiveMotor]->ucSwitchCase;
-				else //switch not detected
-					stMotor[ucActiveMotor]->ucSwitchCase = 0x00;
-				if (stMotor[ucActiveMotor]->ucSwitchCase > SWITCH_DETECT_CNT){
+				if (ulInputs && ulSwitchMask[ucActiveMotor] == 0x00){ //switch detected
+					if (stMotor[ucActiveMotor]->ucSwitchCase < SWITCH_DETECT_CNT)
+						++stMotor[ucActiveMotor]->ucSwitchCase;
+				}
+				else {//switch not detected
+					if (stMotor[ucActiveMotor]->ucSwitchCase > 0x00)
+						--stMotor[ucActiveMotor]->ucSwitchCase;
+				}
+				if (stMotor[ucActiveMotor]->ucSwitchCase >= SWITCH_DETECT_CNT){
 					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
 					stMotor[ucActiveMotor]->uiStepPoint = STEPPER_ZERO_OFFSET;
-					break;
 				}
-				
-				break;
-			case STEPPER_STOP:
-				ulOutputs &= ~ulStepperEn[ucActiveMotor];
-				setGpioOutputs();
-				#if defined(__CC_ARM)
-				osEventFlagsWait(event_General, EVENT_MASK_STEPPER_B_RUN, osFlagsWaitAny, osWaitForever);
-				#elif defined(__GNUC__)
-				CoWaitForSingleFlag(flag_StepperB, 0); //no time-out
-				#endif
 				break;
 			default:
-				stMotorB.ucCmd = STEPPER_STOP;
+				stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
 				break;
 		}
 		
+		if (stMotor[ucActiveMotor]->ucCmd == STEPPER_STOP){
+			ulOutputs &= ~ulStepperEn[ucActiveMotor];
+			setGpioOutputs();
+		}
+		if (stMotorA.ucCmd == STEPPER_STOP || stMotorA.ucCmd == STEPPER_STOP){
+			#if defined(__CC_ARM)
+			osEventFlagsWait(event_General, EVENT_MASK_STEPPER_B_RUN, osFlagsWaitAny, osWaitForever);
+			#elif defined(__GNUC__)
+			CoWaitForSingleFlag(flag_StepperB, 0); //no time-out
+			#endif
+		}
 		PLT_FREE_OS_DELAY(10);
-		if (stMotorBits.activeMotor == MOTOR_A_IS_ACTIVE)
-			stMotorBits.activeMotor = MOTOR_B_IS_ACTIVE;
-		else
-			stMotorBits.activeMotor = MOTOR_A_IS_ACTIVE;
 	}
 }
-
-
-
 /* * * END OF FILE * * */

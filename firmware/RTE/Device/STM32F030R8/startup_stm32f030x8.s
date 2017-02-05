@@ -178,7 +178,7 @@ Default_Handler PROC
                 EXPORT  TIM1_BRK_UP_TRG_COM_IRQHandler [WEAK]
                 EXPORT  TIM1_CC_IRQHandler             [WEAK]
                 EXPORT  TIM3_IRQHandler                [WEAK]
-                EXPORT  TIM6_DAC_IRQHandler                [WEAK]
+                EXPORT  TIM6_DAC_IRQHandler            [WEAK]
                 EXPORT  TIM14_IRQHandler               [WEAK]
                 EXPORT  TIM15_IRQHandler               [WEAK]
                 EXPORT  TIM16_IRQHandler               [WEAK]

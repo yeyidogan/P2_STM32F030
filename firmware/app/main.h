@@ -32,10 +32,9 @@ extern PLT_FREE_OS_MUTEX_ID mutex_I2C;
 /* flags -----------------------------------------------------------*/
 #if defined(__CC_ARM)
 	#define EVENT_MASK_UART1_TIMEOUT 0x00000001ul
-	extern osEventFlagsId_t event_Uart;
-	
-	#define EVENT_MASK_STEPPER_A_RUN 0x00000001ul
-	#define EVENT_MASK_STEPPER_B_RUN 0x00000002ul
+	#define EVENT_MASK_UART2_TIMEOUT 0x00000002ul
+	#define EVENT_MASK_STEPPER_A_RUN 0x00000010ul
+	#define EVENT_MASK_STEPPER_B_RUN 0x00000020ul
 	extern osEventFlagsId_t event_General;
 #elif defined(__GNUC__)
 	#define FLAG_RESET_AUTO true
