@@ -96,15 +96,15 @@ int main(void){
 	initGpio();
 	setParameters();
 	initUart1(sys_par.uart1_baudrate);
-	initUart2(sys_par.uart1_baudrate);
+	initUart2(sys_par.uart2_baudrate);
 	RCC->AHBENR |= RCC_AHBENR_DMAEN; /* Enable DMA1 clock */
 	initUartDma();
 	uartNvicConfig();
 	initTimers();
 	initI2C();
 
-	if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
-		change_device_name((uint8_t *)"CatFx_Toilet");
+	//if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
+	//	change_device_name((uint8_t *)"CatFx_Toilet");
 	
 #if defined(__CC_ARM)
 	if(osKernelGetState() == osKernelInactive)

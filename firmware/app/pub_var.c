@@ -21,7 +21,11 @@ PARAMETER_TYPE sys_par;
  *******************************************************************************
  */
 void setParameters(void) {
-	sys_par.uart1_protocol = PROTOCOL_MOBILE_APP;
+	sys_par.uart1_protocol = PROTOCOL_MODBUS;
 	sys_par.uart1_address = 0x01;
 	sys_par.uart1_baudrate = 9600;
+	
+	sys_par.uart2_protocol = PROTOCOL_MOBILE_APP;
+	sys_par.uart2_address = 0x01;
+	sys_par.uart2_baudrate = 9600;
 }

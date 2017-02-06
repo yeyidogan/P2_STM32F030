@@ -35,29 +35,43 @@ uint8_t change_device_name(uint8_t * ptrData){
 * @param[out] 
 *******************************************************************************
 */
-void mobile_app_interface(void){
+#define UARTx_TX_CMD(x) if(x==CHANNEL_UART1) \
+													uart1TxCmd(ptrTx, x); \
+												else \
+													uart2TxCmd(ptrTx, x);
+												
+void mobile_app_interface(uint8_t ucChannel){
 	uint8_t ucLength, ucReturn = MOBILE_APP_RETURN_ERR;
+	uint8_t *ptrRx, *ptrTx;
 	
 	ucLength = uart1CheckRxBuf();
 	if (ucLength == UART_RX_BUFFER_IS_EMPTY)
 		return;
 	
+	if (ucChannel == CHANNEL_UART1){
+		ptrRx = uart1Rx.ptrBuffer;
+		ptrTx = uart1Tx.buffer;
+	}
+	else{
+		ptrRx = uart2Rx.ptrBuffer;
+		ptrTx = uart2Tx.buffer;
+	}
 	//read status msg
-	if (compare_string((uint8_t *)"RS\r\n", uart1Rx.ptrBuffer, 0x14)){
+	if (compare_string((uint8_t *)"RS\r\n", ptrRx, 0x14)){
 		if (ucLength == 0x04){
 			ucReturn = MOBILE_APP_RETURN_MSG;
 			if (stHDC1080Status.ok == true){
-				sprintf((char *)uart1Tx.buffer, "Temperature: %d\r\n", stTempHum.uiTemperature);
-				ucLength = count_string(uart1Tx.buffer, UART_TX_BUFFER_SIZE);
-				uart1TxCmd(uart1Tx.buffer, ucLength);
-				sprintf((char *)uart1Tx.buffer, "Humidity: %d\r\n", stTempHum.uiHumidity);
-				ucLength = count_string(uart1Tx.buffer, UART_TX_BUFFER_SIZE);
-				uart1TxCmd(uart1Tx.buffer, ucLength);
+				sprintf((char *)ptrTx, "Temperature: %d\r\n", stTempHum.uiTemperature);
+				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
+				UARTx_TX_CMD(ucLength);
+				sprintf((char *)ptrTx, "Humidity: %d\r\n", stTempHum.uiHumidity);
+				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
+				UARTx_TX_CMD(ucLength);
 			}
 			else{
-				sprintf((char *)uart1Tx.buffer, "Temperature sensor error\r\n");
-				ucLength = count_string(uart1Tx.buffer, UART_TX_BUFFER_SIZE);
-				uart1TxCmd(uart1Tx.buffer, ucLength);
+				sprintf((char *)ptrTx, "Temperature sensor error\r\n");
+				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
+				UARTx_TX_CMD(ucLength);
 			}
 			
 		}
@@ -67,12 +81,12 @@ void mobile_app_interface(void){
 	if (compare_string((uint8_t *)"RR\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x04){
 			ucReturn = MOBILE_APP_RETURN_MSG;
-			sprintf((char *)uart1Tx.buffer, "Daily Report:\r\n");
-			ucLength = count_string(uart1Tx.buffer, UART_TX_BUFFER_SIZE);
-			uart1TxCmd(uart1Tx.buffer, ucLength);
-			sprintf((char *)uart1Tx.buffer, "Under construction\r\n");
-			ucLength = count_string(uart1Tx.buffer, UART_TX_BUFFER_SIZE);
-			uart1TxCmd(uart1Tx.buffer, ucLength);
+			sprintf((char *)ptrTx, "Daily Report:\r\n");
+			ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
+			UARTx_TX_CMD(ucLength);
+			sprintf((char *)ptrTx, "Under construction\r\n");
+			ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
+			UARTx_TX_CMD(ucLength);
 		}
 	}
 
@@ -129,12 +143,12 @@ void mobile_app_interface(void){
 	}
 	
 	if (ucReturn == MOBILE_APP_RETURN_OK){
-		sprintf((char *)uart1Tx.buffer, "OK\r\n");
-		uart1TxCmd(uart1Tx.buffer, 0x04);
+		sprintf((char *)ptrTx, "OK\r\n");
+		UARTx_TX_CMD(0x04);
 	}
 	else if (ucReturn == MOBILE_APP_RETURN_ERR){
-		sprintf((char *)uart1Tx.buffer, "ERR\r\n");
-		uart1TxCmd(uart1Tx.buffer, 0x05);
+		sprintf((char *)ptrTx, "ERR\r\n");
+		UARTx_TX_CMD(0x05);
 	}
 }
 /* * * END OF FILE * * */

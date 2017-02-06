@@ -29,6 +29,7 @@ enum {
 /* Private variables */
 /* Private functions */
 extern uint8_t change_device_name(uint8_t * ptrData);
+extern void mobile_app_interface(uint8_t ucChannel);
 
 
 #endif

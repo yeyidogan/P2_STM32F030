@@ -371,12 +371,13 @@ void initUartDma(void) {
 * @details    none.
 *******************************************************************************
 */
-void uart1TxCmd(uint8_t *ptr, uint8_t length) {
+void uart1TxCmd(uint8_t *ptr, uint8_t length){
 	//wait while bus is not free
 	START_UART1_TIMER;
 	while (uart1Flags.txBusy == UART_TX_BUSY){
 		if (CHECK_UART1_TIMER_REACH_TO(1000))
 			break;
+		osDelay(2);
 	}
 
 	uart1Flags.txBusy = UART_TX_BUSY;
@@ -405,6 +406,7 @@ void uart2TxCmd(uint8_t *ptr, uint8_t length) {
 	while (uart2Flags.txBusy == UART_TX_BUSY){
 		if (CHECK_UART2_TIMER_REACH_TO(1000))
 			break;
+		osDelay(2);
 	}
 
 	uart2Flags.txBusy = UART_TX_BUSY;
@@ -539,6 +541,46 @@ __NO_RETURN void task_Uart1(void* pdata) {
 __NO_RETURN void task_Uart2(void* pdata) {
 
 	while (1) {
+		#if defined(__CC_ARM)
+		osEventFlagsWait(event_General, EVENT_MASK_UART2_TIMEOUT, osFlagsWaitAny, osWaitForever);
+		#elif defined(__GNUC__)
+		CoWaitForSingleFlag(flag_UartTimeout, 0); //no time-out
+		#endif
+		switch (sys_par.uart2_protocol) {
+			case PROTOCOL_MODBUS:
+				uart2Tx.length = 0x00; //clear transmit data
+				mbTxRxData.slaveAdd = sys_par.uart2_address;
+
+				if (uart2Rx.length1) {
+					mbTxRxData.ptrRxData = uart2Rx.buffer1;
+					mbTxRxData.rxLength = uart2Rx.length1;
+					mbTxRxData.ptrTxData = uart2Tx.buffer;
+					modbusRTU();
+					uart2Tx.length = mbTxRxData.txLength;
+					uart2Rx.length1 = 0;
+				}
+				else if (uart2Rx.length2) {
+					mbTxRxData.ptrRxData = uart2Rx.buffer2;
+					mbTxRxData.rxLength = uart2Rx.length2;
+					mbTxRxData.ptrTxData = uart2Tx.buffer;
+					modbusRTU();
+					uart2Tx.length = mbTxRxData.txLength;
+					uart2Rx.length2 = 0;
+				}
+
+				if (uart2Tx.length) {
+					PLT_FREE_OS_DELAY(5);
+					uart2TxCmd(uart2Tx.buffer, uart2Tx.length);
+				}
+				break;
+			case PROTOCOL_DSI:
+				break;
+			case PROTOCOL_MOBILE_APP:
+				mobile_app_interface(CHANNEL_UART2);
+				break;
+			default:
+				break;
+		}
 	}
 }
 

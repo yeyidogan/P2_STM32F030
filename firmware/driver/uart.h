@@ -35,6 +35,10 @@ enum {
 	UART_TX_BUSY //transmitting data
 };
 
+enum {
+	CHANNEL_UART1,
+	CHANNEL_UART2
+};
 #define UART_RX_BUFFER1_WAITING TRUE
 #define UART_RX_BUFFER2_WAITING FALSE
 #define UART_RX_BUFFER_IS_EMPTY 0x00
@@ -52,6 +56,7 @@ extern void initUart2(uint32_t baudRate);
 extern void uartNvicConfig(void);
 extern void initUartDma(void);
 extern void uart1TxCmd(uint8_t *ptr, uint8_t length);
+extern void uart2TxCmd(uint8_t *ptr, uint8_t length);
 extern uint8_t uart1CheckRxBuf(void);
 extern __NO_RETURN void task_Uart1(void *pdata);
 extern __NO_RETURN void task_Uart2(void *pdata);
@@ -84,8 +89,11 @@ typedef struct {
 
 /* Private variables */
 extern UART_RX_BUFFER_TYPE uart1Rx;
+extern UART_RX_BUFFER_TYPE uart2Rx;
 extern UART_TX_BUFFER_TYPE uart1Tx;
+extern UART_TX_BUFFER_TYPE uart2Tx;
 extern UART_STATUS_TYPE uart1Flags;
+extern UART_STATUS_TYPE uart2Flags;
 extern uint16_t uiTimerUart1;
 
 #endif
