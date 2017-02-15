@@ -1,0 +1,5 @@
+kum boþaltma penceresi: 30x200 mm
+kesim1: 50x220 mm, 1 adet, kum boþaltma klapesi
+kesim2: 40x120 mm, 4 adet, zemine yapýþtýrýlacak parça
+kesim3: 50x120 mm, 4 adet, kesim2 üzerine yapýþtýrýlacak parça
+kesim4: 130x140 mm, 1 adet, 126 mm delik klapesi
