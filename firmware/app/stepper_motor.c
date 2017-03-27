@@ -12,9 +12,6 @@
 //truth table for Onsemi LBC1848MC
 const uint8_t step_array_full[] = {0x00, 0x01, 0x03, 0x02};
 STEPPER_MOTOR_CONTROL_TYPE motor_s[2] = {0x00};
-#if defined(__CC_ARM)
-	osStatus_t statusT2;
-#endif
 
 const uint8_t ucShift[2] = {0x01, 0x04};
 const uint32_t ulStepperEn[2] = {STEPPER_A_EN, STEPPER_B_EN};
