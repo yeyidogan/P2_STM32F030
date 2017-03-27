@@ -6,26 +6,21 @@
 #ifndef __STEPPER_MOTOR_H_
 #define __STEPPER_MOTOR_H_
 
-#if defined(__CC_ARM)
-	#include "cmsis_os2.h"
-#elif defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "stm32f0xx.h"
 #include "stm32f0xx_gpio.h"
 #include "main.h"
 #include "gpio.h"
-#include "plt_free_os_def.h"
 
 /* typedef -----------------------------------------------------------*/
 typedef struct{
-	uint8_t ucIndex;
-	uint8_t ucCmd;
-	uint8_t ucSwitchCase; //switch data on zero point
-	uint16_t uiStepSize; //how many steps will be moved
-	uint16_t uiStepPoint; //position of step. max = MAX_STEPPER_PULSE
+	uint16_t step_size; //how many steps will be moved
+	uint16_t step_point; //position of step. max = MAX_STEPPER_PULSE
+	uint8_t index;
+	uint8_t cmd;
+	uint8_t switch_case; //switch data on zero point
 }STEPPER_MOTOR_CONTROL_TYPE;
 
 /* define ------------------------------------------------------------*/
@@ -48,12 +43,15 @@ enum{
 	STEPPER_TO_END_POINT
 }; //command list
 
+enum {
+	MOTOR_A,
+	MOTOR_B
+};
+
 /* macro -------------------------------------------------------------*/
 /* variables ---------------------------------------------------------*/
-extern const uint8_t stepperMotorFullStepArray[];
-extern STEPPER_MOTOR_CONTROL_TYPE stMotorA;
-extern STEPPER_MOTOR_CONTROL_TYPE stMotorB;
-extern __NO_RETURN void task_StepperMotor(void *argument);
+extern STEPPER_MOTOR_CONTROL_TYPE motor_s[];
+extern __NO_RETURN void task_stepper_motor(void *argument);
 
 #endif
 /* * * END OF FILE * * */

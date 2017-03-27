@@ -10,102 +10,103 @@
 /* variables ---------------------------------------------------------*/
 
 //truth table for Onsemi LBC1848MC
-const uint8_t stepperMotorFullStepArray[] = {0x00, 0x01, 0x03, 0x02};
-STEPPER_MOTOR_CONTROL_TYPE stMotorA = {0x00}, stMotorB = {0x00};
+const uint8_t step_array_full[] = {0x00, 0x01, 0x03, 0x02};
+STEPPER_MOTOR_CONTROL_TYPE motor_s[2] = {0x00};
 #if defined(__CC_ARM)
 	osStatus_t statusT2;
 #endif
+
+const uint8_t ucShift[2] = {0x01, 0x04};
+const uint32_t ulStepperEn[2] = {STEPPER_A_EN, STEPPER_B_EN};
+const uint32_t ulStepperMask[2] = {STEPPER_A_MASK, STEPPER_B_MASK};
+const uint32_t ulSwitchMask[2] = {SWITCH_A_MASK, SWITCH_B_MASK};
+uint8_t active_motor = MOTOR_B;
+
 /* functions ---------------------------------------------------------*/
 /**
   * @brief drive stepper motor B
   * @param  None
   * @retval None
   */
-enum {
-	MOTOR_A_IS_ACTIVE,
-	MOTOR_B_IS_ACTIVE
-};
 
-__NO_RETURN void task_StepperMotor(void *argument){
-	STEPPER_MOTOR_CONTROL_TYPE * stMotor[2];
-	const uint8_t ucShift[2] = {0x01, 0x04};
-	const uint32_t ulStepperEn[2] = {STEPPER_A_EN, STEPPER_B_EN};
-	const uint32_t ulStepperMask[2] = {STEPPER_A_MASK, STEPPER_B_MASK};
-	const uint32_t ulSwitchMask[2] = {SWITCH_A_MASK, SWITCH_B_MASK};
-	uint8_t ucActiveMotor = MOTOR_B_IS_ACTIVE;
+__NO_RETURN void task_stepper_motor(void *argument){
 	
 	while (1){
-		++ucActiveMotor;
-		ucActiveMotor &= 0x01; //max val is 1
+		++active_motor;
+		active_motor &= 0x01; //max val is 1
+		if (active_motor > 1){
+			active_motor = 0;
+		}
 		
-		switch (stMotor[ucActiveMotor]->ucCmd){
+		switch (motor_s[active_motor].cmd){
 			case STEPPER_FORWARD:
-				if (stMotor[ucActiveMotor]->uiStepSize == 0x00 || \
-						stMotor[ucActiveMotor]->uiStepPoint >= MAX_STEPPER_PULSE){
-					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+				if (motor_s[active_motor].step_size == 0x00 || \
+						motor_s[active_motor].step_point >= MAX_STEPPER_PULSE){
+					motor_s[active_motor].cmd = STEPPER_STOP;
+					//continue;
 					break;
 				}
-				ulOutputs |= ulStepperEn[ucActiveMotor]; //enable stepper coils
-				ulOutputs &= ~ulStepperMask[ucActiveMotor]; //reset 2 bit step info
-				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
-				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex++] << ucShift[ucActiveMotor];
-				++stMotor[ucActiveMotor]->uiStepPoint;
-				--stMotor[ucActiveMotor]->uiStepSize;
+				ulOutputs |= ulStepperEn[active_motor]; //enable stepper coils
+				ulOutputs &= ~ulStepperMask[active_motor]; //reset 2 bit step info
+				motor_s[active_motor].index &= 0x03; //limit to max index
+				ulOutputs |= step_array_full[motor_s[active_motor].index++] << ucShift[active_motor];
+				++motor_s[active_motor].step_point;
+				--motor_s[active_motor].step_size;
 				setGpioOutputs();
+				//continue;
 				break;
 			case STEPPER_BACKWARD:
 			case STEPPER_TO_ZERO_POINT:
-				if (stMotor[ucActiveMotor]->ucCmd == STEPPER_BACKWARD){
-					if (stMotor[ucActiveMotor]->uiStepSize == 0x00){
-						stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+				//continue;
+				if (motor_s[active_motor].cmd == STEPPER_BACKWARD){
+					if (motor_s[active_motor].step_size == 0x00){
+						motor_s[active_motor].cmd = STEPPER_STOP;
 						break;
 					}
 				}
-				if (stMotor[ucActiveMotor]->uiStepPoint < 10){
-					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+				if (motor_s[active_motor].step_point < 10){
+					motor_s[active_motor].cmd = STEPPER_STOP;
 					//error msg must be defined here: couldnt detect zero point switch
 					break;
 				}
-				ulOutputs |= ulStepperEn[ucActiveMotor]; //enable stepper coils
-				ulOutputs &= ~ulStepperMask[ucActiveMotor]; //reset 2 bit step info
-				stMotor[ucActiveMotor]->ucIndex &= 0x03; //limit to max index
-				ulOutputs |= stepperMotorFullStepArray[stMotor[ucActiveMotor]->ucIndex--] << ucShift[ucActiveMotor];
-				--stMotor[ucActiveMotor]->uiStepPoint;
-				if (stMotor[ucActiveMotor]->ucCmd == STEPPER_BACKWARD)
-					--stMotor[ucActiveMotor]->uiStepSize;
+				ulOutputs |= ulStepperEn[active_motor]; //enable stepper coils
+				ulOutputs &= ~ulStepperMask[active_motor]; //reset 2 bit step info
+				motor_s[active_motor].index &= 0x03; //limit to max index
+				ulOutputs |= step_array_full[motor_s[active_motor].index--] << ucShift[active_motor];
+				--motor_s[active_motor].step_point;
+				if (motor_s[active_motor].cmd == STEPPER_BACKWARD)
+					--motor_s[active_motor].step_size;
 				setGpioOutputs();
 				
 				readGpioInputs();
-				if (ulInputs && ulSwitchMask[ucActiveMotor] == 0x00){ //switch detected
-					if (stMotor[ucActiveMotor]->ucSwitchCase < SWITCH_DETECT_CNT)
-						++stMotor[ucActiveMotor]->ucSwitchCase;
+				if (ulInputs && ulSwitchMask[active_motor] == 0x00){ //switch detected
+					if (motor_s[active_motor].switch_case < SWITCH_DETECT_CNT)
+						++motor_s[active_motor].switch_case;
 				}
 				else {//switch not detected
-					if (stMotor[ucActiveMotor]->ucSwitchCase > 0x00)
-						--stMotor[ucActiveMotor]->ucSwitchCase;
+					if (motor_s[active_motor].switch_case > 0x00)
+						--motor_s[active_motor].switch_case;
 				}
-				if (stMotor[ucActiveMotor]->ucSwitchCase >= SWITCH_DETECT_CNT){
-					stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
-					stMotor[ucActiveMotor]->uiStepPoint = STEPPER_ZERO_OFFSET;
+				if (motor_s[active_motor].switch_case >= SWITCH_DETECT_CNT){
+					motor_s[active_motor].cmd = STEPPER_STOP;
+					motor_s[active_motor].step_point = STEPPER_ZERO_OFFSET;
 				}
 				break;
 			default:
-				stMotor[ucActiveMotor]->ucCmd = STEPPER_STOP;
+				//continue;
+				motor_s[active_motor].cmd = STEPPER_STOP;
 				break;
 		}
 		
-		if (stMotor[ucActiveMotor]->ucCmd == STEPPER_STOP){
-			ulOutputs &= ~ulStepperEn[ucActiveMotor];
+		if (motor_s[active_motor].cmd == STEPPER_STOP){
+			ulOutputs &= ~ulStepperEn[active_motor];
 			setGpioOutputs();
 		}
-		if (stMotorA.ucCmd == STEPPER_STOP || stMotorA.ucCmd == STEPPER_STOP){
-			#if defined(__CC_ARM)
-			osEventFlagsWait(event_General, EVENT_MASK_STEPPER_B_RUN, osFlagsWaitAny, osWaitForever);
-			#elif defined(__GNUC__)
-			CoWaitForSingleFlag(flag_StepperB, 0); //no time-out
-			#endif
+		//continue;
+		if (motor_s[MOTOR_A].cmd == STEPPER_STOP || motor_s[MOTOR_B].cmd == STEPPER_STOP){
+			osEventFlagsWait(event_general, EVENT_MASK_STEPPER_RUN, osFlagsWaitAny, osWaitForever);
 		}
-		PLT_FREE_OS_DELAY(10);
+		osDelay(10);
 	}
 }
 /* * * END OF FILE * * */
