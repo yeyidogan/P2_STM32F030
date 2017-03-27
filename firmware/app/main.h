@@ -6,13 +6,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-#if defined(__CC_ARM)
-	#include "cmsis_os2.h"
-#elif defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
 #include <stdio.h>
-#include "plt_free_os_def.h"
 #include "pub_var.h"
 #include "gpio.h"
 #include "uart.h"
@@ -28,21 +23,12 @@
 /* Functions ---------------------------------------------------------*/
 /* variables ---------------------------------------------------------*/
 /* mutexes ---------------------------------------------------------*/
-extern PLT_FREE_OS_MUTEX_ID mutex_I2C;
+extern osMutexId_t mutex_I2C;
 /* flags -----------------------------------------------------------*/
-#if defined(__CC_ARM)
 	#define EVENT_MASK_UART1_TIMEOUT 0x00000001ul
 	#define EVENT_MASK_UART2_TIMEOUT 0x00000002ul
-	#define EVENT_MASK_STEPPER_A_RUN 0x00000010ul
-	#define EVENT_MASK_STEPPER_B_RUN 0x00000020ul
-	extern osEventFlagsId_t event_General;
-#elif defined(__GNUC__)
-	#define FLAG_RESET_AUTO true
-	#define FLAG_RESET_MANUAL false
-	#define FLAG_READY_STATE true
-	#define FLAG_NON_READY_STATE false
-	extern OS_FlagID flag_UartTimeout, flag_StepperA, flag_StepperB;
-#endif
+	#define EVENT_MASK_STEPPER_RUN 0x00000010ul
+	extern osEventFlagsId_t event_general;
 
 #endif
 /* * * END OF FILE * * */

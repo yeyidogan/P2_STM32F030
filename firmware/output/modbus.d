@@ -15,7 +15,6 @@
 .\output\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\modbus.o: .\app\main.h
 .\output\modbus.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\output\modbus.o: .\app\plt_free_os_def.h
 .\output\modbus.o: .\app\pub_var.h
 .\output\modbus.o: .\app\pub_s.h
 .\output\modbus.o: .\app\par_enums.h

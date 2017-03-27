@@ -19,8 +19,8 @@
 /* Private typedef */
 typedef struct {
 	uint8_t *ptrTxData;
-	uint8_t txLength;
 	uint8_t *ptrRxData;
+	uint8_t txLength;
 	uint8_t rxLength;
 	uint8_t slaveAdd;
 }MODBUS_TX_RX_DATA;

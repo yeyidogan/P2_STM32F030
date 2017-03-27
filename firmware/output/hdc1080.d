@@ -4,7 +4,6 @@
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\output\hdc1080.o: app\plt_free_os_def.h
 .\output\hdc1080.o: app\main.h
 .\output\hdc1080.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\hdc1080.o: app\pub_var.h

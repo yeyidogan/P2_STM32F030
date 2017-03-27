@@ -20,7 +20,7 @@ uint8_t change_device_name(uint8_t * ptrData){
 	
 	uart1Tx.length = copy_string(ptrData, uart1Tx.buffer, 0x14);
 	uart1TxCmd(uart1Tx.buffer, uart1Tx.length);
-	PLT_FREE_OS_DELAY(100);
+	osDelay(100);
 	
 	if (uart1CheckRxBuf() == UART_RX_BUFFER_IS_EMPTY)
 		return false;
@@ -93,52 +93,36 @@ void mobile_app_interface(uint8_t ucChannel){
 	//open gate 1 (cat litter hopper)
 	if (compare_string((uint8_t *)"COG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stMotorA.ucCmd = STEPPER_TO_END_POINT;
+			motor_s[MOTOR_A].cmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
-			#if defined(__CC_ARM)
-				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_A_RUN);
-			#elif defined(__GNUC__)
-				isr_SetFlag(flag_StepperA);
-			#endif
+			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
 	}
 
 	//close gate 1 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stMotorA.ucCmd = STEPPER_TO_ZERO_POINT;
+			motor_s[MOTOR_A].cmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
-			#if defined(__CC_ARM)
-				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_A_RUN);
-			#elif defined(__GNUC__)
-				isr_SetFlag(flag_StepperA);
-			#endif
+			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
 	}
 
 	//open gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"COG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stMotorB.ucCmd = STEPPER_TO_END_POINT;
+			motor_s[MOTOR_B].cmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
-			#if defined(__CC_ARM)
-				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_B_RUN);
-			#elif defined(__GNUC__)
-				isr_SetFlag(flag_StepperB);
-			#endif
+			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
 	}
 
 	//close gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			stMotorB.ucCmd = STEPPER_TO_ZERO_POINT;
+			motor_s[MOTOR_B].cmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
-			#if defined(__CC_ARM)
-				osEventFlagsSet(event_General, EVENT_MASK_STEPPER_B_RUN);
-			#elif defined(__GNUC__)
-				isr_SetFlag(flag_StepperB);
-			#endif
+			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
 	}
 	

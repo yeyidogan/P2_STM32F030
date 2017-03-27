@@ -43,7 +43,7 @@ enum{
 	STEPPER_TO_END_POINT
 }; //command list
 
-enum {
+enum{
 	MOTOR_A,
 	MOTOR_B
 };

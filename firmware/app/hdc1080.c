@@ -140,7 +140,7 @@ void init_HDC1080(void){
 	PTR_HDC1080_CONF_FRAME_WR->ucRegister = CONFIGURATION_REG;
 	PTR_HDC1080_CONF_FRAME_WR->uiData = HDC1080_CONF_REGISTER_VAL;
 	write_HDC1080_configuration();
-	PLT_FREE_OS_DELAY(200);
+	osDelay(200);
 }
 /**
   * @brief get temperature and humidity from HDC1080
@@ -166,12 +166,12 @@ __NO_RETURN void task_HDC1080(void *argument){
 	//	if (stHDC1080Status.ok == true){
 	//		break;
 	//	}
-	//	PLT_FREE_OS_DELAY(200); //delay 0.2 sec
+	//	osDelay(200); //delay 0.2 sec
 	//}
 	while (1){
 		if (stHDC1080Status.ok == true){
 			trig_HDC1080();
-			PLT_FREE_OS_DELAY(100); //delay 0.1 sec
+			osDelay(100); //delay 0.1 sec
 			if (stHDC1080Status.ok == false){
 				continue;
 			}
@@ -212,7 +212,7 @@ __NO_RETURN void task_HDC1080(void *argument){
 		else{
 			init_HDC1080();
 		}
-		PLT_FREE_OS_DELAY(1000); //1000 milisecond delay
+		osDelay(1000); //1000 milisecond delay
 	}
 }
 /* * * END OF FILE * * */

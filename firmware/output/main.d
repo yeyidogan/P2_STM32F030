@@ -4,7 +4,6 @@
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\output\main.o: app\plt_free_os_def.h
 .\output\main.o: app\pub_var.h
 .\output\main.o: app\pub_s.h
 .\output\main.o: app\par_enums.h

@@ -6,11 +6,7 @@
 #ifndef _HC0X_BLUETOOTH_H_
 #define _HC0X_BLUETOOTH_H_
 
-#if defined(__CC_ARM)
-	#include "cmsis_os2.h"
-#elif defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
 #include <stdint.h>
 #include <stdbool.h>
 #include "uart.h"

@@ -43,7 +43,6 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				if (motor_s[active_motor].step_size == 0x00 || \
 						motor_s[active_motor].step_point >= MAX_STEPPER_PULSE){
 					motor_s[active_motor].cmd = STEPPER_STOP;
-					//continue;
 					break;
 				}
 				ulOutputs |= ulStepperEn[active_motor]; //enable stepper coils
@@ -53,11 +52,9 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				++motor_s[active_motor].step_point;
 				--motor_s[active_motor].step_size;
 				setGpioOutputs();
-				//continue;
 				break;
 			case STEPPER_BACKWARD:
 			case STEPPER_TO_ZERO_POINT:
-				//continue;
 				if (motor_s[active_motor].cmd == STEPPER_BACKWARD){
 					if (motor_s[active_motor].step_size == 0x00){
 						motor_s[active_motor].cmd = STEPPER_STOP;
@@ -93,7 +90,6 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				}
 				break;
 			default:
-				//continue;
 				motor_s[active_motor].cmd = STEPPER_STOP;
 				break;
 		}
@@ -102,7 +98,6 @@ __NO_RETURN void task_stepper_motor(void *argument){
 			ulOutputs &= ~ulStepperEn[active_motor];
 			setGpioOutputs();
 		}
-		//continue;
 		if (motor_s[MOTOR_A].cmd == STEPPER_STOP || motor_s[MOTOR_B].cmd == STEPPER_STOP){
 			osEventFlagsWait(event_general, EVENT_MASK_STEPPER_RUN, osFlagsWaitAny, osWaitForever);
 		}

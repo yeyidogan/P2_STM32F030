@@ -13,7 +13,6 @@
 .\output\stepper_motor.o: .\stm32_lib\inc\stm32f0xx_gpio.h
 .\output\stepper_motor.o: app\main.h
 .\output\stepper_motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\output\stepper_motor.o: app\plt_free_os_def.h
 .\output\stepper_motor.o: app\pub_var.h
 .\output\stepper_motor.o: app\pub_s.h
 .\output\stepper_motor.o: app\par_enums.h

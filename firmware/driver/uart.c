@@ -11,14 +11,14 @@
 /* Private macro */
 /* Private variables */
 
-UART_RX_BUFFER_TYPE uart1Rx = {0x00, 0x00, {0x00}};
-UART_TX_BUFFER_TYPE uart1Tx = {0x00, 0x00, "uart1 transmit data\r\n"};
+UART_RX_BUFFER_TYPE uart1Rx = {0x00};
+UART_TX_BUFFER_TYPE uart1Tx = {"uart1 transmit data\r\n", 0x00, 0x00};
 UART_STATUS_TYPE uart1Flags = {0x00};
 uint8_t uiTmp = 0x00;
 uint16_t uiTimerUart1 = 0x00; //to control loops
 
-UART_RX_BUFFER_TYPE uart2Rx = {0x00, 0x00, {0x00}};
-UART_TX_BUFFER_TYPE uart2Tx = {0x00, 0x00, "uart2 transmit data\r\n"};
+UART_RX_BUFFER_TYPE uart2Rx = {0x00};
+UART_TX_BUFFER_TYPE uart2Tx = {"uart2 transmit data\r\n", 0x00, 0x00};
 UART_STATUS_TYPE uart2Flags = {0x00};
 uint16_t uiTimerUart2 = 0x00; //to control loops
 
@@ -29,10 +29,6 @@ uint16_t uiTimerUart2 = 0x00; //to control loops
   * @retval None
   */
 void USART1_IRQHandler(void){
-
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
 	if (USART_GetITStatus(USART1, USART_IT_RTO) != RESET) { //timeout flag
 		uart1Flags.rxTimeOut = TRUE;
 	}
@@ -51,11 +47,7 @@ void USART1_IRQHandler(void){
 	}
 	DMA1_Channel3->CNDTR = UART_RX_BUFFER_SIZE;
 	DMA_Cmd(DMA1_Channel3, ENABLE); //uart1 rx dma
-#if defined(__CC_ARM)
-	osEventFlagsSet(event_General, EVENT_MASK_UART1_TIMEOUT);
-#elif defined(__GNUC__)
-	isr_SetFlag(flag_UartTimeout);
-#endif
+	osEventFlagsSet(event_general, EVENT_MASK_UART1_TIMEOUT);
 	#if 0
 	//TX and RX interrupts
 	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
@@ -82,10 +74,6 @@ void USART1_IRQHandler(void){
 	    }
 	}
 	#endif
-
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
 }
 /**
   * @brief  This function handles USART2 global interrupt request.
@@ -93,10 +81,6 @@ void USART1_IRQHandler(void){
   * @retval None
   */
 void USART2_IRQHandler(void){
-
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
 	if (USART_GetITStatus(USART2, USART_IT_RTO) != RESET) { //timeout flag
 		uart2Flags.rxTimeOut = TRUE;
 	}
@@ -115,15 +99,7 @@ void USART2_IRQHandler(void){
 	}
 	DMA1_Channel3->CNDTR = UART_RX_BUFFER_SIZE;
 	DMA_Cmd(DMA1_Channel5, ENABLE); //uart2 rx dma
-#if defined(__CC_ARM)
-	osEventFlagsSet(event_General, EVENT_MASK_UART2_TIMEOUT);
-#elif defined(__GNUC__)
-	isr_SetFlag(flag_UartTimeout);
-#endif
-	
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
+	osEventFlagsSet(event_general, EVENT_MASK_UART2_TIMEOUT);
 }
 
 /**
@@ -132,18 +108,12 @@ void USART2_IRQHandler(void){
   * @retval None
   */
 void DMA1_Channel2_3_IRQHandler(void) {
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
 	DMA_Cmd(DMA1_Channel2, DISABLE); //disable uart1 tx dma
 	DMA_ClearFlag(DMA_ISR_GIF2);
 	DMA_ClearITPendingBit(DMA_ISR_GIF2);
 	uart1Flags.txBusy = UART_TX_READY;
 
 	DMA_Cmd(DMA1_Channel2, ENABLE); //uart1 tx dma
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
 }
 
 /**
@@ -152,18 +122,12 @@ void DMA1_Channel2_3_IRQHandler(void) {
   * @retval None
   */
 void DMA1_Channel4_5_IRQHandler(void) {
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
 	DMA_Cmd(DMA1_Channel4, DISABLE); //disable uart2 tx dma
 	DMA_ClearFlag(DMA_ISR_GIF4);
 	DMA_ClearITPendingBit(DMA1_FLAG_GL4);
 	uart2Flags.txBusy = UART_TX_READY;
 
 	DMA_Cmd(DMA1_Channel4, ENABLE); //uart1 tx dma
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
 }
 
 /**
@@ -483,11 +447,7 @@ uint8_t uart2CheckRxBuf(void){
 __NO_RETURN void task_Uart1(void* pdata) {
 
 	while (1) {
-		#if defined(__CC_ARM)
-		osEventFlagsWait(event_General, EVENT_MASK_UART1_TIMEOUT, osFlagsWaitAny, osWaitForever);
-		#elif defined(__GNUC__)
-		CoWaitForSingleFlag(flag_UartTimeout, 0); //no time-out
-		#endif
+		osEventFlagsWait(event_general, EVENT_MASK_UART1_TIMEOUT, osFlagsWaitAny, osWaitForever);
 		switch (sys_par.uart1_protocol) {
 			case PROTOCOL_MODBUS:
 				uart1Tx.length = 0x00; //clear transmit data
@@ -511,7 +471,7 @@ __NO_RETURN void task_Uart1(void* pdata) {
 				}
 
 				if (uart1Tx.length) {
-					PLT_FREE_OS_DELAY(5);
+					osDelay(5);
 					uart1TxCmd(uart1Tx.buffer, uart1Tx.length);
 				}
 
@@ -524,7 +484,7 @@ __NO_RETURN void task_Uart1(void* pdata) {
 				break;
 		}
 		
-		//PLT_FREE_OS_DELAY(5);
+		//osDelay(5);
 	}
 }
 
@@ -541,12 +501,8 @@ __NO_RETURN void task_Uart1(void* pdata) {
 __NO_RETURN void task_Uart2(void* pdata) {
 
 	while (1) {
-		#if defined(__CC_ARM)
-		osEventFlagsWait(event_General, EVENT_MASK_UART2_TIMEOUT, osFlagsWaitAny, osWaitForever);
-		#elif defined(__GNUC__)
-		CoWaitForSingleFlag(flag_UartTimeout, 0); //no time-out
-		#endif
-		switch (sys_par.uart2_protocol) {
+		osEventFlagsWait(event_general, EVENT_MASK_UART2_TIMEOUT, osFlagsWaitAny, osWaitForever);
+		switch (sys_par.uart2_protocol){
 			case PROTOCOL_MODBUS:
 				uart2Tx.length = 0x00; //clear transmit data
 				mbTxRxData.slaveAdd = sys_par.uart2_address;
@@ -569,7 +525,7 @@ __NO_RETURN void task_Uart2(void* pdata) {
 				}
 
 				if (uart2Tx.length) {
-					PLT_FREE_OS_DELAY(5);
+					osDelay(5);
 					uart2TxCmd(uart2Tx.buffer, uart2Tx.length);
 				}
 				break;

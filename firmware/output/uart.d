@@ -14,7 +14,6 @@
 .\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\uart.o: .\app\main.h
 .\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\output\uart.o: .\app\plt_free_os_def.h
 .\output\uart.o: .\app\pub_var.h
 .\output\uart.o: .\app\pub_s.h
 .\output\uart.o: .\app\par_enums.h

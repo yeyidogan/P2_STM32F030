@@ -6,14 +6,9 @@
 #ifndef __HDC1080_H_
 #define __HDC1080_H_
 
-#if defined(__CC_ARM)
-	#include "cmsis_os2.h"
-#elif defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include "plt_free_os_def.h"
 #include "main.h"
 #include "i2c.h"
 
@@ -58,7 +53,7 @@ typedef struct{
 }ST_HDC1080_RD_CONF_FRAME_TYPE;
 typedef struct{
 	uint16_t uiTemperature;
-	uint16_t uiHumidity;	
+	uint16_t uiHumidity;
 }ST_HDC1080_RD_TEMP_HUM_TYPE;
 typedef struct{
 	uint8_t ok:1;

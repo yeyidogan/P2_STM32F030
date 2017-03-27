@@ -11,13 +11,8 @@
 #include "stm32f0xx_usart.h"
 #include "stm32f0xx_misc.h"
 #include "stm32f0xx_dma.h"
-#if defined(__CC_ARM)
-	#include "cmsis_os2.h"
-#elif defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
 #include "main.h"
-#include "plt_free_os_def.h"
 #include "uart.h"
 #include "par_enums.h"
 #include "modbus.h"
@@ -63,17 +58,17 @@ extern __NO_RETURN void task_Uart2(void *pdata);
 
 /* Private typedef */
 typedef struct {
-	uint8_t length1; //length of data to be read of buffer1
-	uint8_t length2; //length of data to be read of buffer1
+	uint8_t * ptrBuffer; //will be used for active buffer
 	uint8_t buffer1[UART_RX_BUFFER_SIZE];
 	uint8_t buffer2[UART_RX_BUFFER_SIZE];
-	uint8_t * ptrBuffer; //will be used for active buffer
+	uint8_t length1; //length of data to be read of buffer1
+	uint8_t length2; //length of data to be read of buffer1
 }UART_RX_BUFFER_TYPE;
 
 typedef struct {
+	uint8_t buffer[UART_TX_BUFFER_SIZE];
 	uint8_t bufferId;
 	uint8_t length; //length of data to be transferred
-	uint8_t buffer[UART_TX_BUFFER_SIZE];
 }UART_TX_BUFFER_TYPE;
 
 typedef struct {

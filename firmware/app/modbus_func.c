@@ -142,19 +142,23 @@ uint16_t rwDummyFunc(void){
 *******************************************************************************
 */
 const ST_MODBUS_HOLDING_REGISTER_TYPE stHoldingRegArray[] = {
-	{RW_U16_PTR_VAL,
 	(uint16_t *)&ulPar1 + 1,
 	rwDummyFunc,
 	rwDummyFunc,
-	START_OF_WORD_REGISTER},
+	START_OF_WORD_REGISTER,
+	RW_U16_PTR_VAL,
 
-	{RW_U16_PTR_VAL,
 	((uint16_t *)&ulPar1),
 	rwDummyFunc,
 	rwDummyFunc,
-	END_OF_DWORD_REGISTER},
+	END_OF_DWORD_REGISTER,
+	RW_U16_PTR_VAL,
 
-	{LAST_DUMMY_REGITER}
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	LAST_DUMMY_REGITER,
 };
 const uint16_t sizeOfHoldingRegister = sizeof(stHoldingRegArray)/sizeof(ST_MODBUS_HOLDING_REGISTER_TYPE) - 1;
 /* * * END OF FILE * * */

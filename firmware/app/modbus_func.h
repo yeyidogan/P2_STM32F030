@@ -36,11 +36,11 @@ enum MODBUS_REGISTER_LIST{
 };
 
 typedef struct{
-	enum MODBUS_REGISTER_LIST registerType;
 	uint16_t * ptrU16; //r+w to same pointer
 	uint16_t (*mbReadFuncPtr)(void); //modbus read function pointer
 	uint16_t (*mbWriteFuncPtr)(void); //modbus write function pointer
 	uint8_t orderOfRegister; //multiple registers can be a long variable
+	enum MODBUS_REGISTER_LIST registerType;
 }ST_MODBUS_HOLDING_REGISTER_TYPE;
 
 /* Private variables */
