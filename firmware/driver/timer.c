@@ -16,7 +16,7 @@
   * @param  None
   * @retval None
   */
-void TIM6_DAC_IRQHandler(void){
+void TIM6_IRQHandler(void){
 #if defined(__GNUC__)
 	CoEnterISR();
 #endif

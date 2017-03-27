@@ -96,7 +96,7 @@ int main(void){
 	initGpio();
 	setParameters();
 	initUart1(sys_par.uart1_baudrate);
-	initUart2(sys_par.uart2_baudrate);
+	//initUart2(sys_par.uart2_baudrate);
 	RCC->AHBENR |= RCC_AHBENR_DMAEN; /* Enable DMA1 clock */
 	initUartDma();
 	uartNvicConfig();
@@ -116,7 +116,7 @@ int main(void){
 	osThreadNew(task_Led, NULL, NULL);
 	osThreadNew(task_HDC1080, NULL, NULL);
 	osThreadNew(task_Uart1, NULL, NULL);
-	osThreadNew(task_StepperMotor, NULL, NULL);
+	//osThreadNew(task_StepperMotor, NULL, NULL);
 	
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
     osKernelStart(); // ... start thread execution

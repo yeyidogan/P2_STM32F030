@@ -161,8 +161,7 @@ const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 
   * @param  None
   * @retval None
   */
-void SystemInit(void)
-{
+void SystemInit(void){
   /* Reset the RCC clock configuration to the default reset state ------------*/
   /* Set HSION bit */
   //RCC->CR |= (uint32_t)0x00000001U;
@@ -217,12 +216,13 @@ void SystemInit(void)
   /* Disable all interrupts */
   RCC->CIR = 0x00000000U;
 
+	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGCOMPEN;
   /* Reset HSI14 bit */
   RCC->CR2 &= (uint32_t)0xFFFFFFFEU;
 
   /* Clear PLL Source [16] and Multiplier [21:18] bits */
   RCC->CFGR &= ~(RCC_CFGR_PLLMULL | RCC_CFGR_PLLSRC);
-  RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMUL12 | RCC_CFGR_SW_PLL);
+  RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSI_DIV2 | RCC_CFGR_PLLMUL12 | RCC_CFGR_SW_PLL);
   /* Clear PPRE[2:0] bits */
   RCC->CFGR &= ~RCC_CFGR_PPRE;
 	RCC->CFGR |= RCC_CFGR_PPRE_DIV4;
@@ -249,7 +249,7 @@ void SystemInit(void)
 }
 
 /**
-   * @brief  Update SystemCoreClock variable according to Clock Register Values.
+  * @brief  Update SystemCoreClock variable according to Clock Register Values.
   *         The SystemCoreClock variable contains the core clock (HCLK), it can
   *         be used by the user application to setup the SysTick timer or configure
   *         other parameters.
@@ -284,9 +284,7 @@ void SystemInit(void)
   * @param  None
   * @retval None
   */
-#if 1
-void SystemCoreClockUpdate (void)
-{
+void SystemCoreClockUpdate(void){
   uint32_t tmp = 0, pllmull = 0, pllsource = 0, predivfactor = 0;
 
   /* Get SYSCLK source -------------------------------------------------------*/
@@ -344,7 +342,6 @@ void SystemCoreClockUpdate (void)
   /* HCLK clock frequency */
   SystemCoreClock >>= tmp;
 }
-#endif
 /**
   * @}
   */

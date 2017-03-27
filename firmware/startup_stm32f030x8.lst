@@ -85,26 +85,26 @@ ARM Macro Assembler    Page 2
    45 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    46 00000000         ; </h>
    47 00000000         
-   48 00000000 00000400 
+   48 00000000 00000500 
                        Stack_Size
-                               EQU              0x00000400
+                               EQU              0x00000500
    49 00000000         
    50 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
 =3
    51 00000000         Stack_Mem
                                SPACE            Stack_Size
-   52 00000400         __initial_sp
-   53 00000400         
-   54 00000400         
-   55 00000400         ; <h> Heap Configuration
-   56 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   57 00000400         ; </h>
-   58 00000400         
-   59 00000400 00000200 
+   52 00000500         __initial_sp
+   53 00000500         
+   54 00000500         
+   55 00000500         ; <h> Heap Configuration
+   56 00000500         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   57 00000500         ; </h>
+   58 00000500         
+   59 00000500 00000200 
                        Heap_Size
                                EQU              0x00000200
-   60 00000400         
-   61 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   60 00000500         
+   61 00000500                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    62 00000000         __heap_base
    63 00000000         Heap_Mem
@@ -184,7 +184,7 @@ ARM Macro Assembler    Page 3
                                                             re Compare
   109 0000007C 00000000        DCD              0           ; Reserved
   110 00000080 00000000        DCD              TIM3_IRQHandler ; TIM3
-  111 00000084 00000000        DCD              TIM6_DAC_IRQHandler ; TIM3
+  111 00000084 00000000        DCD              TIM6_IRQHandler ; TIM6
   112 00000088 00000000        DCD              0           ; Reserved
   113 0000008C 00000000        DCD              TIM14_IRQHandler ; TIM14
   114 00000090 00000000        DCD              TIM15_IRQHandler ; TIM15
@@ -295,7 +295,7 @@ ARM Macro Assembler    Page 5
 [WEAK]
   180 00000012                 EXPORT           TIM3_IRQHandler                
 [WEAK]
-  181 00000012                 EXPORT           TIM6_DAC_IRQHandler            
+  181 00000012                 EXPORT           TIM6_IRQHandler                
 [WEAK]
   182 00000012                 EXPORT           TIM14_IRQHandler               
 [WEAK]
@@ -339,7 +339,7 @@ ARM Macro Assembler    Page 6
   205 00000012         TIM1_BRK_UP_TRG_COM_IRQHandler
   206 00000012         TIM1_CC_IRQHandler
   207 00000012         TIM3_IRQHandler
-  208 00000012         TIM6_DAC_IRQHandler
+  208 00000012         TIM6_IRQHandler
   209 00000012         TIM14_IRQHandler
   210 00000012         TIM15_IRQHandler
   211 00000012         TIM16_IRQHandler
@@ -383,7 +383,7 @@ ARM Macro Assembler    Page 6
               00000000 
               00000000 
               00000000 
-              00000400 
+              00000500 
               00000200 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
@@ -394,13 +394,12 @@ ork --depend=.\output\startup_stm32f030x8.d -o.\output\startup_stm32f030x8.o -I
 ARM Macro Assembler    Page 7 
 
 
-C:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1 -IC:\Keil_
-v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0
-\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS2\RTX\Incl
-ude -IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include --predefine="
-__UVISION_VERSION SETA 522" --predefine="_RTE_ SETA 1" --predefine="STM32F030x8
- SETA 1" --list=.\startup_stm32f030x8.lst RTE\Device\STM32F030R8\startup_stm32f
-030x8.s
+.\RTE\CMSIS -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Inclu
+de -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\P
+ACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\RTX\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F0x
+x_DFP\1.5.0\Device\Include --predefine="__UVISION_VERSION SETA 523" --predefine
+="_RTE_ SETA 1" --predefine="STM32F030x8 SETA 1" --list=.\startup_stm32f030x8.l
+st RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 
 
@@ -424,7 +423,7 @@ Symbol: Stack_Mem
       At line 243 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 245 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-__initial_sp 00000400
+__initial_sp 00000500
 
 Symbol: __initial_sp
    Definitions
@@ -795,9 +794,9 @@ Symbol: TIM3_IRQHandler
       At line 110 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 180 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-TIM6_DAC_IRQHandler 00000012
+TIM6_IRQHandler 00000012
 
-Symbol: TIM6_DAC_IRQHandler
+Symbol: TIM6_IRQHandler
    Definitions
       At line 208 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
@@ -861,7 +860,7 @@ Symbol: Heap_Size
       At line 63 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 244 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-Stack_Size 00000400
+Stack_Size 00000500
 
 Symbol: Stack_Size
    Definitions
