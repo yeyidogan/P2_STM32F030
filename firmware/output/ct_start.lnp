@@ -26,4 +26,4 @@
 --strict --scatter ".\output\ct_start.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\ct_start.map" -o .\output\ct_start.axf
+--list ".\Listings\ct_start.map" -o .\output\ct_start.axf

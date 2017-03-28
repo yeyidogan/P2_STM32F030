@@ -136,6 +136,7 @@ void DMA1_Channel4_5_IRQHandler(void) {
   * @retval None
   */
 void initUart1(uint32_t baudRate) {
+	USART_InitTypeDef USART_InitStructure;
 	/* USARTx configured as follow:
 	- BaudRate = 9600 baud
 	- Word Length = 8 Bits
@@ -145,7 +146,6 @@ void initUart1(uint32_t baudRate) {
 	- Receive and transmit enabled
 	*/
 	RCC->APB2ENR |= RCC_APB2ENR_USART1EN; //Enable Usart1 clock
-	USART_InitTypeDef USART_InitStructure;
 
 	//USART DeInit
 	RCC->APB2RSTR |= RCC_APB2ENR_USART1EN;
@@ -172,6 +172,7 @@ void initUart1(uint32_t baudRate) {
   * @retval None
   */
 void initUart2(uint32_t baudRate) {
+	USART_InitTypeDef USART_InitStructure;
 	/* USARTx configured as follow:
 	- BaudRate = 9600 baud
 	- Word Length = 8 Bits
@@ -181,7 +182,6 @@ void initUart2(uint32_t baudRate) {
 	- Receive and transmit enabled
 	*/
 	RCC->APB1ENR |= RCC_APB1ENR_USART2EN; //Enable Usart2 clock
-	USART_InitTypeDef USART_InitStructure;
 
 	//USART DeInit
 	RCC->APB1RSTR |= RCC_APB1ENR_USART2EN;

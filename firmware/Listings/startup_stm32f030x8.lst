@@ -85,26 +85,26 @@ ARM Macro Assembler    Page 2
    45 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    46 00000000         ; </h>
    47 00000000         
-   48 00000000 00000400 
+   48 00000000 00000500 
                        Stack_Size
-                               EQU              0x00000400
+                               EQU              0x00000500
    49 00000000         
    50 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
 =3
    51 00000000         Stack_Mem
                                SPACE            Stack_Size
-   52 00000400         __initial_sp
-   53 00000400         
-   54 00000400         
-   55 00000400         ; <h> Heap Configuration
-   56 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   57 00000400         ; </h>
-   58 00000400         
-   59 00000400 00000200 
+   52 00000500         __initial_sp
+   53 00000500         
+   54 00000500         
+   55 00000500         ; <h> Heap Configuration
+   56 00000500         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   57 00000500         ; </h>
+   58 00000500         
+   59 00000500 00000200 
                        Heap_Size
                                EQU              0x00000200
-   60 00000400         
-   61 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   60 00000500         
+   61 00000500                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    62 00000000         __heap_base
    63 00000000         Heap_Mem
@@ -184,7 +184,7 @@ ARM Macro Assembler    Page 3
                                                             re Compare
   109 0000007C 00000000        DCD              0           ; Reserved
   110 00000080 00000000        DCD              TIM3_IRQHandler ; TIM3
-  111 00000084 00000000        DCD              0           ; Reserved
+  111 00000084 00000000        DCD              TIM6_IRQHandler ; TIM6
   112 00000088 00000000        DCD              0           ; Reserved
   113 0000008C 00000000        DCD              TIM14_IRQHandler ; TIM14
   114 00000090 00000000        DCD              TIM15_IRQHandler ; TIM15
@@ -295,108 +295,111 @@ ARM Macro Assembler    Page 5
 [WEAK]
   180 00000012                 EXPORT           TIM3_IRQHandler                
 [WEAK]
-  181 00000012                 EXPORT           TIM14_IRQHandler               
+  181 00000012                 EXPORT           TIM6_IRQHandler                
 [WEAK]
-  182 00000012                 EXPORT           TIM15_IRQHandler               
+  182 00000012                 EXPORT           TIM14_IRQHandler               
 [WEAK]
-  183 00000012                 EXPORT           TIM16_IRQHandler               
+  183 00000012                 EXPORT           TIM15_IRQHandler               
 [WEAK]
-  184 00000012                 EXPORT           TIM17_IRQHandler               
+  184 00000012                 EXPORT           TIM16_IRQHandler               
 [WEAK]
-  185 00000012                 EXPORT           I2C1_IRQHandler                
+  185 00000012                 EXPORT           TIM17_IRQHandler               
 [WEAK]
-  186 00000012                 EXPORT           I2C2_IRQHandler                
+  186 00000012                 EXPORT           I2C1_IRQHandler                
 [WEAK]
-  187 00000012                 EXPORT           SPI1_IRQHandler                
+  187 00000012                 EXPORT           I2C2_IRQHandler                
 [WEAK]
-  188 00000012                 EXPORT           SPI2_IRQHandler                
+  188 00000012                 EXPORT           SPI1_IRQHandler                
 [WEAK]
-  189 00000012                 EXPORT           USART1_IRQHandler              
+  189 00000012                 EXPORT           SPI2_IRQHandler                
 [WEAK]
-  190 00000012                 EXPORT           USART2_IRQHandler              
+  190 00000012                 EXPORT           USART1_IRQHandler              
 [WEAK]
-  191 00000012         
+  191 00000012                 EXPORT           USART2_IRQHandler              
+[WEAK]
   192 00000012         
-  193 00000012         WWDG_IRQHandler
-  194 00000012         RTC_IRQHandler
-  195 00000012         FLASH_IRQHandler
-  196 00000012         RCC_IRQHandler
-  197 00000012         EXTI0_1_IRQHandler
-  198 00000012         EXTI2_3_IRQHandler
+  193 00000012         
+  194 00000012         WWDG_IRQHandler
+  195 00000012         RTC_IRQHandler
+  196 00000012         FLASH_IRQHandler
+  197 00000012         RCC_IRQHandler
 
 
 
 ARM Macro Assembler    Page 6 
 
 
-  199 00000012         EXTI4_15_IRQHandler
-  200 00000012         DMA1_Channel1_IRQHandler
-  201 00000012         DMA1_Channel2_3_IRQHandler
-  202 00000012         DMA1_Channel4_5_IRQHandler
-  203 00000012         ADC1_IRQHandler
-  204 00000012         TIM1_BRK_UP_TRG_COM_IRQHandler
-  205 00000012         TIM1_CC_IRQHandler
-  206 00000012         TIM3_IRQHandler
-  207 00000012         TIM14_IRQHandler
-  208 00000012         TIM15_IRQHandler
-  209 00000012         TIM16_IRQHandler
-  210 00000012         TIM17_IRQHandler
-  211 00000012         I2C1_IRQHandler
-  212 00000012         I2C2_IRQHandler
-  213 00000012         SPI1_IRQHandler
-  214 00000012         SPI2_IRQHandler
-  215 00000012         USART1_IRQHandler
-  216 00000012         USART2_IRQHandler
-  217 00000012         
-  218 00000012 E7FE            B                .
-  219 00000014         
-  220 00000014                 ENDP
+  198 00000012         EXTI0_1_IRQHandler
+  199 00000012         EXTI2_3_IRQHandler
+  200 00000012         EXTI4_15_IRQHandler
+  201 00000012         DMA1_Channel1_IRQHandler
+  202 00000012         DMA1_Channel2_3_IRQHandler
+  203 00000012         DMA1_Channel4_5_IRQHandler
+  204 00000012         ADC1_IRQHandler
+  205 00000012         TIM1_BRK_UP_TRG_COM_IRQHandler
+  206 00000012         TIM1_CC_IRQHandler
+  207 00000012         TIM3_IRQHandler
+  208 00000012         TIM6_IRQHandler
+  209 00000012         TIM14_IRQHandler
+  210 00000012         TIM15_IRQHandler
+  211 00000012         TIM16_IRQHandler
+  212 00000012         TIM17_IRQHandler
+  213 00000012         I2C1_IRQHandler
+  214 00000012         I2C2_IRQHandler
+  215 00000012         SPI1_IRQHandler
+  216 00000012         SPI2_IRQHandler
+  217 00000012         USART1_IRQHandler
+  218 00000012         USART2_IRQHandler
+  219 00000012         
+  220 00000012 E7FE            B                .
   221 00000014         
-  222 00000014                 ALIGN
+  222 00000014                 ENDP
   223 00000014         
-  224 00000014         ;*******************************************************
-                       ************************
-  225 00000014         ; User Stack and Heap initialization
+  224 00000014                 ALIGN
+  225 00000014         
   226 00000014         ;*******************************************************
                        ************************
-  227 00000014                 IF               :DEF:__MICROLIB
-  234 00000014         
-  235 00000014                 IMPORT           __use_two_region_memory
-  236 00000014                 EXPORT           __user_initial_stackheap
-  237 00000014         
-  238 00000014         __user_initial_stackheap
+  227 00000014         ; User Stack and Heap initialization
+  228 00000014         ;*******************************************************
+                       ************************
+  229 00000014                 IF               :DEF:__MICROLIB
+  236 00000014         
+  237 00000014                 IMPORT           __use_two_region_memory
+  238 00000014                 EXPORT           __user_initial_stackheap
   239 00000014         
-  240 00000014 4804            LDR              R0, =  Heap_Mem
-  241 00000016 4905            LDR              R1, =(Stack_Mem + Stack_Size)
-  242 00000018 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
-  243 0000001A 4B06            LDR              R3, = Stack_Mem
-  244 0000001C 4770            BX               LR
-  245 0000001E         
-  246 0000001E 00 00           ALIGN
-  247 00000020         
-  248 00000020                 ENDIF
+  240 00000014         __user_initial_stackheap
+  241 00000014         
+  242 00000014 4804            LDR              R0, =  Heap_Mem
+  243 00000016 4905            LDR              R1, =(Stack_Mem + Stack_Size)
+  244 00000018 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
+  245 0000001A 4B06            LDR              R3, = Stack_Mem
+  246 0000001C 4770            BX               LR
+  247 0000001E         
+  248 0000001E 00 00           ALIGN
   249 00000020         
-  250 00000020                 END
+  250 00000020                 ENDIF
+  251 00000020         
+  252 00000020                 END
               00000000 
               00000000 
               00000000 
-              00000400 
+              00000500 
               00000200 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
-ork --depend=.\objects\startup_stm32f030x8.d -o.\objects\startup_stm32f030x8.o 
--IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1 -IC:\Kei
-l_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0
-.0\CMSIS\RTOS\RTX\INC -IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Inc
+ork --depend=.\output\startup_stm32f030x8.d -o.\output\startup_stm32f030x8.o -I
 
 
 
 ARM Macro Assembler    Page 7 
 
 
-lude --predefine="__RTX SETA 1" --predefine="__UVISION_VERSION SETA 522" --pred
-efine="_RTE_ SETA 1" --predefine="STM32F030x8 SETA 1" --list=.\listings\startup
-_stm32f030x8.lst RTE\Device\STM32F030R8\startup_stm32f030x8.s
+.\RTE\CMSIS -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Inclu
+de -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\P
+ACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\RTX\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F0x
+x_DFP\1.5.0\Device\Include --predefine="__UVISION_VERSION SETA 523" --predefine
+="_RTE_ SETA 1" --predefine="STM32F030x8 SETA 1" --list=.\listings\startup_stm3
+2f030x8.lst RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 
 
@@ -417,10 +420,10 @@ Symbol: Stack_Mem
    Definitions
       At line 51 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
-      At line 241 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 243 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 245 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-__initial_sp 00000400
+__initial_sp 00000500
 
 Symbol: __initial_sp
    Definitions
@@ -449,8 +452,8 @@ Symbol: Heap_Mem
    Definitions
       At line 63 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
-      At line 240 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 242 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 244 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 __heap_base 00000000
 
@@ -520,7 +523,7 @@ ADC1_IRQHandler 00000012
 
 Symbol: ADC1_IRQHandler
    Definitions
-      At line 203 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 204 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 106 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 177 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -529,7 +532,7 @@ DMA1_Channel1_IRQHandler 00000012
 
 Symbol: DMA1_Channel1_IRQHandler
    Definitions
-      At line 200 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 201 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 103 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 174 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -538,7 +541,7 @@ DMA1_Channel2_3_IRQHandler 00000012
 
 Symbol: DMA1_Channel2_3_IRQHandler
    Definitions
-      At line 201 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 202 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 104 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 175 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -547,7 +550,7 @@ DMA1_Channel4_5_IRQHandler 00000012
 
 Symbol: DMA1_Channel4_5_IRQHandler
    Definitions
-      At line 202 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 203 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 105 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 176 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -564,7 +567,7 @@ EXTI0_1_IRQHandler 00000012
 
 Symbol: EXTI0_1_IRQHandler
    Definitions
-      At line 197 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 198 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 99 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
@@ -579,7 +582,7 @@ EXTI2_3_IRQHandler 00000012
 
 Symbol: EXTI2_3_IRQHandler
    Definitions
-      At line 198 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 199 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 100 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 172 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -588,7 +591,7 @@ EXTI4_15_IRQHandler 00000012
 
 Symbol: EXTI4_15_IRQHandler
    Definitions
-      At line 199 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 200 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 101 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 173 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -597,7 +600,7 @@ FLASH_IRQHandler 00000012
 
 Symbol: FLASH_IRQHandler
    Definitions
-      At line 195 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 196 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 97 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 169 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -615,19 +618,19 @@ I2C1_IRQHandler 00000012
 
 Symbol: I2C1_IRQHandler
    Definitions
-      At line 211 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 213 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 117 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 185 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 186 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 I2C2_IRQHandler 00000012
 
 Symbol: I2C2_IRQHandler
    Definitions
-      At line 212 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 214 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 118 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 186 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 187 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 NMI_Handler 00000008
 
@@ -657,7 +660,7 @@ RCC_IRQHandler 00000012
 
 Symbol: RCC_IRQHandler
    Definitions
-      At line 196 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 197 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 98 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 170 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -666,7 +669,7 @@ RTC_IRQHandler 00000012
 
 Symbol: RTC_IRQHandler
    Definitions
-      At line 194 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 195 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 96 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 168 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -684,19 +687,19 @@ SPI1_IRQHandler 00000012
 
 Symbol: SPI1_IRQHandler
    Definitions
-      At line 213 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 215 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 119 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 187 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 188 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 SPI2_IRQHandler 00000012
 
 Symbol: SPI2_IRQHandler
    Definitions
-      At line 214 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 216 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 120 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 188 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 189 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 
 
@@ -726,37 +729,37 @@ TIM14_IRQHandler 00000012
 
 Symbol: TIM14_IRQHandler
    Definitions
-      At line 207 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 209 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 113 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 181 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 182 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 TIM15_IRQHandler 00000012
 
 Symbol: TIM15_IRQHandler
    Definitions
-      At line 208 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 210 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 114 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 182 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 183 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 TIM16_IRQHandler 00000012
 
 Symbol: TIM16_IRQHandler
    Definitions
-      At line 209 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 211 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 115 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 183 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 184 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 TIM17_IRQHandler 00000012
 
 Symbol: TIM17_IRQHandler
    Definitions
-      At line 210 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 212 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 116 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 184 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 185 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 TIM1_BRK_UP_TRG_COM_IRQHandler 00000012
 
@@ -768,7 +771,7 @@ Symbol: TIM1_BRK_UP_TRG_COM_IRQHandler
 ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 204 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 205 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 107 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 178 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -777,7 +780,7 @@ TIM1_CC_IRQHandler 00000012
 
 Symbol: TIM1_CC_IRQHandler
    Definitions
-      At line 205 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 206 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 108 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 179 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
@@ -786,47 +789,62 @@ TIM3_IRQHandler 00000012
 
 Symbol: TIM3_IRQHandler
    Definitions
-      At line 206 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 207 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 110 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 180 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+
+TIM6_IRQHandler 00000012
+
+Symbol: TIM6_IRQHandler
+   Definitions
+      At line 208 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+   Uses
+      At line 111 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 181 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 USART1_IRQHandler 00000012
 
 Symbol: USART1_IRQHandler
    Definitions
-      At line 215 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 217 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 121 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 189 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 190 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 USART2_IRQHandler 00000012
 
 Symbol: USART2_IRQHandler
    Definitions
-      At line 216 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 218 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 122 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 190 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 191 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 WWDG_IRQHandler 00000012
 
 Symbol: WWDG_IRQHandler
    Definitions
-      At line 193 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 194 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 94 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
       At line 167 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Relocatable symbols
 
 __user_initial_stackheap 00000014
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 238 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 240 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
-      At line 236 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 238 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 Comment: __user_initial_stackheap used once
-33 symbols
+34 symbols
 
 
 
@@ -840,16 +858,16 @@ Symbol: Heap_Size
       At line 59 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 63 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 242 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 244 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
-Stack_Size 00000400
+Stack_Size 00000500
 
 Symbol: Stack_Size
    Definitions
       At line 48 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       At line 51 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
-      At line 241 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 243 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 __Vectors_Size 000000B4
 
@@ -886,7 +904,7 @@ __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 235 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
+      At line 237 in file RTE\Device\STM32F030R8\startup_stm32f030x8.s
    Uses
       None
 Comment: __use_two_region_memory unused
