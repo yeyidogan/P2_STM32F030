@@ -58,7 +58,11 @@ int main(void){
 	uartNvicConfig();
 	initTimers();
 	initI2C();
-
+	
+	motor_s[MOTOR_A].switch_case = SWITCH_DETECT_CNT;
+	motor_s[MOTOR_B].switch_case = SWITCH_DETECT_CNT;
+	motor_s[MOTOR_A].cmd = STEPPER_TO_ZERO_POINT;
+	motor_s[MOTOR_B].cmd = STEPPER_TO_ZERO_POINT;
 	//if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
 	//	change_device_name((uint8_t *)"CatFx_Toilet");
 	

@@ -26,8 +26,8 @@ typedef struct{
 /* define ------------------------------------------------------------*/
 #define MAX_INDEX_OF_STEPPER_MOTOR 0x03
 #define MAX_STEPPER_PULSE 0xFFF0
-#define STEPPER_A_EN 0x01ul
-#define STEPPER_B_EN 0x08ul
+#define STEPPER_A_EN 0x0001ul
+#define STEPPER_B_EN 0x0008ul
 #define STEPPER_A_MASK 0x0006ul
 #define STEPPER_B_MASK 0x0030ul
 #define SWITCH_A_MASK 0x0001ul

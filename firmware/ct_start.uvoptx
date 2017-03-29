@@ -159,7 +159,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\driver\uart.c</Filename>
+          <Filename>&lt;1&gt;.\driver\uart.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\ct_start\driver/uart.c\49</Expression>
         </Bp>

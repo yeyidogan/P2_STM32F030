@@ -57,34 +57,39 @@ __NO_RETURN void task_stepper_motor(void *argument){
 						motor_s[active_motor].cmd = STEPPER_STOP;
 						break;
 					}
+					if (motor_s[active_motor].step_point < 10){
+						motor_s[active_motor].cmd = STEPPER_STOP;
+						//error msg must be defined here: couldnt detect zero point switch
+						break;
+					}
 				}
-				if (motor_s[active_motor].step_point < 10){
+				
+				readGpioInputs();
+				if (ulInputs && ulSwitchMask[active_motor] == 0x00){ //switch detected
+					if (motor_s[active_motor].switch_case < SWITCH_DETECT_CNT){
+						++motor_s[active_motor].switch_case;
+					}
+				}
+				else {//switch not detected
+					if (motor_s[active_motor].switch_case > 0x00){
+						--motor_s[active_motor].switch_case;
+					}
+				}
+				if (motor_s[active_motor].switch_case >= SWITCH_DETECT_CNT){
 					motor_s[active_motor].cmd = STEPPER_STOP;
-					//error msg must be defined here: couldnt detect zero point switch
+					motor_s[active_motor].step_point = STEPPER_ZERO_OFFSET;
 					break;
 				}
+				
 				ulOutputs |= ulStepperEn[active_motor]; //enable stepper coils
 				ulOutputs &= ~ulStepperMask[active_motor]; //reset 2 bit step info
 				motor_s[active_motor].index &= 0x03; //limit to max index
 				ulOutputs |= step_array_full[motor_s[active_motor].index--] << ucShift[active_motor];
 				--motor_s[active_motor].step_point;
-				if (motor_s[active_motor].cmd == STEPPER_BACKWARD)
+				if (motor_s[active_motor].cmd == STEPPER_BACKWARD){
 					--motor_s[active_motor].step_size;
+				}
 				setGpioOutputs();
-				
-				readGpioInputs();
-				if (ulInputs && ulSwitchMask[active_motor] == 0x00){ //switch detected
-					if (motor_s[active_motor].switch_case < SWITCH_DETECT_CNT)
-						++motor_s[active_motor].switch_case;
-				}
-				else {//switch not detected
-					if (motor_s[active_motor].switch_case > 0x00)
-						--motor_s[active_motor].switch_case;
-				}
-				if (motor_s[active_motor].switch_case >= SWITCH_DETECT_CNT){
-					motor_s[active_motor].cmd = STEPPER_STOP;
-					motor_s[active_motor].step_point = STEPPER_ZERO_OFFSET;
-				}
 				break;
 			default:
 				motor_s[active_motor].cmd = STEPPER_STOP;
@@ -95,7 +100,7 @@ __NO_RETURN void task_stepper_motor(void *argument){
 			ulOutputs &= ~ulStepperEn[active_motor];
 			setGpioOutputs();
 		}
-		if (motor_s[MOTOR_A].cmd == STEPPER_STOP || motor_s[MOTOR_B].cmd == STEPPER_STOP){
+		if ((motor_s[MOTOR_A].cmd == STEPPER_STOP) && (motor_s[MOTOR_B].cmd == STEPPER_STOP)){
 			osEventFlagsWait(event_general, EVENT_MASK_STEPPER_RUN, osFlagsWaitAny, osWaitForever);
 		}
 		osDelay(10);
