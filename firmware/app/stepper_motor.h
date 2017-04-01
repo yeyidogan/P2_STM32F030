@@ -25,15 +25,16 @@ typedef struct{
 
 /* define ------------------------------------------------------------*/
 #define MAX_INDEX_OF_STEPPER_MOTOR 0x03
-#define MAX_STEPPER_PULSE 0xFFF0
+#define MAX_STEPPER_A_PULSE 1000
+#define MAX_STEPPER_B_PULSE 0x0C8B
 #define STEPPER_A_EN 0x0001ul
 #define STEPPER_B_EN 0x0008ul
 #define STEPPER_A_MASK 0x0006ul
 #define STEPPER_B_MASK 0x0030ul
 #define SWITCH_A_MASK 0x0001ul
 #define SWITCH_B_MASK 0x0002ul
-#define SWITCH_DETECT_CNT 0x04
-#define STEPPER_ZERO_OFFSET 200
+#define SWITCH_DETECT_CNT 0x02
+#define STEPPER_ZERO_OFFSET 20
 
 enum{
 	STEPPER_STOP = (uint8_t)0x00,

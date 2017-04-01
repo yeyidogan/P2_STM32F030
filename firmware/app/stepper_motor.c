@@ -17,6 +17,7 @@ const uint8_t ucShift[2] = {0x01, 0x04};
 const uint32_t ulStepperEn[2] = {STEPPER_A_EN, STEPPER_B_EN};
 const uint32_t ulStepperMask[2] = {STEPPER_A_MASK, STEPPER_B_MASK};
 const uint32_t ulSwitchMask[2] = {SWITCH_A_MASK, SWITCH_B_MASK};
+const uint16_t stepper_max_point[2] = {MAX_STEPPER_A_PULSE, MAX_STEPPER_B_PULSE};
 uint8_t active_motor = MOTOR_B;
 
 /* functions ---------------------------------------------------------*/
@@ -37,8 +38,13 @@ __NO_RETURN void task_stepper_motor(void *argument){
 		
 		switch (motor_s[active_motor].cmd){
 			case STEPPER_FORWARD:
+			case STEPPER_TO_END_POINT:
+				if (motor_s[active_motor].cmd == STEPPER_TO_END_POINT){
+					motor_s[active_motor].step_size = 0xFFFF;
+				}
 				if (motor_s[active_motor].step_size == 0x00 || \
-						motor_s[active_motor].step_point >= MAX_STEPPER_PULSE){
+						motor_s[active_motor].step_point >= stepper_max_point[active_motor]){
+					motor_s[active_motor].step_size = 0x00;
 					motor_s[active_motor].cmd = STEPPER_STOP;
 					break;
 				}
@@ -50,6 +56,7 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				--motor_s[active_motor].step_size;
 				setGpioOutputs();
 				break;
+			
 			case STEPPER_BACKWARD:
 			case STEPPER_TO_ZERO_POINT:
 				if (motor_s[active_motor].cmd == STEPPER_BACKWARD){
@@ -65,7 +72,7 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				}
 				
 				readGpioInputs();
-				if (ulInputs && ulSwitchMask[active_motor] == 0x00){ //switch detected
+				if ((ulInputs & ulSwitchMask[active_motor]) == 0x00){ //switch detected
 					if (motor_s[active_motor].switch_case < SWITCH_DETECT_CNT){
 						++motor_s[active_motor].switch_case;
 					}
@@ -76,8 +83,9 @@ __NO_RETURN void task_stepper_motor(void *argument){
 					}
 				}
 				if (motor_s[active_motor].switch_case >= SWITCH_DETECT_CNT){
-					motor_s[active_motor].cmd = STEPPER_STOP;
 					motor_s[active_motor].step_point = STEPPER_ZERO_OFFSET;
+					motor_s[active_motor].cmd = STEPPER_FORWARD;
+					motor_s[active_motor].step_size = 80;
 					break;
 				}
 				
@@ -103,7 +111,7 @@ __NO_RETURN void task_stepper_motor(void *argument){
 		if ((motor_s[MOTOR_A].cmd == STEPPER_STOP) && (motor_s[MOTOR_B].cmd == STEPPER_STOP)){
 			osEventFlagsWait(event_general, EVENT_MASK_STEPPER_RUN, osFlagsWaitAny, osWaitForever);
 		}
-		osDelay(10);
+		osDelay(1);
 	}
 }
 /* * * END OF FILE * * */
