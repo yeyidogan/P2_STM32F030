@@ -6,7 +6,7 @@
 #include "main.h"
 
 /* mutexes ---------------------------------------------------------*/
-osMutexId_t mutex_I2C;
+osMutexId_t mutex_i2c;
 /* flags -----------------------------------------------------------*/
 osEventFlagsId_t event_general; 
 
@@ -72,7 +72,7 @@ int main(void){
 	if(osKernelGetState() == osKernelInactive)
     osKernelInitialize();
 	
-	mutex_I2C = osMutexNew(NULL);
+	mutex_i2c = osMutexNew(NULL);
 	event_general = osEventFlagsNew(NULL);
 	
 	osThreadNew(task_Led, NULL, NULL);

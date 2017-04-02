@@ -21,7 +21,7 @@ osStatus_t statusT;
   * @retval None
   */
 void write_HDC1080_configuration(void){
-	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
+	statusT = osMutexAcquire(mutex_i2c, 1000); //wait for 1 second
 	if (statusT == osOK){
 		i2c_master_send_start_stop = I2C_MASTER_SEND_START;
 		i2c_msg_tx_s.length_wr = HDC1080_WR_CONF_FRAME_SIZE;
@@ -41,7 +41,7 @@ void write_HDC1080_configuration(void){
 	else{
 		stHDC1080Status.ok = false;
 	}
-	osMutexRelease(mutex_I2C);
+	osMutexRelease(mutex_i2c);
 }
 
 /**
@@ -50,7 +50,7 @@ void write_HDC1080_configuration(void){
   * @retval None
   */
 void read_HDC1080_configuration(void){
-	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
+	statusT = osMutexAcquire(mutex_i2c, 1000); //wait for 1 second
 	if (statusT == osOK){
 		i2c_master_send_start_stop = I2C_MASTER_SEND_RESTART;
 		i2c_msg_tx_s.length_wr = HDC1080_RD_WR_CONF_POINTER_SIZE; //1 byte
@@ -73,7 +73,7 @@ void read_HDC1080_configuration(void){
 	else{
 		stHDC1080Status.ok = false;
 	}
-	osMutexRelease(mutex_I2C);
+	osMutexRelease(mutex_i2c);
 }
 /**
   * @brief trig convertion of HDC1080
@@ -81,7 +81,7 @@ void read_HDC1080_configuration(void){
   * @retval None
   */
 void trig_HDC1080(void){
-	statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
+	statusT = osMutexAcquire(mutex_i2c, 1000); //wait for 1 second
 	if (statusT == osOK){
 		i2c_master_send_start_stop = I2C_MASTER_SEND_START;
 		i2c_msg_tx_s.length_wr = 0x01;
@@ -104,7 +104,7 @@ void trig_HDC1080(void){
 	else{
 		stHDC1080Status.ok = false;
 	}
-	osMutexRelease(mutex_I2C);
+	osMutexRelease(mutex_i2c);
 }
 /**
   * @brief init HDC1080
@@ -142,7 +142,7 @@ __NO_RETURN void task_HDC1080(void *argument){
 				continue;
 			}
 
-			statusT = osMutexAcquire(mutex_I2C, 1000); //wait for 1 second
+			statusT = osMutexAcquire(mutex_i2c, 1000); //wait for 1 second
 			if (statusT == osOK){
 				i2c_master_send_start_stop = I2C_MASTER_SEND_START;
 				i2c_msg_tx_s.length_rd = sizeof(ST_HDC1080_RD_TEMP_HUM_TYPE);
@@ -157,7 +157,7 @@ __NO_RETURN void task_HDC1080(void *argument){
 					}
 				}
 			}
-			osMutexRelease(mutex_I2C);
+			osMutexRelease(mutex_i2c);
 
 			if (stHDC1080Status.ok == true){
 				ulTemp = wordEndianer(PTR_HDC1080_TEMP_HUM_RD->uiTemperature);

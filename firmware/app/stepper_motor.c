@@ -69,6 +69,17 @@ __NO_RETURN void task_stepper_motor(void *argument){
 						//error msg must be defined here: couldnt detect zero point switch
 						break;
 					}
+					if (motor_s[active_motor].step_point < STEPPER_SLOW_SPEED_PULSE){
+						if (motor_s[active_motor].bit.slow == true){
+							motor_s[active_motor].bit.slow = false;
+							//ulOutputs &= ~ulStepperEn[active_motor];
+							//setGpioOutputs();
+							break;
+						}
+						else{
+							motor_s[active_motor].bit.slow = true;
+						}
+					}
 				}
 				
 				readGpioInputs();
@@ -104,14 +115,17 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				break;
 		}
 		
-		if (motor_s[active_motor].cmd == STEPPER_STOP){
-			ulOutputs &= ~ulStepperEn[active_motor];
-			setGpioOutputs();
-		}
+		osDelay(1);
+		//if (motor_s[active_motor].cmd == STEPPER_STOP){
+		//	ulOutputs &= ~ulStepperEn[active_motor];
+		//	setGpioOutputs();
+		//}
+		ulOutputs &= ~ulStepperEn[MOTOR_A];
+		ulOutputs &= ~ulStepperEn[MOTOR_B];
+		setGpioOutputs();
 		if ((motor_s[MOTOR_A].cmd == STEPPER_STOP) && (motor_s[MOTOR_B].cmd == STEPPER_STOP)){
 			osEventFlagsWait(event_general, EVENT_MASK_STEPPER_RUN, osFlagsWaitAny, osWaitForever);
 		}
-		osDelay(1);
 	}
 }
 /* * * END OF FILE * * */

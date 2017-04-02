@@ -23,7 +23,7 @@
 /* Functions ---------------------------------------------------------*/
 /* variables ---------------------------------------------------------*/
 /* mutexes ---------------------------------------------------------*/
-extern osMutexId_t mutex_I2C;
+extern osMutexId_t mutex_i2c;
 /* flags -----------------------------------------------------------*/
 	#define EVENT_MASK_UART1_TIMEOUT 0x00000001ul
 	#define EVENT_MASK_UART2_TIMEOUT 0x00000002ul

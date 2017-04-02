@@ -21,6 +21,9 @@ typedef struct{
 	uint8_t index;
 	uint8_t cmd;
 	uint8_t switch_case; //switch data on zero point
+	struct{
+		uint8_t slow:1;
+	}bit;
 }STEPPER_MOTOR_CONTROL_TYPE;
 
 /* define ------------------------------------------------------------*/
@@ -35,6 +38,7 @@ typedef struct{
 #define SWITCH_B_MASK 0x0002ul
 #define SWITCH_DETECT_CNT 0x02
 #define STEPPER_ZERO_OFFSET 20
+#define STEPPER_SLOW_SPEED_PULSE 0x007F
 
 enum{
 	STEPPER_STOP = (uint8_t)0x00,
