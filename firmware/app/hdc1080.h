@@ -61,9 +61,9 @@ typedef struct{
 	uint8_t humidity_error:1;
 }ST_HDC1080_STATUS_TYPE;
 
-#define PTR_HDC1080_CONF_FRAME_RD ((ST_HDC1080_RD_CONF_FRAME_TYPE *)ucI2CRxBuf)
-#define PTR_HDC1080_CONF_FRAME_WR ((ST_HDC1080_WR_CONF_FRAME_TYPE *)ucI2CTxBuf)
-#define PTR_HDC1080_TEMP_HUM_RD ((ST_HDC1080_RD_TEMP_HUM_TYPE *)ucI2CRxBuf)
+#define PTR_HDC1080_CONF_FRAME_RD ((ST_HDC1080_RD_CONF_FRAME_TYPE *)i2c_rx_buf)
+#define PTR_HDC1080_CONF_FRAME_WR ((ST_HDC1080_WR_CONF_FRAME_TYPE *)i2c_tx_buf)
+#define PTR_HDC1080_TEMP_HUM_RD ((ST_HDC1080_RD_TEMP_HUM_TYPE *)i2c_rx_buf)
 
 /* Functions ---------------------------------------------------------*/
 extern __NO_RETURN void task_HDC1080(void *argument);

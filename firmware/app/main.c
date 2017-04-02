@@ -57,7 +57,7 @@ int main(void){
 	initUartDma();
 	uartNvicConfig();
 	initTimers();
-	initI2C();
+	init_i2c();
 	
 	motor_s[MOTOR_A].switch_case = SWITCH_DETECT_CNT;
 	motor_s[MOTOR_B].switch_case = SWITCH_DETECT_CNT;

@@ -398,8 +398,8 @@ ARM Macro Assembler    Page 7
 de -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\Include -IC:\Keil_v5\ARM\P
 ACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\RTX\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F0x
 x_DFP\1.5.0\Device\Include --predefine="__UVISION_VERSION SETA 523" --predefine
-="_RTE_ SETA 1" --predefine="STM32F030x8 SETA 1" --list=.\listings\startup_stm3
-2f030x8.lst RTE\Device\STM32F030R8\startup_stm32f030x8.s
+="_RTE_ SETA 1" --predefine="STM32F030x8 SETA 1" --list=.\output\startup_stm32f
+030x8.lst RTE\Device\STM32F030R8\startup_stm32f030x8.s
 
 
 

@@ -1,17 +1,0 @@
-Dependencies for Project 'ct_start', Target 'Target 1': (DO NOT MODIFY !)
-F (.\app\main.c)(0x583ABF55)(-c --cpu Cortex-M0 -D__RTX -g -O0 --apcs=interwork --split_sections-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-F (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM0.lib)(0x58258030)()
-F (RTE\CMSIS\RTX_Conf_CM.c)(0x58258030)(-c --cpu Cortex-M0 -D__RTX -g -O0 --apcs=interwork --split_sections-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8-o .\objects\rtx_conf_cm.o --omf_browse .\objects\rtx_conf_cm.crf --depend .\objects\rtx_conf_cm.d)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x58258030)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F64D08)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC\RTX_CM_lib.h)(0x58258030)
-F (RTE\Device\STM32F030R8\startup_stm32f030x8.s)(0x56EA3C8A)(--cpu Cortex-M0 --pd "__RTX SETA 1" -g --apcs=interwork -IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include--pd "__UVISION_VERSION SETA 522" --pd "_RTE_ SETA 1" --pd "STM32F030x8 SETA 1"--list .\listings\startup_stm32f030x8.lst --xref -o .\objects\startup_stm32f030x8.o --depend .\objects\startup_stm32f030x8.d)
-F (RTE\Device\STM32F030R8\system_stm32f0xx.c)(0x56EA3C8A)(-c --cpu Cortex-M0 -D__RTX -g -O0 --apcs=interwork --split_sections-IC:\Users\yilmaz\Documents\GitHub\P2_STM32F030\firmware\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="522" -D_RTE_ -DSTM32F030x8-o .\objects\system_stm32f0xx.o --omf_browse .\objects\system_stm32f0xx.crf --depend .\objects\system_stm32f0xx.d)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\stm32f0xx.h)(0x56EA3C8A)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\stm32f030x8.h)(0x56EA3C8A)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\core_cm0.h)(0x5825802E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_compiler.h)(0x5825802E)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_armcc.h)(0x5825802E)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.5.0\Device\Include\system_stm32f0xx.h)(0x56EA3C8A)

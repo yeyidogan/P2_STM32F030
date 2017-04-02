@@ -54,7 +54,7 @@
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings\</ListingPath>
+          <ListingPath>.\output\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F030,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\stm32_lib\inc;.\driver;.\app</IncludePath>
+              <IncludePath>.\stm32_lib;.\driver;.\app</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -425,31 +425,6 @@
           <GroupName>driver</GroupName>
           <Files>
             <File>
-              <FileName>stm32f0xx_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f0xx_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f0xx_misc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_misc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f0xx_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f0xx_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_i2c.c</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\driver\gpio.c</FilePath>
@@ -469,15 +444,45 @@
               <FileType>1</FileType>
               <FilePath>.\driver\timer.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>stm32_lib</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32f0xx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\stm32f0xx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\stm32f0xx_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_misc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\stm32f0xx_misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\stm32f0xx_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f0xx_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stm32_lib\stm32f0xx_i2c.c</FilePath>
+            </File>
             <File>
               <FileName>stm32f0xx_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_tim.c</FilePath>
+              <FilePath>.\stm32_lib\stm32f0xx_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f0xx_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\stm32_lib\src\stm32f0xx_rcc.c</FilePath>
+              <FilePath>.\stm32_lib\stm32f0xx_rcc.c</FilePath>
             </File>
           </Files>
         </Group>

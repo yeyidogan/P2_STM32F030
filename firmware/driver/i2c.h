@@ -9,16 +9,16 @@
 #include "stm32f0xx.h"
 #include "stm32f0xx_i2c.h"
 #include <stdbool.h>
-#if defined(__GNUC__)
-	#include "CoOs.h"
-#endif
+#include "cmsis_os2.h"
+#include "pub_var.h"
+#include "main.h"
 
-/* Private define ------------------------------------------------------------*/
+/* define ------------------------------------------------------------*/
 #define I2C_OWN_ADDR 0x0A
-#define I2C_TX_BUF_SIZE 32
-#define I2C_RX_BUF_SIZE 32
+#define I2C_TX_BUF_SIZE 34
+#define I2C_RX_BUF_SIZE 34
 
-/* Private macro ------------------------------------------------------------*/
+/* macro -------------------------------------------------------------*/
 #define START_I2C_TIMER uiTimerI2C=(uint16_t)0x00
 #define CHECK_I2C_TIMER_REACH_TO(x) uiTimerI2C>(uint16_t)x
 
@@ -54,20 +54,21 @@ typedef union{
 }I2C_STATUS_TYPE;
 
 typedef struct{
-	uint8_t slaveAddress;
-	uint8_t length;
+	uint8_t chip_add;
+	uint8_t length_wr;
+	uint8_t length_rd;
 }I2C_MSG_TX_TYPE;
 
 /* Functions ---------------------------------------------------------*/
-extern void initI2C(void);
+extern void init_i2c(void);
 extern uint8_t i2c_master_process(uint8_t rw);
 /* variables ---------------------------------------------------------*/
-extern uint8_t ucI2CTxBuf[];
-extern uint8_t ucI2CRxBuf[];
-//extern uint8_t * i2cDataPtr;
-extern I2C_MSG_TX_TYPE stI2cMsgTx;
-extern I2C_STATUS_TYPE stI2cStatus;
-extern uint8_t ucI2CMasterSendStartStop;
+extern uint8_t i2c_tx_buf[];
+extern uint8_t i2c_rx_buf[];
+extern I2C_MSG_TX_TYPE i2c_msg_tx_s;
+extern I2C_STATUS_TYPE i2c_status_s;
+extern uint8_t i2c_master_send_start_stop;
 extern uint16_t uiTimerI2C;
 
 #endif
+/* * * END OF FILE * * */

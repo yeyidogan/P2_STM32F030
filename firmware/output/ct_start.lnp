@@ -7,15 +7,15 @@
 ".\output\modbus_func.o"
 ".\output\stepper_motor.o"
 ".\output\hc0x_bluetooth.o"
+".\output\gpio.o"
+".\output\uart.o"
+".\output\i2c.o"
+".\output\timer.o"
 ".\output\stm32f0xx_dma.o"
 ".\output\stm32f0xx_gpio.o"
 ".\output\stm32f0xx_misc.o"
 ".\output\stm32f0xx_usart.o"
 ".\output\stm32f0xx_i2c.o"
-".\output\gpio.o"
-".\output\uart.o"
-".\output\i2c.o"
-".\output\timer.o"
 ".\output\stm32f0xx_tim.o"
 ".\output\stm32f0xx_rcc.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM0.lib"
@@ -26,4 +26,4 @@
 --strict --scatter ".\output\ct_start.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Listings\ct_start.map" -o .\output\ct_start.axf
+--list ".\output\ct_start.map" -o .\output\ct_start.axf
