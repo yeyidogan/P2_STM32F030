@@ -64,29 +64,25 @@ __NO_RETURN void task_stepper_motor(void *argument){
 						motor_s[active_motor].cmd = STEPPER_STOP;
 						break;
 					}
-					if (motor_s[active_motor].step_point < 10){
-						motor_s[active_motor].cmd = STEPPER_STOP;
-						//error msg must be defined here: couldnt detect zero point switch
+				}
+				if (motor_s[active_motor].step_point < 10){
+					motor_s[active_motor].cmd = STEPPER_STOP;
+					//error msg must be defined here: couldnt detect zero point switch
+					break;
+				}
+				if (motor_s[active_motor].step_point < STEPPER_SLOW_SPEED_PULSE){
+					if (motor_s[active_motor].bit.slow == true){
+						motor_s[active_motor].bit.slow = false;
 						break;
 					}
-					if (motor_s[active_motor].step_point < STEPPER_SLOW_SPEED_PULSE){
-						if (motor_s[active_motor].bit.slow == true){
-							motor_s[active_motor].bit.slow = false;
-							//ulOutputs &= ~ulStepperEn[active_motor];
-							//setGpioOutputs();
-							break;
-						}
-						else{
-							motor_s[active_motor].bit.slow = true;
-						}
+					else{
+						motor_s[active_motor].bit.slow = true;
 					}
 				}
 				
 				readGpioInputs();
 				if ((ulInputs & ulSwitchMask[active_motor]) == 0x00){ //switch detected
-					if (motor_s[active_motor].switch_case < SWITCH_DETECT_CNT){
-						++motor_s[active_motor].switch_case;
-					}
+					++motor_s[active_motor].switch_case;
 				}
 				else {//switch not detected
 					if (motor_s[active_motor].switch_case > 0x00){
@@ -94,9 +90,10 @@ __NO_RETURN void task_stepper_motor(void *argument){
 					}
 				}
 				if (motor_s[active_motor].switch_case >= SWITCH_DETECT_CNT){
+					motor_s[active_motor].switch_case = 0;
 					motor_s[active_motor].step_point = STEPPER_ZERO_OFFSET;
 					motor_s[active_motor].cmd = STEPPER_FORWARD;
-					motor_s[active_motor].step_size = 80;
+					motor_s[active_motor].step_size = STEPPER_ZERO_POINT_TO_BACK;
 					break;
 				}
 				

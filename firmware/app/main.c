@@ -63,6 +63,8 @@ int main(void){
 	motor_s[MOTOR_B].switch_case = SWITCH_DETECT_CNT;
 	motor_s[MOTOR_A].cmd = STEPPER_TO_ZERO_POINT;
 	motor_s[MOTOR_B].cmd = STEPPER_TO_ZERO_POINT;
+	motor_s[MOTOR_A].step_point = MAX_STEPPER_A_PULSE;
+	motor_s[MOTOR_B].step_point = MAX_STEPPER_B_PULSE;
 	//motor_s[MOTOR_B].cmd = STEPPER_FORWARD;
 	//motor_s[MOTOR_B].step_size = 1000;
 

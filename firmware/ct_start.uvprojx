@@ -419,6 +419,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\hc0x_bluetooth.c</FilePath>
             </File>
+            <File>
+              <FileName>main_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\main_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
