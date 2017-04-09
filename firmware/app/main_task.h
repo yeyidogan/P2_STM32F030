@@ -15,8 +15,8 @@
 /* define ------------------------------------------------------------*/
 #define INFRARED_SENSOR_PIN ((uint16_t)0x0004) //GPIO_Pin_2
 #define INFRARED_SENSOR_CAT_DETECT_CNT 15
-#define MOTOR_HOLE_GATE MOTOR_A
-#define MOTOR_LITTER_GATE MOTOR_B
+#define MOTOR_HOLE_GATE MOTOR_B
+#define MOTOR_LITTER_GATE MOTOR_A
 
 enum{
 	NO_CAT = (uint8_t)0x00,

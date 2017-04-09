@@ -50,18 +50,19 @@ uint8_t copy_string(uint8_t * ptrSource, uint8_t * ptrTarget, uint8_t ucMaxByte)
  *******************************************************************************
  * @brief       string compare
  * @param[in]   ptr_source, ptr_destination
- * @retval      None
+ * @retval      true or false
 * @par Description: compare any string
  *******************************************************************************
  */
 uint8_t compare_string(uint8_t * ptrSource, uint8_t * ptrTarget, uint8_t ucMaxByte){
 	while (ucMaxByte--){
-		if (*ptrSource != *ptrTarget)
-			return false;
-			
-		if (*ptrSource == 0x00)
+		if (*ptrSource == 0x00){
 			return true;
-
+		}
+		if (*ptrSource != *ptrTarget){
+			return false;
+		}
+			
 		++ptrTarget;
 		++ptrSource;
 	}
@@ -80,8 +81,9 @@ uint8_t count_string(uint8_t * ptrData, uint8_t ucMaxByte){
 	uint8_t ucCnt = 0x00;
 	
 	while (ucMaxByte--){
-		if (*ptrData == 0x00)
+		if (*ptrData == 0x00){
 			break;
+		}
 		++ucCnt;
 		++ptrData;
 	}

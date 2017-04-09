@@ -26,7 +26,7 @@
 extern osMutexId_t mutex_i2c;
 /* flags -----------------------------------------------------------*/
 	#define EVENT_MASK_UART1_TIMEOUT 0x00000001ul
-	#define EVENT_MASK_UART2_TIMEOUT 0x00000002ul
+	#define EVENT_MASK_UART1_TX_TRANSFERED 0x00000002ul
 	#define EVENT_MASK_STEPPER_RUN 0x00000010ul
 	#define EVENT_MASK_I2C1_TRANSFER_COMPLETED 0x00000100ul
 	extern osEventFlagsId_t event_general;

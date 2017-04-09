@@ -29,6 +29,7 @@
 .\output\uart.o: .\app\hc0x_bluetooth.h
 .\output\uart.o: .\app\util.h
 .\output\uart.o: .\app\stepper_motor.h
+.\output\uart.o: .\app\main_task.h
 .\output\uart.o: .\app\modbus.h
 .\output\uart.o: .\app\modbus_func.h
 .\output\uart.o: .\app\modbus.h

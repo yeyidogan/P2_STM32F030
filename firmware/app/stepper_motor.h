@@ -28,7 +28,7 @@ typedef struct{
 
 /* define ------------------------------------------------------------*/
 #define MAX_INDEX_OF_STEPPER_MOTOR 0x03
-#define MAX_STEPPER_A_PULSE 1600
+#define MAX_STEPPER_A_PULSE 1400
 #define MAX_STEPPER_B_PULSE 0x0D3F
 #define STEPPER_A_EN 0x0001ul
 #define STEPPER_B_EN 0x0008ul
@@ -50,7 +50,7 @@ enum{
 }; //command list
 
 enum{
-	MOTOR_A,
+	MOTOR_A = (uint8_t)0x00,
 	MOTOR_B
 };
 

@@ -17,21 +17,18 @@
   * @retval None
   */
 void TIM6_IRQHandler(void){
-#if defined(__GNUC__)
-	CoEnterISR();
-#endif
-	if (uiTimerI2C < 20000) //max 20 seconds
-		++uiTimerI2C;
-	if (uiTimerHDC1080 < 20000) //max 20 seconds
-		++uiTimerHDC1080;
-	if (uiTimerUart1 < 20000) //max 20 seconds
-		++uiTimerUart1;
-	
 	/* Clear the IT pending Bit */
 	TIM6->SR = (uint16_t)~0x0001;
-#if defined(__GNUC__)
-	CoExitISR();
-#endif
+	
+	if (uiTimerI2C < 20000){ //max 20 seconds
+		++uiTimerI2C;
+	}
+	if (uiTimerHDC1080 < 20000){ //max 20 seconds
+		++uiTimerHDC1080;
+	}
+	if (uiTimerUart1 < 20000){ //max 20 seconds
+		++uiTimerUart1;
+	}
 }
 /**
   * @brief init timers

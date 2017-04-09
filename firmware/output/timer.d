@@ -34,3 +34,4 @@
 .\output\timer.o: .\app\hdc1080.h
 .\output\timer.o: .\app\hc0x_bluetooth.h
 .\output\timer.o: .\app\stepper_motor.h
+.\output\timer.o: .\app\main_task.h

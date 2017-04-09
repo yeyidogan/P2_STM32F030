@@ -29,10 +29,6 @@ void initGpio(void) {
 	/* Connect pin to Peripherals */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_1);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_1);
-	/* USART2 Pins configuration */
-	/* Connect pin to Peripherals */
-	//GPIO_PinAFConfig(GPIOA, GPIO_PinSource14, GPIO_AF_1);
-	//GPIO_PinAFConfig(GPIOA, GPIO_PinSource15, GPIO_AF_1);
 
 	/* Configure pins as AF push-pull */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;

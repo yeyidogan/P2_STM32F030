@@ -33,3 +33,4 @@
 .\output\i2c.o: .\app\hdc1080.h
 .\output\i2c.o: .\app\hc0x_bluetooth.h
 .\output\i2c.o: .\app\stepper_motor.h
+.\output\i2c.o: .\app\main_task.h

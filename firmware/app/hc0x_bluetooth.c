@@ -35,12 +35,7 @@ uint8_t change_device_name(uint8_t * ptrData){
 * @param[out] 
 *******************************************************************************
 */
-#define UARTx_TX_CMD(x) if(x==CHANNEL_UART1) \
-													uart1TxCmd(ptrTx, x); \
-												else \
-													uart2TxCmd(ptrTx, x);
-												
-void mobile_app_interface(uint8_t ucChannel){
+void mobile_app_interface(void){
 	uint8_t ucLength, ucReturn = MOBILE_APP_RETURN_ERR;
 	uint8_t *ptrRx, *ptrTx;
 	
@@ -48,30 +43,27 @@ void mobile_app_interface(uint8_t ucChannel){
 	if (ucLength == UART_RX_BUFFER_IS_EMPTY)
 		return;
 	
-	if (ucChannel == CHANNEL_UART1){
-		ptrRx = uart1Rx.ptrBuffer;
-		ptrTx = uart1Tx.buffer;
-	}
-	else{
-		ptrRx = uart2Rx.ptrBuffer;
-		ptrTx = uart2Tx.buffer;
-	}
+	ptrRx = uart1Rx.ptrBuffer;
+	ptrTx = uart1Tx.buffer;
 	//read status msg
 	if (compare_string((uint8_t *)"RS\r\n", ptrRx, 0x14)){
 		if (ucLength == 0x04){
 			ucReturn = MOBILE_APP_RETURN_MSG;
 			if (stHDC1080Status.ok == true){
+				osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 				sprintf((char *)ptrTx, "Temperature: %d\r\n", stTempHum.uiTemperature);
 				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
-				UARTx_TX_CMD(ucLength);
+				uart1TxCmd(ptrTx, ucLength);
+				osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 				sprintf((char *)ptrTx, "Humidity: %d\r\n", stTempHum.uiHumidity);
 				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
-				UARTx_TX_CMD(ucLength);
+				uart1TxCmd(ptrTx, ucLength);
 			}
 			else{
+				osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 				sprintf((char *)ptrTx, "Temperature sensor error\r\n");
 				ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
-				UARTx_TX_CMD(ucLength);
+				uart1TxCmd(ptrTx, ucLength);
 			}
 			
 		}
@@ -81,19 +73,21 @@ void mobile_app_interface(uint8_t ucChannel){
 	if (compare_string((uint8_t *)"RR\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x04){
 			ucReturn = MOBILE_APP_RETURN_MSG;
+			osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 			sprintf((char *)ptrTx, "Daily Report:\r\n");
 			ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
-			UARTx_TX_CMD(ucLength);
+			uart1TxCmd(ptrTx, ucLength);
+			osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 			sprintf((char *)ptrTx, "Under construction\r\n");
 			ucLength = count_string(ptrTx, UART_TX_BUFFER_SIZE);
-			UARTx_TX_CMD(ucLength);
+			uart1TxCmd(ptrTx, ucLength);
 		}
 	}
 
-	//open gate 1 (cat litter hopper)
+	//open gate 1 (cat hole gate)
 	if (compare_string((uint8_t *)"COG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			motor_s[MOTOR_A].cmd = STEPPER_TO_END_POINT;
+			motor_s[MOTOR_HOLE_GATE].cmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
 			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
@@ -102,7 +96,7 @@ void mobile_app_interface(uint8_t ucChannel){
 	//close gate 1 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG1\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			motor_s[MOTOR_A].cmd = STEPPER_TO_ZERO_POINT;
+			motor_s[MOTOR_HOLE_GATE].cmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
 			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
@@ -111,7 +105,7 @@ void mobile_app_interface(uint8_t ucChannel){
 	//open gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"COG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			motor_s[MOTOR_B].cmd = STEPPER_TO_END_POINT;
+			motor_s[MOTOR_LITTER_GATE].cmd = STEPPER_TO_END_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
 			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
@@ -120,19 +114,25 @@ void mobile_app_interface(uint8_t ucChannel){
 	//close gate 2 (cat litter hopper)
 	if (compare_string((uint8_t *)"CCG2\r\n", uart1Rx.ptrBuffer, 0x14)){
 		if (ucLength == 0x06){
-			motor_s[MOTOR_B].cmd = STEPPER_TO_ZERO_POINT;
+			motor_s[MOTOR_LITTER_GATE].cmd = STEPPER_TO_ZERO_POINT;
 			ucReturn = MOBILE_APP_RETURN_OK;
 			osEventFlagsSet(event_general, EVENT_MASK_STEPPER_RUN);
 		}
 	}
 	
+	if (compare_string((uint8_t *)"RST\r\n", ptrRx, 0x05)){
+		NVIC_SystemReset();
+	}
+	
 	if (ucReturn == MOBILE_APP_RETURN_OK){
+		osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 		sprintf((char *)ptrTx, "OK\r\n");
-		UARTx_TX_CMD(0x04);
+		uart1TxCmd(ptrTx, 0x04);
 	}
 	else if (ucReturn == MOBILE_APP_RETURN_ERR){
+		osEventFlagsWait(event_general, EVENT_MASK_UART1_TX_TRANSFERED, osFlagsWaitAny, 1000);
 		sprintf((char *)ptrTx, "ERR\r\n");
-		UARTx_TX_CMD(0x05);
+		uart1TxCmd(ptrTx, 0x05);
 	}
 }
 /* * * END OF FILE * * */

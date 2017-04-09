@@ -23,17 +23,12 @@
 #define UART_RX_BUFFER_SIZE 0x40 //use power of 2
 #define UART_TX_BUFFER_SIZE 0x40
 #define UART1_RX_TIMEOUT 0x23 //38 bit = 3.5 character
-#define UART2_RX_TIMEOUT 0x23 //38 bit = 3.5 character
 
 enum {
 	UART_TX_READY = 0x00, //no data is transmitting
 	UART_TX_BUSY //transmitting data
 };
 
-enum {
-	CHANNEL_UART1,
-	CHANNEL_UART2
-};
 #define UART_RX_BUFFER1_WAITING TRUE
 #define UART_RX_BUFFER2_WAITING FALSE
 #define UART_RX_BUFFER_IS_EMPTY 0x00
@@ -42,19 +37,13 @@ enum {
 #define START_UART1_TIMER uiTimerUart1=(uint16_t)0x00
 #define CHECK_UART1_TIMER_REACH_TO(x) uiTimerUart1>(uint16_t)x
 
-#define START_UART2_TIMER uiTimerUart2=(uint16_t)0x00
-#define CHECK_UART2_TIMER_REACH_TO(x) uiTimerUart2>(uint16_t)x
-
 /* Private function declarations */
 extern void initUart1(uint32_t baudRate);
-extern void initUart2(uint32_t baudRate);
 extern void uartNvicConfig(void);
 extern void initUartDma(void);
 extern void uart1TxCmd(uint8_t *ptr, uint8_t length);
-extern void uart2TxCmd(uint8_t *ptr, uint8_t length);
 extern uint8_t uart1CheckRxBuf(void);
 extern __NO_RETURN void task_Uart1(void *pdata);
-extern __NO_RETURN void task_Uart2(void *pdata);
 
 /* Private typedef */
 typedef struct {
@@ -84,11 +73,8 @@ typedef struct {
 
 /* Private variables */
 extern UART_RX_BUFFER_TYPE uart1Rx;
-extern UART_RX_BUFFER_TYPE uart2Rx;
 extern UART_TX_BUFFER_TYPE uart1Tx;
-extern UART_TX_BUFFER_TYPE uart2Tx;
 extern UART_STATUS_TYPE uart1Flags;
-extern UART_STATUS_TYPE uart2Flags;
 extern uint16_t uiTimerUart1;
 
 #endif

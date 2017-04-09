@@ -52,7 +52,6 @@ int main(void){
 	initGpio();
 	setParameters();
 	initUart1(sys_par.uart1_baudrate);
-	//initUart2(sys_par.uart2_baudrate);
 	RCC->AHBENR |= RCC_AHBENR_DMAEN; /* Enable DMA1 clock */
 	initUartDma();
 	uartNvicConfig();

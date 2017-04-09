@@ -33,3 +33,4 @@
 .\output\hc0x_bluetooth.o: .\app\util.h
 .\output\hc0x_bluetooth.o: .\app\modbus_func.h
 .\output\hc0x_bluetooth.o: .\app\modbus.h
+.\output\hc0x_bluetooth.o: app\main_task.h

@@ -15,6 +15,7 @@
 #include "util.h"
 #include "hdc1080.h"
 #include "stepper_motor.h"
+#include "main_task.h"
 
 /* Private macro */
 enum {
@@ -25,7 +26,7 @@ enum {
 /* Private variables */
 /* Private functions */
 extern uint8_t change_device_name(uint8_t * ptrData);
-extern void mobile_app_interface(uint8_t ucChannel);
+extern void mobile_app_interface(void);
 
 
 #endif

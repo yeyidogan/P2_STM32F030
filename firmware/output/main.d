@@ -32,3 +32,4 @@
 .\output\main.o: .\app\hdc1080.h
 .\output\main.o: app\hc0x_bluetooth.h
 .\output\main.o: app\stepper_motor.h
+.\output\main.o: app\main_task.h
