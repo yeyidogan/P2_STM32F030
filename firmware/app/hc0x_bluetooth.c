@@ -18,7 +18,8 @@
 */
 uint8_t change_device_name(uint8_t * ptrData){
 	
-	uart1Tx.length = copy_string(ptrData, uart1Tx.buffer, 0x14);
+	uart1Tx.length = copy_string((uint8_t *)"AT+NAME", uart1Tx.buffer, 0x14);
+	uart1Tx.length += copy_string(ptrData, uart1Tx.buffer+uart1Tx.length, 0x14);
 	uart1TxCmd(uart1Tx.buffer, uart1Tx.length);
 	osDelay(100);
 	

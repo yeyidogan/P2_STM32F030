@@ -11,10 +11,11 @@
 #include <stdint.h>
 #include "main.h"
 #include "stepper_motor.h"
+#include "uart.h"
 
 /* define ------------------------------------------------------------*/
 #define INFRARED_SENSOR_PIN ((uint16_t)0x0004) //GPIO_Pin_2
-#define INFRARED_SENSOR_CAT_DETECT_CNT 15
+#define INFRARED_SENSOR_CAT_DETECT_CNT 10
 #define MOTOR_HOLE_GATE MOTOR_B
 #define MOTOR_LITTER_GATE MOTOR_A
 
@@ -28,6 +29,7 @@ enum{
 /* typedef -----------------------------------------------------------*/
 /* variables ---------------------------------------------------------*/
 /* functions ---------------------------------------------------------*/
+extern __NO_RETURN void task_main(void *argument);
 
 #endif
 /* * * END OF FILE * * */

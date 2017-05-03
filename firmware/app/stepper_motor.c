@@ -30,11 +30,17 @@ uint8_t active_motor = MOTOR_B;
 __NO_RETURN void task_stepper_motor(void *argument){
 	
 	while (1){
-		++active_motor;
-		active_motor &= 0x01; //max val is 1
-		if (active_motor > 1){
-			active_motor = 0;
+		if (motor_s[MOTOR_A].cmd > STEPPER_STOP){
+			active_motor = MOTOR_A;
 		}
+		else{
+			active_motor = MOTOR_B;
+		}
+		//++active_motor;
+		//active_motor &= 0x01; //max val is 1
+		//if (active_motor > 1){
+		//	active_motor = 0;
+		//}
 		
 		switch (motor_s[active_motor].cmd){
 			case STEPPER_FORWARD:
@@ -112,7 +118,7 @@ __NO_RETURN void task_stepper_motor(void *argument){
 				break;
 		}
 		
-		osDelay(1);
+		osDelay(5);
 		//if (motor_s[active_motor].cmd == STEPPER_STOP){
 		//	ulOutputs &= ~ulStepperEn[active_motor];
 		//	setGpioOutputs();

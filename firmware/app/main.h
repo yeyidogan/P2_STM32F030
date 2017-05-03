@@ -16,6 +16,7 @@
 #include "hdc1080.h"
 #include "hc0x_bluetooth.h"
 #include "stepper_motor.h"
+#include "main_task.h"
 
 /* define ------------------------------------------------------------*/
 /* macro -------------------------------------------------------------*/

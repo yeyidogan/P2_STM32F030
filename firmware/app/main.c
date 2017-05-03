@@ -64,14 +64,10 @@ int main(void){
 	motor_s[MOTOR_B].cmd = STEPPER_TO_ZERO_POINT;
 	motor_s[MOTOR_A].step_point = MAX_STEPPER_A_PULSE;
 	motor_s[MOTOR_B].step_point = MAX_STEPPER_B_PULSE;
-	//motor_s[MOTOR_B].cmd = STEPPER_FORWARD;
-	//motor_s[MOTOR_B].step_size = 1000;
 
-	//if (sys_par.uart1_protocol == PROTOCOL_MOBILE_APP)
-	//	change_device_name((uint8_t *)"CatFx_Toilet");
-	
-	if(osKernelGetState() == osKernelInactive)
-    osKernelInitialize();
+	if(osKernelGetState() == osKernelInactive){
+		osKernelInitialize();
+	}
 	
 	mutex_i2c = osMutexNew(NULL);
 	event_general = osEventFlagsNew(NULL);
@@ -80,11 +76,12 @@ int main(void){
 	osThreadNew(task_HDC1080, NULL, NULL);
 	osThreadNew(task_Uart1, NULL, NULL);
 	osThreadNew(task_stepper_motor, NULL, NULL);
+	osThreadNew(task_main, NULL, NULL);
 	
 	if (osKernelGetState() == osKernelReady){ // If kernel is ready to run...
-    osKernelStart(); // ... start thread execution
-  }
-  while(1); // only reached in case of error
+		osKernelStart(); // ... start thread execution
+	}
+	while(1); // only reached in case of error
 }
 /**
  *******************************************************************************
